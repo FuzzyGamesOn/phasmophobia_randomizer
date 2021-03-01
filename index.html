@@ -1,0 +1,141 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <title>Phasmophobia Item Randomizer</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:title" content="">
+  <meta property="og:type" content="">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="apple-touch-icon" href="icon.png">
+
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/main.css">
+  
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.0/font/bootstrap-icons.css">
+
+  <meta name="theme-color" content="#fafafa">
+</head>
+
+<body>
+  <div class="actions pull-right">
+    <button type="button" id="randomize_button" class="btn btn-success"><i class="bi bi-arrow-repeat"></i> Randomize</button>
+    <button type="button" id="settings_button" class="btn">Settings <i class="bi bi-gear"></i></button>
+  </div>
+
+  <div id="container">
+    <h4>Primary Items</h4>
+    <div id="primary_items">
+      <div class="row">
+        <div id="emf" class="col-md-3 item">EMF Reader</div>
+        <div id="box" class="col-md-3 item">Spirit Box</div>
+        <div id="thermo" class="col-md-3 item">Thermometer</div>
+      </div>
+      <div class="row">
+        <div id="uv" class="col-md-3 item">UV Light</div>
+        <div id="video" class="col-md-3 item">Video Camera</div>
+        <div id="book" class="col-md-3 item">Writing Book</div>
+      </div>
+    </div>
+
+    <h4>Secondary Items</h4>
+    <div id="secondary_items">
+      <div class="row">
+        <div id="crucifix" class="col-md-3 item">Crucifix</div>
+        <div id="glowstick" class="col-md-3 item">Glowstick</div>
+        <div id="irlight" class="col-md-3 item">IR Light Sensor</div>
+      </div>
+      <div class="row">  
+        <div id="motion" class="col-md-3 item">Motion Sensor</div>
+        <div id="parabolic" class="col-md-3 item">Parabolic Mic</div>
+        <div id="photo" class="col-md-3 item">Photo Camera</div>
+      </div>
+      <div class="row">  
+        <div id="salt" class="col-md-3 item">Salt</div>
+        <div id="sanity" class="col-md-3 item">Sanity Pills</div>
+        <div id="smudge" class="col-md-3 item">Smudge Sticks</div>
+      </div>
+      <div class="row">  
+        <div id="sound" class="col-md-3 item">Sound Sensor</div>
+        <div id="tripod" class="col-md-3 item">Tripod</div>
+      </div>
+    </div>
+
+    <h4>Light Sources</h4>
+    <div id="light_sources">
+      <div class="row">
+        <div id="candle" class="col-md-3 item">Candle</div>
+        <div id="flash" class="col-md-3 item">Flashlight</div>
+        <div id="strongflash" class="col-md-3 item">Strong Flashlight</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="settings_modal" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title">Configure Settings</h4>
+        </div>
+        <div class="modal-body">
+          <div>
+            <label>Difficulty:</label>
+            <div class="btn-group" role="group">
+              <button type="button" class="btn btn-default difficulty" name="difficulty_easy">Easy</button>
+              <button type="button" class="btn btn-default difficulty" name="difficulty_normal">Normal</button>
+              <button type="button" class="btn btn-default difficulty" name="difficulty_hard">Hard</button>
+              <button type="button" class="btn btn-default difficulty" name="difficulty_insane">Insane</button>
+            </div>
+          </div>
+          
+          <div>
+            <label>Randomizer Options:</label>
+            <div>
+              <input type="checkbox" class="random random-secondary" name="random_secondary" /> Randomize secondary evidence
+            </div>
+            <div>
+              <input type="checkbox" class="random random-light" name="random_light" /> Randomize light sources
+            </div>
+          </div>
+
+          <div>
+            <label>Layout Options:</label>
+            <div>
+              <input type="checkbox" class="layout layout-chroma" name="layout_chroma" /> Use Chroma Key background
+              <br />
+              <em>Background HTML color code is #eb49c8</em>
+            </div>
+          </div>
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" id="save_settings_button">Save Settings</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+  <script src="js/vendor/modernizr-3.11.2.min.js"></script>
+  <script src="js/plugins.js"></script>
+  <script src="js/main.js"></script>
+  
+  <script src="js/quantity.js"></script>
+  <script src="js/settings.js"></script>
+  <script src="js/storage.js"></script>
+
+</body>
+
+</html>

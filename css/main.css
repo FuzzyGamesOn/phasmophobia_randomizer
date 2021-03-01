@@ -1,0 +1,27 @@
+body.chroma {
+    background-color: #eb49c8;
+}
+
+#container {
+    width: 600px;
+    margin: 20px;
+}
+
+div.row {
+    margin-left: -5px;
+}
+
+div.item {
+    border: 2px #222 solid;
+    margin: 5px;
+    padding-top: 8px;
+    padding-bottom: 5px;
+    background-color: #444;
+    color: #999;
+}
+
+div.item.active {
+    background-color: #699ff5;
+    color: #222;
+    font-weight: bolder;
+}
