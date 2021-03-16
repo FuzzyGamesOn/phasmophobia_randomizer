@@ -32,7 +32,7 @@
   </div>
 
   <div id="container">
-    <h4>Primary Items</h4>
+    <h4 id="primary_items_heading" class="main">Primary Items</h4>
     <div id="primary_items">
       <div class="row">
         <div id="emf" class="col-md-3 item">EMF Reader</div>
@@ -46,7 +46,7 @@
       </div>
     </div>
 
-    <h4>Secondary Items</h4>
+    <h4 id="secondary_items_heading" class="main">Secondary Items</h4>
     <div id="secondary_items">
       <div class="row">
         <div id="crucifix" class="col-md-3 item">Crucifix</div>
@@ -69,12 +69,26 @@
       </div>
     </div>
 
-    <h4>Light Sources</h4>
+    <h4 id="light_sources_heading" class="main">Light Sources</h4>
     <div id="light_sources">
       <div class="row">
         <div id="candle" class="col-md-3 item">Candle</div>
         <div id="flash" class="col-md-3 item">Flashlight</div>
         <div id="strongflash" class="col-md-3 item">Strong Flashlight</div>
+      </div>
+    </div>
+
+    <h4 id="maps_heading" class="main">Maps</h4>
+    <div id="maps">
+      <div class="row">
+        <div id="tanglewood" class="col-md-3 item">Tanglewood</div>
+        <div id="edgefield" class="col-md-3 item">Edgefield</div>
+        <div id="ridgeview" class="col-md-3 item">Ridgeview</div>
+        <div id="grafton" class="col-md-3 item">Grafton</div>
+        <div id="bleasdale" class="col-md-3 item">Bleasdale</div>
+        <div id="highschool" class="col-md-3 item">High School</div>
+        <div id="asylum" class="col-md-3 item">Asylum</div>
+        <div id="prison" class="col-md-3 item">Prison</div>
       </div>
     </div>
   </div>
@@ -104,6 +118,9 @@
             </div>
             <div>
               <input type="checkbox" class="random random-light" name="random_light" /> Randomize light sources
+            </div>
+            <div>
+              <input type="checkbox" class="random random-map" name="random_map" /> Randomize maps
             </div>
           </div>
 

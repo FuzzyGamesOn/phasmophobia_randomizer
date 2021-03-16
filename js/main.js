@@ -5,6 +5,7 @@ $(function () {
         setPrimaryItems();
         setSecondaryItems();
         setLightSources();
+        setMaps();
     });
 
     $('#settings_button').on('click', function () {
@@ -30,6 +31,14 @@ $(function () {
             $("input[name='random_light']").removeAttr('checked');
         }
 
+        // set map random from settings
+        if (Settings.random_map) {
+            $("input[name='random_map']").attr('checked', 'checked');
+        }
+        else {
+            $("input[name='random_map']").removeAttr('checked');
+        }
+
         // set layout chroma from settings
         if (Settings.layout_chroma) {
             $("input[name='layout_chroma']").attr('checked', 'checked');
@@ -42,6 +51,33 @@ $(function () {
     $('button.difficulty').on('click', function () {
         $('button.difficulty').removeClass('active');
         $(this).addClass('active');
+    });
+
+    $('input.random-secondary').on('change', function () {
+        if ($(this).prop('checked')) {
+            $('#secondary_items_heading, #secondary_items').show();
+        }
+        else {
+            $('#secondary_items_heading, #secondary_items').hide();
+        }
+    });
+
+    $('input.random-light').on('change', function () {
+        if ($(this).prop('checked')) {
+            $('#light_sources_heading, #light_sources').show();
+        }
+        else {
+            $('#light_sources_heading, #light_sources').hide();
+        }
+    });
+
+    $('input.random-map').on('change', function () {
+        if ($(this).prop('checked')) {
+            $('#maps_heading, #maps').show();
+        }
+        else {
+            $('#maps_heading, #maps').hide();
+        }
     });
 
     $('input.layout-chroma').on('change', function () {
@@ -58,6 +94,7 @@ $(function () {
             'difficulty': $('button.difficulty.active').attr('name').replace('difficulty_', ''),
             'random_secondary': $('input.random-secondary').prop('checked') ? true : false,
             'random_light': $('input.random-light').prop('checked') ? true : false,
+            'random_map': $('input.random-map').prop('checked') ? true : false,
             'layout_chroma': $('input.layout-chroma').prop('checked') ? true : false
         });
 
@@ -127,6 +164,35 @@ function setLightSources() {
         if (Settings.difficulty == 'insane') {
             items = [];
         }
+    }
+
+    activateItems(items);
+}
+
+function setMaps() {
+    let items = _getItemsFromDOM('#maps');
+
+    if (Settings.random_map == true) {
+        if (Settings.difficulty == 'easy') {
+            items = items.filter(function (map) {
+                // return any maps that aren't medium or higher
+                return ['highschool', 'prison', 'asylum'].indexOf(map) === -1;
+            });
+        }
+
+        if (Settings.difficulty == 'normal') {
+            items = items.filter(function (map) {
+                // return any maps that aren't asylum
+                return map != 'asylum';
+            });
+        }
+
+        if (['hard', 'insane'].indexOf(Settings.difficulty) > -1) {
+            // only use medium or higher maps, plus the deadliest map in the game
+            items = ['highschool', 'prison', 'asylum', 'grafton'];
+        }
+
+        items = _randomSliceArray(items, 1);
     }
 
     activateItems(items);

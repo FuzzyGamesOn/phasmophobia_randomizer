@@ -1,5 +1,26 @@
 body.chroma {
     background-color: #eb49c8;
+    color: #222;
+}
+
+body.chroma h4.main {
+    color: #eee;
+    
+    -webkit-text-stroke: 1px #333;
+    -webkit-text-fill-color: #eee;
+    
+    /*
+    text-shadow: -1px 1px 0 #333,
+				  1px 1px 0 #333,
+				  1px -1px 0 #333;
+                 -1px -1px 0 #333;
+    */           
+}
+
+h4 {
+    font-size: 16px !important;
+    letter-spacing: 1px;
+    font-weight: bolder !important;
 }
 
 #container {

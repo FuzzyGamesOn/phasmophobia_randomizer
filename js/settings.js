@@ -2,6 +2,7 @@ const Settings = {
     difficulty: null,
     random_light: null,
     random_secondary: null,
+    random_map: null,
     layout_chroma: null,
 
     commit(params) {
@@ -17,6 +18,10 @@ const Settings = {
             params.random_secondary = true;
         }
 
+        if (params.random_map !== true && params.random_map !== false) {
+            params.random_map = true;
+        }
+
         if (params.layout_chroma !== true && params.layout_chroma !== false) {
             params.layout_chroma = false;
         }
@@ -24,6 +29,7 @@ const Settings = {
         this.difficulty = params.difficulty;
         this.random_light = params.random_light;
         this.random_secondary = params.random_secondary;
+        this.random_map = params.random_map;
         this.layout_chroma = params.layout_chroma;
     },
 
@@ -31,6 +37,7 @@ const Settings = {
         this.difficulty = Storage.get('difficulty');
         this.random_light = Storage.get('random_light');
         this.random_secondary = Storage.get('random_secondary');
+        this.random_map = Storage.get('random_map');
         this.layout_chroma = Storage.get('layout_chroma');
 
         if (['easy', 'normal', 'hard', 'insane'].indexOf(this.difficulty) == -1) {
@@ -45,6 +52,10 @@ const Settings = {
             this.random_secondary = true;
         }
 
+        if (this.random_map == null) {
+            this.random_map = true;
+        }
+
         if (this.layout_chroma == null) {
             this.layout_chroma = false;
         }
@@ -54,6 +65,7 @@ const Settings = {
         Storage.set('difficulty', this.difficulty);
         Storage.set('random_light', this.random_light);
         Storage.set('random_secondary', this.random_secondary);
+        Storage.set('random_map', this.random_map);
         Storage.set('layout_chroma', this.layout_chroma);
 
         Storage.commit();
