@@ -112,6 +112,18 @@ function applySettings() {
     if (Settings.layout_chroma === true) {
         $('body').addClass('chroma');
     }
+
+    if (Settings.random_secondary === false) {
+        $('#secondary_items_heading, #secondary_items').hide();
+    }
+
+    if (Settings.random_light === false) {
+        $('#light_sources_heading, #light_sources').hide();
+    }
+
+    if (Settings.random_map === false) {
+        $('#maps_heading, #maps').hide();
+    }
 }
 
 function clearItems() {
