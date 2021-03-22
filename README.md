@@ -9,7 +9,7 @@ If you use this, please feel free to reach out and let me know what you think! I
 To use, you can visit the Github hosted page of this at: 
 https://fuzzygameson.github.io/phasmophobia_randomizer/index.html
 
-That's it! Choose your options and enjoy. :D
+That's it! Just click the "Randomize" button and enjoy. :D If you want to customize your experience, use the "Settings" button to set specific options.
 
 ## Potential issues
 
