@@ -161,8 +161,12 @@ function setLightSources() {
 
     if (Settings.random_light === true) {
         // leave out candle for easy/normal
-        if (['easy', 'normal'].indexOf(Settings.difficulty) > -1) {
+        if (['easy'].indexOf(Settings.difficulty) > -1) {
             items = ['flash', 'strongflash'];
+        }
+
+        if (['normal'].indexOf(Settings.difficulty) > -1) {
+            items = ['flash', 'strongflash', 'candle'];
         }
 
         items = _randomSliceArray(items, 1);
