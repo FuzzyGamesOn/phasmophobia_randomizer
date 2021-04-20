@@ -140,17 +140,19 @@ function activateItems(elems) {
 
 function setPrimaryItems() {
     let items = _getItemsFromDOM('#primary_items');
+    let quantity = Quantity[Settings.difficulty].primary;
 
-    items = _randomSliceArray(items, Quantity[Settings.difficulty].primary);
+    items = _randomSliceArray(items, quantity);
 
     activateItems(items);
 }
 
 function setSecondaryItems() {
     let items = _getItemsFromDOM('#secondary_items');
+    let quantity = Quantity[Settings.difficulty].secondary;
 
     if (Settings.random_secondary === true) {
-        items = _randomSliceArray(items, Quantity[Settings.difficulty].secondary);
+        items = _randomSliceArray(items, quantity);
     }
 
     activateItems(items);
@@ -158,6 +160,7 @@ function setSecondaryItems() {
 
 function setLightSources() {
     let items = _getItemsFromDOM('#light_sources');
+    let quantity = 1;
 
     if (Settings.random_light === true) {
         // leave out candle for easy/normal
@@ -169,7 +172,7 @@ function setLightSources() {
             items = ['flash', 'strongflash', 'candle'];
         }
 
-        items = _randomSliceArray(items, 1);
+        items = _randomSliceArray(items, quantity);
 
         // only candle for hard
         if (Settings.difficulty == 'hard') {
@@ -187,6 +190,7 @@ function setLightSources() {
 
 function setMaps() {
     let items = _getItemsFromDOM('#maps');
+    let quantity = 1;
 
     if (Settings.random_map == true) {
         if (Settings.difficulty == 'easy') {
@@ -208,7 +212,7 @@ function setMaps() {
             items = ['highschool', 'prison', 'asylum', 'grafton'];
         }
 
-        items = _randomSliceArray(items, 1);
+        items = _randomSliceArray(items, quantity);
     }
 
     activateItems(items);
@@ -229,7 +233,12 @@ function _randomSliceArray(arr, len) {
         len = 1;
     }
 
+    // lazy sort to be more random sort, because lazy
     let shuffled = arr.sort(function () { 
+        return 0.5 - Math.random(); 
+    }).sort(function () { 
+        return 0.5 - Math.random(); 
+    }).sort(function () { 
         return 0.5 - Math.random(); 
     });
 
@@ -240,7 +249,12 @@ function _randomSliceArray(arr, len) {
     }
 
     // shuffle again for more random
+    // more lazy sort, don't judge me
     shuffled = arr.sort(function () { 
+        return 0.5 - Math.random(); 
+    }).sort(function () { 
+        return 0.5 - Math.random(); 
+    }).sort(function () { 
         return 0.5 - Math.random(); 
     });
 
