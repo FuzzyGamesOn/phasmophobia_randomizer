@@ -15,6 +15,13 @@ $(function () {
         $("button.difficulty").removeClass('active');
         $("button[name='difficulty_" + Settings.difficulty + "']").addClass('active');
 
+        if (Settings.difficulty == 'custom') {
+            $('#custom_counts').show();
+        }
+        else {
+            $('#custom_counts').hide();
+        }
+
         // set secondary random from settings
         if (Settings.random_secondary) {
             $("input[name='random_secondary']").attr('checked', 'checked');
@@ -51,6 +58,13 @@ $(function () {
     $('button.difficulty').on('click', function () {
         $('button.difficulty').removeClass('active');
         $(this).addClass('active');
+
+        if ($(this).attr('name') == 'difficulty_custom') {
+            $('#custom_counts').show();
+        }
+        else {
+            $('#custom_counts').hide();
+        }
     });
 
     $('input.random-secondary').on('change', function () {
@@ -95,7 +109,11 @@ $(function () {
             'random_secondary': $('input.random-secondary').prop('checked') ? true : false,
             'random_light': $('input.random-light').prop('checked') ? true : false,
             'random_map': $('input.random-map').prop('checked') ? true : false,
-            'layout_chroma': $('input.layout-chroma').prop('checked') ? true : false
+            'layout_chroma': $('input.layout-chroma').prop('checked') ? true : false,
+            'count_primary': $('input.count-primary').val() || '',
+            'count_secondary': $('input.count-secondary').val() || '',
+            'count_light': $('input.count-light').val() || '',
+            'count_map': $('input.count-map').val() || ''
         });
 
         Settings.store();
@@ -142,6 +160,10 @@ function setPrimaryItems() {
     let items = _getItemsFromDOM('#primary_items');
     let quantity = Quantity[Settings.difficulty].primary;
 
+    if (Settings.difficulty == 'custom') {
+        quantity = Settings.count_primary || 0;
+    }
+
     items = _randomSliceArray(items, quantity);
 
     activateItems(items);
@@ -152,6 +174,10 @@ function setSecondaryItems() {
     let quantity = Quantity[Settings.difficulty].secondary;
 
     if (Settings.random_secondary === true) {
+        if (Settings.difficulty == 'custom') {
+            quantity = Settings.count_secondary || 0;
+        }
+
         items = _randomSliceArray(items, quantity);
     }
 
@@ -170,6 +196,10 @@ function setLightSources() {
 
         if (['normal'].indexOf(Settings.difficulty) > -1) {
             items = ['flash', 'strongflash', 'candle'];
+        }
+
+        if (Settings.difficulty == 'custom') {
+            quantity = Settings.count_light || 0;
         }
 
         items = _randomSliceArray(items, quantity);
@@ -210,6 +240,10 @@ function setMaps() {
         if (['hard', 'insane'].indexOf(Settings.difficulty) > -1) {
             // only use medium or higher maps, plus the deadliest map in the game
             items = ['highschool', 'prison', 'asylum', 'grafton'];
+        }
+
+        if (Settings.difficulty == 'custom') {
+            quantity = Settings.count_map || 0;
         }
 
         items = _randomSliceArray(items, quantity);

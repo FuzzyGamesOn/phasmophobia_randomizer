@@ -17,5 +17,10 @@ const Quantity = {
     insane: {
         primary: 1,
         secondary: 4
+    },
+
+    custom: {
+        primary: 0,
+        secondary: 0
     }
 };

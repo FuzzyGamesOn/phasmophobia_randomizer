@@ -108,6 +108,7 @@
               <button type="button" class="btn btn-default difficulty" name="difficulty_normal">Normal</button>
               <button type="button" class="btn btn-default difficulty" name="difficulty_hard">Hard</button>
               <button type="button" class="btn btn-default difficulty" name="difficulty_insane">Insane</button>
+              <button type="button" class="btn btn-default difficulty" name="difficulty_custom">Custom</button>
             </div>
           </div>
           
@@ -121,6 +122,22 @@
             </div>
             <div>
               <input type="checkbox" class="random random-map" name="random_map" /> Randomize maps
+            </div>
+          </div>
+
+          <div id="custom_counts">
+            <label>Custom totals for each category:</label>
+            <div class="row">
+              <input type="text" class="count count-primary" name="count_primary" size="2" /> # of primary items
+            </div>
+            <div class="row">
+              <input type="text" class="count count-secondary" name="count_secondary" size="2" /> # of secondary items
+            </div>
+            <div class="row">
+              <input type="text" class="count count-light" name="count_light" size="2" /> # of light source items
+            </div>
+            <div class="row">
+              <input type="text" class="count count-map" name="count_map" size="2" /> # of maps
             </div>
           </div>
 

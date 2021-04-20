@@ -4,9 +4,13 @@ const Settings = {
     random_secondary: null,
     random_map: null,
     layout_chroma: null,
+    count_primary: '',
+    count_secondary: '',
+    count_light: '',
+    count_map: '',
 
     commit(params) {
-        if (['easy', 'normal', 'hard', 'insane'].indexOf(params.difficulty) == -1) {
+        if (['easy', 'normal', 'hard', 'insane', 'custom'].indexOf(params.difficulty) == -1) {
             params.difficulty = 'easy';
         }
 
@@ -31,6 +35,11 @@ const Settings = {
         this.random_secondary = params.random_secondary;
         this.random_map = params.random_map;
         this.layout_chroma = params.layout_chroma;
+
+        this.count_primary = params.count_primary || '';
+        this.count_secondary = params.count_secondary || '';
+        this.count_light = params.count_light || '';
+        this.count_map = params.count_map || '';
     },
 
     retrieve() {
@@ -39,8 +48,13 @@ const Settings = {
         this.random_secondary = Storage.get('random_secondary');
         this.random_map = Storage.get('random_map');
         this.layout_chroma = Storage.get('layout_chroma');
+        
+        this.count_primary = Storage.get('count_primary') || '';
+        this.count_secondary = Storage.get('count_secondary') || '';
+        this.count_light = Storage.get('count_light') || '';
+        this.count_map = Storage.get('count_map') || '';
 
-        if (['easy', 'normal', 'hard', 'insane'].indexOf(this.difficulty) == -1) {
+        if (['easy', 'normal', 'hard', 'insane', 'custom'].indexOf(this.difficulty) == -1) {
             this.difficulty = 'easy';
         }
 
@@ -67,6 +81,11 @@ const Settings = {
         Storage.set('random_secondary', this.random_secondary);
         Storage.set('random_map', this.random_map);
         Storage.set('layout_chroma', this.layout_chroma);
+
+        Storage.set('count_primary', this.count_primary);
+        Storage.set('count_secondary', this.count_secondary);
+        Storage.set('count_light', this.count_light);
+        Storage.set('count_map', this.count_map);
 
         Storage.commit();
     }

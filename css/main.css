@@ -46,3 +46,12 @@ div.item.active {
     color: #222;
     font-weight: bolder;
 }
+
+#custom_counts {
+    display: none;
+}
+
+#custom_counts div.row {
+    margin-bottom: 5px;
+    padding-left: 5px;
+}
