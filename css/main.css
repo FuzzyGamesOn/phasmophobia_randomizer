@@ -128,7 +128,7 @@ div.row {
 }
 
 div.item {
-    border: 2px #222 solid;
+    border: 2px #333 solid;
     margin: 5px;
     padding-top: 8px;
     padding-bottom: 5px;
@@ -141,13 +141,16 @@ div.item span.disabled {
 }
 
 div.item.active {
-    background-color: #699ff5;
-    color: #222;
+    background-color: #01254a;
+    color: #1d7dde;
     font-weight: bolder;
+    border-color: #1d7dde;
 }
 
 div.item.disabled {
     background-color: #360902;
+    color: #b3301d;
+    border-color: #b3301d;
 }
 
 div.item.disabled span.disabled {
@@ -219,4 +222,17 @@ p.bg-info span.glyphicon-remove {
 
 div.clear {
     clear: both;
+}
+
+button.btn {
+    border: none;
+}
+
+button.btn-success {
+    background-color: #047815;
+}
+
+button.btn-info {
+    background-color: #444;
+    margin-left: 10px;
 }
