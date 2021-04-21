@@ -116,10 +116,12 @@ $(function () {
 
     $('input.layout-chroma').on('change', function () {
         if ($(this).prop('checked')) {
-            $('body').addClass('chroma');
+            $('body')
+                .removeClass(['default', 'tanglewood', 'edgefield', 'ridgeview', 'grafton', 'bleasdale', 'highschool', 'asylum', 'prison'])
+                .addClass('chroma');
         }
         else {
-            $('body').removeClass('chroma');
+            $('body').addClass('default').removeClass('chroma');
         }
     });
 
@@ -316,6 +318,16 @@ function setMaps() {
     }
 
     activateItems(items);
+
+    if (Settings.layout_chroma !== true) {
+        let active_map = $('#maps').find('div.item.active');
+
+        if (active_map.length > 0) {
+            $('body')
+                .removeClass(['default', 'tanglewood', 'edgefield', 'ridgeview', 'grafton', 'bleasdale', 'highschool', 'asylum', 'prison'])
+                .addClass(active_map.attr('id'));
+        }
+    }
 }
 
 function _getItemsFromDOM(div_id) {

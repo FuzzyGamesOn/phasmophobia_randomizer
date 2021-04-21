@@ -1,4 +1,48 @@
+body.default {
+    background: url(../img/background.png) no-repeat center center fixed;
+}
+
+body.tanglewood {
+    background: url(../img/map_backgrounds/tanglewood.png) no-repeat center center fixed;
+}
+
+body.edgefield {
+    background: url(../img/map_backgrounds/edgefield.png) no-repeat center center fixed;
+}
+
+body.ridgeview {
+    background: url(../img/map_backgrounds/ridgeview.png) no-repeat center center fixed;
+}
+
+body.grafton {
+    background: url(../img/map_backgrounds/grafton.png) no-repeat center center fixed;
+}
+
+body.bleasdale {
+    background: url(../img/map_backgrounds/bleasdale.png) no-repeat center center fixed;
+}
+
+body.highschool {
+    background: url(../img/map_backgrounds/highschool.png) no-repeat center center fixed;
+}
+
+body.prison {
+    background: url(../img/map_backgrounds/prison.png) no-repeat center center fixed;
+}
+
+body.asylum {
+    background: url(../img/map_backgrounds/asylum.png) no-repeat center center fixed;
+}
+
+body.default, body.tanglewood, body.edgefield, body.ridgeview, body.grafton, body.bleasdale, body.highschool, body.prison, body.asylum {
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
 body.chroma {
+    background: none;
     background-color: #630f09;
     color: #222;
 }
@@ -21,10 +65,12 @@ h4 {
     font-size: 16px !important;
     letter-spacing: 1px;
     font-weight: bolder !important;
+    color: #ccc !important;
 }
 
 h4 a {
-    color: #b0240e;
+    color: #e8361a;
+    top: 3px !important; /* override the style from .glyphicon */
 }
 
 h4 a:hover {
