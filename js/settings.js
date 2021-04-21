@@ -4,6 +4,7 @@ const Settings = {
     random_secondary: null,
     random_map: null,
     layout_chroma: null,
+    tip_icons: null,
     count_primary: '',
     count_secondary: '',
     count_light: '',
@@ -30,16 +31,27 @@ const Settings = {
             params.layout_chroma = false;
         }
 
+        if (params.tip_icons !== true && params.tip_icons !== false) {
+            params.tip_icons = false;
+        }
+
         this.difficulty = params.difficulty;
         this.random_light = params.random_light;
         this.random_secondary = params.random_secondary;
         this.random_map = params.random_map;
         this.layout_chroma = params.layout_chroma;
+        this.tip_icons = params.tip_icons;
 
         this.count_primary = params.count_primary || '';
         this.count_secondary = params.count_secondary || '';
         this.count_light = params.count_light || '';
         this.count_map = params.count_map || '';
+    },
+
+    commitSingle(name, value) {
+        // TODO: add check for a valid setting name before arbitrarily setting properties
+        
+        this[name] = value;
     },
 
     retrieve() {
@@ -48,6 +60,7 @@ const Settings = {
         this.random_secondary = Storage.get('random_secondary');
         this.random_map = Storage.get('random_map');
         this.layout_chroma = Storage.get('layout_chroma');
+        this.tip_icons = Storage.get('tip_icons');
         
         this.count_primary = Storage.get('count_primary') || '';
         this.count_secondary = Storage.get('count_secondary') || '';
@@ -73,6 +86,10 @@ const Settings = {
         if (this.layout_chroma == null) {
             this.layout_chroma = false;
         }
+
+        if (this.tip_icons == null) {
+            this.tip_icons = true;
+        }
     },
 
     store() {
@@ -86,6 +103,8 @@ const Settings = {
         Storage.set('count_secondary', this.count_secondary);
         Storage.set('count_light', this.count_light);
         Storage.set('count_map', this.count_map);
+
+        Storage.set('tip_icons', this.tip_icons);
 
         Storage.commit();
     }

@@ -1,11 +1,26 @@
 $(function () {
     $('#randomize_button').on('click', function () {
         clearItems();
+        $('span.eliminate-count').html('');
 
         setPrimaryItems();
         setSecondaryItems();
         setLightSources();
         setMaps();
+    });
+
+    $('a.eliminate-primary, a.eliminate-secondary, a.eliminate-light, a.eliminate-map').on('click', function () {
+        if ($(this).hasClass('eliminate-primary')) disableAndRerollItems('primary');
+        if ($(this).hasClass('eliminate-secondary')) disableAndRerollItems('secondary');
+        if ($(this).hasClass('eliminate-light')) disableAndRerollItems('light');
+        if ($(this).hasClass('eliminate-map')) disableAndRerollItems('map');
+    });
+
+    $('a.hide-tip-icons').on('click', function () {
+        Settings.commitSingle('tip_icons', false);
+        Settings.store();
+
+        $('p.tip-icons').hide();
     });
 
     $('#settings_button').on('click', function () {
@@ -16,6 +31,11 @@ $(function () {
         $("button[name='difficulty_" + Settings.difficulty + "']").addClass('active');
 
         if (Settings.difficulty == 'custom') {
+            $('input.count-primary').val(Settings.count_primary);
+            $('input.count-secondary').val(Settings.count_secondary);
+            $('input.count-light').val(Settings.count_light);
+            $('input.count-map').val(Settings.count_map);
+
             $('#custom_counts').show();
         }
         else {
@@ -142,10 +162,14 @@ function applySettings() {
     if (Settings.random_map === false) {
         $('#maps_heading, #maps').hide();
     }
+
+    if (Settings.tip_icons === true) {
+        $('p.tip-icons').show().find('a.glyphicon-remove').css({ 'float': 'right' });
+    }
 }
 
 function clearItems() {
-    $('div.item').removeClass('active');
+    $('div.item').removeClass('active').removeClass('disabled');
 }
 
 function activateItems(elems) {
@@ -153,7 +177,39 @@ function activateItems(elems) {
         return '#' + id;
     }).join(',');
 
-    $(formatted_elems).addClass('active');
+    $(formatted_elems).addClass('active').removeClass('disabled');
+}
+
+function disableAndRerollItems(category) {
+    switch (category) {
+        case 'primary':
+            $('#primary_items div.item.active').removeClass('active').addClass('disabled');
+            setPrimaryItems();
+            $('span.eliminate-primary-count').html(parseInt($('span.eliminate-primary-count').html() || 0, 10) + 1);
+
+            break;
+
+        case 'secondary':
+            $('#secondary_items div.item.active').removeClass('active').addClass('disabled');
+            setSecondaryItems();
+            $('span.eliminate-secondary-count').html(parseInt($('span.eliminate-secondary-count').html() || 0, 10) + 1);
+            
+            break;
+
+        case 'light':
+            $('#light_sources div.item.active').removeClass('active').addClass('disabled');
+            setLightSources();
+            $('span.eliminate-light-count').html(parseInt($('span.eliminate-light-count').html() || 0, 10) + 1);
+            
+            break;
+
+        case 'map':
+            $('#maps div.item.active').removeClass('active').addClass('disabled');
+            setMaps();
+            $('span.eliminate-map-count').html(parseInt($('span.eliminate-map-count').html() || 0, 10) + 1);
+            
+            break;
+    }
 }
 
 function setPrimaryItems() {
@@ -256,7 +312,9 @@ function _getItemsFromDOM(div_id) {
     let items = [];
 
     $(div_id).find('div.item').each(function () {
-        items.push($(this).attr('id'));
+        if (!$(this).hasClass('disabled')) {
+            items.push($(this).attr('id'));
+        }
     });
 
     return items;

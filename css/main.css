@@ -23,6 +23,16 @@ h4 {
     font-weight: bolder !important;
 }
 
+h4 a {
+    color: #b0240e;
+}
+
+h4 a:hover {
+    text-decoration: none;
+    color: #521208;
+    cursor: pointer;
+}
+
 #container {
     width: 600px;
     margin: 20px;
@@ -41,10 +51,28 @@ div.item {
     color: #999;
 }
 
+div.item span.disabled {
+    display: none;
+}
+
 div.item.active {
     background-color: #699ff5;
     color: #222;
     font-weight: bolder;
+}
+
+div.item.disabled {
+    background-color: #1f1c1c;
+}
+
+div.item.disabled span.disabled {
+    display: block;
+    float: right;
+    margin-top: 2px;
+}
+
+span.eliminate-count {
+    font-size: 15px;
 }
 
 #custom_counts {
@@ -82,4 +110,23 @@ div.actions {
 
 #patreon_text {
     margin-top: 20px;
+}
+
+p.bg-info {
+    display: none;
+    margin: 0 auto;
+    width: 500px;
+    padding: 10px 15px;
+    border: 2px #60a9e0 solid;
+    background-color: #81c4f7;
+    border-radius: 10px;
+    color: #074575;
+}
+
+p.bg-info span.glyphicon-info-sign {
+    margin-right: 8px;
+}
+
+p.bg-info span.glyphicon-remove {
+    margin-top: 2px;
 }
