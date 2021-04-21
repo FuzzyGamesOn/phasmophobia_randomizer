@@ -178,6 +178,10 @@ function clearItems() {
     $('#tripod').removeClass('col-md-4').addClass('col-md-3').html(
         $('#tripod').html().replace('Emotional Support Tripod', 'Tripod')
     );
+
+    $('#irlight, #motion, #sound').each(function () {
+        $(this).html($(this).html().replace(/Sensor[\!]*/, 'Sensor'));
+    });
 }
 
 function activateItems(elems) {
@@ -192,6 +196,12 @@ function activateItems(elems) {
             $('#tripod').html().replace(/^Tripod/, 'Emotional Support Tripod')
         );
     }
+
+    $('#irlight, #motion, #sound').each(function () {
+        if ($(this).hasClass('active')) {
+            $(this).html($(this).html().replace(/Sensor[\!]*/, 'Sensor!!'));
+        }
+    });
 }
 
 function disableAndRerollItems(category) {

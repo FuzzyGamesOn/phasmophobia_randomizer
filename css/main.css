@@ -114,7 +114,7 @@ h4 a {
 
 h4 a:hover {
     text-decoration: none;
-    color: #521208;
+    color: #eee;
     cursor: pointer;
 }
 
