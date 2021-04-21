@@ -32,10 +32,20 @@
   <link rel="preload" href="img/map_backgrounds/prison.png" as="image">
   <link rel="preload" href="img/map_backgrounds/asylum.png" as="image">
 
+  <link href="https://fonts.googleapis.com/css?family=Cabin+Condensed" rel="stylesheet">
+
   <meta name="theme-color" content="#fafafa">
 </head>
 
 <body class="default">
+  <h1>
+    <span class="title">Item Randomizer</span>
+    <span class="intermediate">for</span>
+    <span class="game_name">Phasmophobia</span>
+  </h1>
+  
+  <div class="clear"><!-- x --></div>
+
   <div class="actions pull-right">
     <button type="button" id="randomize_button" class="btn btn-success"><i class="bi bi-arrow-repeat"></i> Randomize</button>
     <button type="button" id="settings_button" class="btn">Settings <i class="bi bi-gear"></i></button>
@@ -54,86 +64,84 @@
   </div>
 
   <div id="container">
-    <h4 id="primary_items_heading" class="main">
-      Primary Items
-      <a class="glyphicon glyphicon-ban-circle eliminate-primary" aria-hidden="true" title="Eliminate current primary evidence and re-roll"></a>
-      <span class="eliminate-count eliminate-primary-count"></span>
-    </h4>
-    <div id="primary_items">
-      <div class="row">
-        <div id="emf" class="col-md-3 item">EMF Reader<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
-        <div id="box" class="col-md-3 item">Spirit Box<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
-        <div id="thermo" class="col-md-3 item">Thermometer<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
+    <div>
+      <h4 id="primary_items_heading" class="main">
+        Primary Items
+        <a class="glyphicon glyphicon-ban-circle eliminate-primary" aria-hidden="true" title="Eliminate current primary evidence and re-roll"></a>
+        <span class="eliminate-count eliminate-primary-count"></span>
+      </h4>
+      <div id="primary_items">
+        <div class="row">
+          <div id="emf" class="col-md-3 item">EMF Reader<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
+          <div id="box" class="col-md-3 item">Spirit Box<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
+          <div id="thermo" class="col-md-3 item">Thermometer<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
+        </div>
+        <div class="row">
+          <div id="uv" class="col-md-3 item">UV Light<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
+          <div id="video" class="col-md-3 item">Video Camera<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
+          <div id="book" class="col-md-3 item">Writing Book<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
+        </div>
       </div>
-      <div class="row">
-        <div id="uv" class="col-md-3 item">UV Light<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
-        <div id="video" class="col-md-3 item">Video Camera<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
-        <div id="book" class="col-md-3 item">Writing Book<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
-      </div>
-    </div>
 
-    <h4 id="secondary_items_heading" class="main">
-      Secondary Items
-      <a class="glyphicon glyphicon-ban-circle eliminate-secondary" aria-hidden="true" title="Eliminate current secondary evidence and re-roll"></a>
-      <span class="eliminate-count eliminate-secondary-count"></span>
-    </h4>
-    <div id="secondary_items">
-      <div class="row">
-        <div id="crucifix" class="col-md-3 item">Crucifix<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
-        <div id="glowstick" class="col-md-3 item">Glowstick<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
-        <div id="irlight" class="col-md-3 item">IR Light Sensor<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
+      <h4 id="secondary_items_heading" class="main">
+        Secondary Items
+        <a class="glyphicon glyphicon-ban-circle eliminate-secondary" aria-hidden="true" title="Eliminate current secondary evidence and re-roll"></a>
+        <span class="eliminate-count eliminate-secondary-count"></span>
+      </h4>
+      <div id="secondary_items">
+        <div class="row">
+          <div id="crucifix" class="col-md-3 item">Crucifix<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
+          <div id="glowstick" class="col-md-3 item">Glowstick<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
+          <div id="irlight" class="col-md-3 item">IR Light Sensor<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
+        </div>
+        <div class="row">  
+          <div id="motion" class="col-md-3 item">Motion Sensor<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
+          <div id="parabolic" class="col-md-3 item">Parabolic Mic<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
+          <div id="photo" class="col-md-3 item">Photo Camera<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
+        </div>
+        <div class="row">  
+          <div id="salt" class="col-md-3 item">Salt<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
+          <div id="sanity" class="col-md-3 item">Sanity Pills<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
+          <div id="smudge" class="col-md-3 item">Smudge Sticks<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
+        </div>
+        <div class="row">  
+          <div id="sound" class="col-md-3 item">Sound Sensor<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
+          <div id="tripod" class="col-md-3 item">Tripod<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
+        </div>
       </div>
-      <div class="row">  
-        <div id="motion" class="col-md-3 item">Motion Sensor<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
-        <div id="parabolic" class="col-md-3 item">Parabolic Mic<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
-        <div id="photo" class="col-md-3 item">Photo Camera<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
-      </div>
-      <div class="row">  
-        <div id="salt" class="col-md-3 item">Salt<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
-        <div id="sanity" class="col-md-3 item">Sanity Pills<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
-        <div id="smudge" class="col-md-3 item">Smudge Sticks<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
-      </div>
-      <div class="row">  
-        <div id="sound" class="col-md-3 item">Sound Sensor<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
-        <div id="tripod" class="col-md-3 item">Tripod<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
-      </div>
-    </div>
 
-    <h4 id="light_sources_heading" class="main">
-      Light Sources
-      <a class="glyphicon glyphicon-ban-circle eliminate-light" aria-hidden="true" title="Eliminate current light sources and re-roll"></a>
-      <span class="eliminate-count eliminate-light-count"></span>
-    </h4>
-    <div id="light_sources">
-      <div class="row">
-        <div id="candle" class="col-md-3 item">Candle<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
-        <div id="flash" class="col-md-3 item">Flashlight<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
-        <div id="strongflash" class="col-md-3 item">Strong Flashlight<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
+      <h4 id="light_sources_heading" class="main">
+        Light Sources
+        <a class="glyphicon glyphicon-ban-circle eliminate-light" aria-hidden="true" title="Eliminate current light sources and re-roll"></a>
+        <span class="eliminate-count eliminate-light-count"></span>
+      </h4>
+      <div id="light_sources">
+        <div class="row">
+          <div id="candle" class="col-md-3 item">Candle<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
+          <div id="flash" class="col-md-3 item">Flashlight<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
+          <div id="strongflash" class="col-md-3 item">Strong Flashlight<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
+        </div>
       </div>
-    </div>
 
-    <h4 id="maps_heading" class="main">
-      Maps
-      <a class="glyphicon glyphicon-ban-circle eliminate-map" aria-hidden="true" title="Eliminate current maps and re-roll"></a>
-      <span class="eliminate-count eliminate-map-count"></span>
-    </h4>
-    <div id="maps">
-      <div class="row">
-        <div id="tanglewood" class="col-md-3 item">Tanglewood<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
-        <div id="edgefield" class="col-md-3 item">Edgefield<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
-        <div id="ridgeview" class="col-md-3 item">Ridgeview<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
-        <div id="grafton" class="col-md-3 item">Grafton<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
-        <div id="bleasdale" class="col-md-3 item">Bleasdale<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
-        <div id="highschool" class="col-md-3 item">High School<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
-        <div id="asylum" class="col-md-3 item">Asylum<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
-        <div id="prison" class="col-md-3 item">Prison<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
+      <h4 id="maps_heading" class="main">
+        Maps
+        <a class="glyphicon glyphicon-ban-circle eliminate-map" aria-hidden="true" title="Eliminate current maps and re-roll"></a>
+        <span class="eliminate-count eliminate-map-count"></span>
+      </h4>
+      <div id="maps">
+        <div class="row">
+          <div id="tanglewood" class="col-md-3 item">Tanglewood<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
+          <div id="edgefield" class="col-md-3 item">Edgefield<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
+          <div id="ridgeview" class="col-md-3 item">Ridgeview<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
+          <div id="grafton" class="col-md-3 item">Grafton<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
+          <div id="bleasdale" class="col-md-3 item">Bleasdale<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
+          <div id="highschool" class="col-md-3 item">High School<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
+          <div id="asylum" class="col-md-3 item">Asylum<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
+          <div id="prison" class="col-md-3 item">Prison<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
+        </div>
       </div>
     </div>
   </div>
-  <p class="bg-info tip-icons">
-    <span class="glyphicon glyphicon-info-sign"></span> Hovering over icons will provide a description of what they do.
-    <a class="glyphicon glyphicon-remove hide-tip-icons"></a>
-  </p>
 
   <div id="settings_modal" class="modal fade" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
@@ -200,6 +208,11 @@
       </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
   </div><!-- /.modal -->
+
+  <p class="bg-info tip-icons">
+    <span class="glyphicon glyphicon-info-sign"></span> Hovering over icons will provide a description of what they do.
+    <a class="glyphicon glyphicon-remove hide-tip-icons"></a>
+  </p>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>

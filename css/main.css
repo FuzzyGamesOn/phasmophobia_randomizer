@@ -1,3 +1,9 @@
+@font-face {
+    font-family: 'October Crow';
+    
+    src: url('../fonts/October Crow.ttf')  format('truetype');
+}
+
 body.default {
     background: url(../img/background.png) no-repeat center center fixed;
 }
@@ -59,6 +65,31 @@ body.chroma h4.main {
 				  1px -1px 0 #333;
                  -1px -1px 0 #333;
     */           
+}
+
+h1 {
+    font-family: 'Cabin Condensed', sans-serif !important;
+    font-weight: bolder !important;
+    color: #ccc !important;
+    letter-spacing: 2px;
+    font-size: 28px !important;
+    text-align: center;
+}
+
+span.game_name {
+    font-family: 'October Crow', sans-serif;
+    font-weight: normal;
+    letter-spacing: 2;
+    text-align: center;
+    font-size: 36px;
+    color: #ddd;
+
+    text-shadow:
+        -1px -1px 0 #666,  
+        1px -1px 0 #666,
+        -1px 1px 0 #666,
+        1px 1px 0 #666;
+    
 }
 
 h4 {
@@ -133,6 +164,7 @@ span.eliminate-count {
 div.actions {
     position: relative;
     padding-right: 15px;
+    margin-top: 10px;
 }
 
 #promotion {
@@ -175,4 +207,8 @@ p.bg-info span.glyphicon-info-sign {
 
 p.bg-info span.glyphicon-remove {
     margin-top: 2px;
+}
+
+div.clear {
+    clear: both;
 }
