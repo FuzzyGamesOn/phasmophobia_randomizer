@@ -182,15 +182,17 @@ div.actions {
     position: absolute;
     top: 80px;
     right: 17px;
-    padding: 20px;
-    border: 5px #4287f5 solid;
+    padding: 20px 20px 20px 25px;
+    border: 4px #4287f5 solid;
     width: 210px;
-    background-color: #82aef5;
+    background-color: #1b2359;
     font-weight: bolder;
+    color: #4287f5;
 }
 
 #promotion a {
-    color: #256bdb;
+    color: #acc2e3;
+    margin-left: 25px;
 }
 
 #feedback_text {
@@ -235,4 +237,8 @@ button.btn-success {
 button.btn-info {
     background-color: #444;
     margin-left: 10px;
+}
+
+span.indent {
+    margin-left: 45px;
 }
