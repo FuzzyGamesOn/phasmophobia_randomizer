@@ -171,7 +171,9 @@ function applySettings() {
 function clearItems() {
     $('div.item').removeClass('active').removeClass('disabled');
 
-    $('#tripod').removeClass('col-md-4').addClass('col-md-3').html('Tripod');
+    $('#tripod').removeClass('col-md-4').addClass('col-md-3').html(
+        $('#tripod').html().replace('Emotional Support Tripod', 'Tripod')
+    );
 }
 
 function activateItems(elems) {
@@ -182,7 +184,9 @@ function activateItems(elems) {
     $(formatted_elems).addClass('active').removeClass('disabled');
 
     if (!$('#video').hasClass('active') && $('#tripod').hasClass('active')) {
-        $('#tripod').removeClass('col-md-3').addClass('col-md-4').html('Emotional Support Tripod');
+        $('#tripod').removeClass('col-md-3').addClass('col-md-4').html(
+            $('#tripod').html().replace(/^Tripod/, 'Emotional Support Tripod')
+        );
     }
 }
 
