@@ -1,4 +1,6 @@
 $(function () {
+    $('body').addClass(getDefaultBackgroundClass());
+
     $('#randomize_button').on('click', function () {
         clearItems();
         $('span.eliminate-count').html('');
@@ -117,11 +119,11 @@ $(function () {
     $('input.layout-chroma').on('change', function () {
         if ($(this).prop('checked')) {
             $('body')
-                .removeClass(['default', 'tanglewood', 'edgefield', 'ridgeview', 'grafton', 'bleasdale', 'highschool', 'asylum', 'prison'])
+                .removeClass(['default', 'default2', 'default3', 'tanglewood', 'edgefield', 'ridgeview', 'grafton', 'bleasdale', 'highschool', 'asylum', 'prison'])
                 .addClass('chroma');
         }
         else {
-            $('body').addClass('default').removeClass('chroma');
+            $('body').addClass(getDefaultBackgroundClass()).removeClass('chroma');
         }
     });
 
@@ -328,6 +330,22 @@ function setMaps() {
                 .addClass(active_map.attr('id'));
         }
     }
+}
+
+function getDefaultBackgroundClass() {
+    let background_classes = ['default', 'default2', 'default3'];
+
+    let shuffled = background_classes.sort(function () {
+        return 0.5 - Math.random();
+    });
+
+    let reverse_shuffled = (Math.floor(Math.random() * 100)) % 2 == 0;
+
+    if (reverse_shuffled) {
+        shuffled = shuffled.reverse();
+    }
+
+    return shuffled[0];
 }
 
 function _getItemsFromDOM(div_id) {

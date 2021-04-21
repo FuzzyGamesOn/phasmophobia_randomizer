@@ -8,6 +8,14 @@ body.default {
     background: url(../img/background.png) no-repeat center center fixed;
 }
 
+body.default2 {
+    background: url(../img/background2.png) no-repeat center center fixed;
+}
+
+body.default3 {
+    background: url(../img/background3.png) no-repeat center center fixed;
+}
+
 body.tanglewood {
     background: url(../img/map_backgrounds/tanglewood.png) no-repeat center center fixed;
 }
@@ -40,7 +48,7 @@ body.asylum {
     background: url(../img/map_backgrounds/asylum.png) no-repeat center center fixed;
 }
 
-body.default, body.tanglewood, body.edgefield, body.ridgeview, body.grafton, body.bleasdale, body.highschool, body.prison, body.asylum {
+body.default, body.default2, body.default3, body.tanglewood, body.edgefield, body.ridgeview, body.grafton, body.bleasdale, body.highschool, body.prison, body.asylum {
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
