@@ -1,9 +1,12 @@
 $(function () {
     $('body').addClass(getDefaultBackgroundClass());
+    $('h4 a').hide(); // hide elimination icons until randomize is clicked
 
     $('#randomize_button').on('click', function () {
         clearItems();
+
         $('span.eliminate-count').html('');
+        $('h4 a').show();
 
         setPrimaryItems();
         setSecondaryItems();
