@@ -108,8 +108,15 @@ h4 {
 }
 
 h4 a {
-    color: #e8361a;
     top: 3px !important; /* override the style from .glyphicon */
+}
+
+h4 a.eliminate {
+    color: #e8361a;
+}
+
+h4 a.reroll {
+    color: #047815;
 }
 
 h4 a:hover {

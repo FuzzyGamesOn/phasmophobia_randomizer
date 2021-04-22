@@ -21,6 +21,13 @@ $(function () {
         if ($(this).hasClass('eliminate-map')) disableAndRerollItems('map');
     });
 
+    $('a.reroll-primary, a.reroll-secondary, a.reroll-light, a.reroll-map').on('click', function () {
+        if ($(this).hasClass('reroll-primary')) rerollItems('primary');
+        if ($(this).hasClass('reroll-secondary')) rerollItems('secondary');
+        if ($(this).hasClass('reroll-light')) rerollItems('light');
+        if ($(this).hasClass('reroll-map')) rerollItems('map');
+    });
+
     $('a.hide-tip-icons').on('click', function () {
         Settings.commitSingle('tip_icons', false);
         Settings.store();
@@ -235,6 +242,34 @@ function disableAndRerollItems(category) {
             setMaps();
             $('span.eliminate-map-count').html(parseInt($('span.eliminate-map-count').html() || 0, 10) + 1);
             
+            break;
+    }
+}
+
+function rerollItems(category) {
+    switch (category) {
+        case 'primary':
+            $('#primary_items div.item.active').removeClass('active');
+            setPrimaryItems();
+            
+            break;
+
+        case 'secondary':
+            $('#secondary_items div.item.active').removeClass('active');
+            setSecondaryItems();
+                        
+            break;
+
+        case 'light':
+            $('#light_sources div.item.active').removeClass('active');
+            setLightSources();
+                        
+            break;
+
+        case 'map':
+            $('#maps div.item.active').removeClass('active');
+            setMaps();
+                        
             break;
     }
 }
