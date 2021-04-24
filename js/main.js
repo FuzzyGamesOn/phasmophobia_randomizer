@@ -4,6 +4,7 @@ $(function () {
 
     $('#randomize_button').on('click', function () {
         clearItems();
+        toggleItemView('all');
 
         $('span.eliminate-count').html('');
         $('h4 a').show();
@@ -26,6 +27,23 @@ $(function () {
         if ($(this).hasClass('reroll-secondary')) rerollItems('secondary');
         if ($(this).hasClass('reroll-light')) rerollItems('light');
         if ($(this).hasClass('reroll-map')) rerollItems('map');
+    });
+
+    $('#view_toggle .btn').click(function () {
+        let toggle_value = 'all';
+
+        if ($(this).hasClass('view-usable')) {
+            toggle_value = 'usable';
+        }
+
+        if ($(this).hasClass('view-not-usable')) {
+            toggle_value = 'not-usable';
+        }
+
+        $('#view_toggle .btn').removeClass('enabled');
+        $(this).addClass('enabled');
+
+        toggleItemView(toggle_value);
     });
 
     $('a.hide-tip-icons').on('click', function () {
@@ -394,6 +412,54 @@ function getDefaultBackgroundClass() {
     }
 
     return shuffled[0];
+}
+
+function toggleItemView(toggle_value) {   
+    if (toggle_value == 'usable' || toggle_value == 'not-usable') {
+        $('h4').hide();
+        $('#view_heading').show().html((toggle_value == 'usable' ? 'Use:' : 'Don\'t Use:'));
+
+        $('div.item-collection').removeClass('row');
+        $('div.item').addClass('no-float').removeClass('col-md-3');
+    }
+    else {
+        $('h4').show();
+        $('#view_heading').hide();
+
+        $('div.item-collection').addClass('row');
+        $('div.item').removeClass('no-float').addClass('col-md-3');
+    }
+    
+    if ($('div.item.active').length === 0) {
+        $('h4').show();
+    }
+
+    switch (toggle_value) {
+        case 'all':
+            $('div.item').show();
+
+            break;
+
+        case 'usable':            
+            if ($('div.item.active').length === 0) {
+                return false;
+            }
+
+            $('div.item.active').show();
+            $('div.item:not(.active)').hide();
+
+            break;
+
+        case 'not-usable':            
+            if ($('div.item.active').length === 0) {
+                return false;
+            }
+
+            $('div.item.active').hide();
+            $('div.item:not(.active)').show();
+
+            break;
+    }
 }
 
 function _getItemsFromDOM(div_id) {

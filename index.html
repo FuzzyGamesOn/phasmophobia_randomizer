@@ -49,8 +49,14 @@
   <div class="clear"><!-- x --></div>
 
   <div class="actions pull-right">
-    <button type="button" id="randomize_button" class="btn btn-success"><i class="bi bi-arrow-repeat"></i> Randomize</button>
-    <button type="button" id="settings_button" class="btn btn-info">Settings <i class="bi bi-gear"></i></button>
+    <button type="button" id="randomize_button" class="btn btn-success action"><i class="bi bi-arrow-repeat"></i> Randomize</button>
+    <button type="button" id="settings_button" class="btn btn-info action">Settings <i class="bi bi-gear"></i></button>
+
+    <div id="view_toggle" class="btn-group" role="group">
+      <button type="button" class="btn btn-info view view-all enabled">All</button>
+      <button type="button" class="btn btn-info view view-usable">Usable</button>
+      <button type="button" class="btn btn-info view view-not-usable">Not Usable</button>
+    </div>
 
     <div id="promotion">
       <div id="feedback_text">
@@ -66,6 +72,8 @@
   </div>
 
   <div id="container">
+    <h4 id="view_heading"></h4>
+    
     <div>
       <h4 id="primary_items_heading" class="main">
         Primary Items
@@ -74,12 +82,12 @@
         <a class="glyphicon glyphicon-repeat reroll reroll-primary" aria-hidden="true" title="Re-roll only primary items again"></a>
       </h4>
       <div id="primary_items">
-        <div class="row">
+        <div class="item-collection row">
           <div id="emf" class="col-md-3 item">EMF Reader<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
           <div id="box" class="col-md-3 item">Spirit Box<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
           <div id="thermo" class="col-md-3 item">Thermometer<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
         </div>
-        <div class="row">
+        <div class="item-collection row">
           <div id="uv" class="col-md-3 item">UV Light<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
           <div id="video" class="col-md-3 item">Video Camera<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
           <div id="book" class="col-md-3 item">Writing Book<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
@@ -93,22 +101,22 @@
         <a class="glyphicon glyphicon-repeat reroll reroll-secondary" aria-hidden="true" title="Re-roll only secondary items again"></a>
       </h4>
       <div id="secondary_items">
-        <div class="row">
+        <div class="item-collection row">
           <div id="crucifix" class="col-md-3 item">Crucifix<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
           <div id="glowstick" class="col-md-3 item">Glowstick<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
           <div id="irlight" class="col-md-3 item">IR Light Sensor<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
         </div>
-        <div class="row">  
+        <div class="item-collection row">  
           <div id="motion" class="col-md-3 item">Motion Sensor<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
           <div id="parabolic" class="col-md-3 item">Parabolic Mic<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
           <div id="photo" class="col-md-3 item">Photo Camera<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
         </div>
-        <div class="row">  
+        <div class="item-collection row">  
           <div id="salt" class="col-md-3 item">Salt<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
           <div id="sanity" class="col-md-3 item">Sanity Pills<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
           <div id="smudge" class="col-md-3 item">Smudge Sticks<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
         </div>
-        <div class="row">  
+        <div class="item-collection row">  
           <div id="sound" class="col-md-3 item">Sound Sensor<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
           <div id="tripod" class="col-md-3 item">Tripod<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
         </div>
@@ -121,7 +129,7 @@
         <a class="glyphicon glyphicon-repeat reroll reroll-light" aria-hidden="true" title="Re-roll only light sources again"></a>
       </h4>
       <div id="light_sources">
-        <div class="row">
+        <div class="item-collection row">
           <div id="candle" class="col-md-3 item">Candle<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
           <div id="flash" class="col-md-3 item">Flashlight<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
           <div id="strongflash" class="col-md-3 item">Strong Flashlight<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
@@ -135,7 +143,7 @@
         <a class="glyphicon glyphicon-repeat reroll reroll-map" aria-hidden="true" title="Re-roll only maps again"></a>
       </h4>
       <div id="maps">
-        <div class="row">
+        <div class="item-collection row">
           <div id="tanglewood" class="col-md-3 item">Tanglewood<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
           <div id="edgefield" class="col-md-3 item">Edgefield<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
           <div id="ridgeview" class="col-md-3 item">Ridgeview<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
