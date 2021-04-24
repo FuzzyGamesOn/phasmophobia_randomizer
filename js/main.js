@@ -57,6 +57,13 @@ $(function () {
         $('p.tip-icons').hide();
     });
 
+    $('a.hide-tip-builtin').on('click', function () {
+        Settings.commitSingle('tip_builtin', false);
+        Settings.store();
+
+        $('p.tip-builtin').hide();
+    });
+
     $('#settings_button').on('click', function () {
         $('#settings_modal').modal('show');
 
@@ -201,6 +208,10 @@ function applySettings() {
 
     if (Settings.tip_icons === true) {
         $('p.tip-icons').show().find('a.glyphicon-remove').css({ 'float': 'right' });
+    }
+
+    if (Settings.tip_builtin === true) {
+        $('p.tip-builtin').show().find('a.glyphicon-remove').css({ 'float': 'right' });
     }
 }
 

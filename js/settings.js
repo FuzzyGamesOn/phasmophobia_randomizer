@@ -5,6 +5,7 @@ const Settings = {
     random_map: null,
     layout_chroma: null,
     tip_icons: null,
+    tip_builtin: null,
     count_primary: '',
     count_secondary: '',
     count_light: '',
@@ -35,12 +36,17 @@ const Settings = {
             params.tip_icons = false;
         }
 
+        if (params.tip_builtin !== true && params.tip_builtin !== false) {
+            params.tip_builtin = false;
+        }
+
         this.difficulty = params.difficulty;
         this.random_light = params.random_light;
         this.random_secondary = params.random_secondary;
         this.random_map = params.random_map;
         this.layout_chroma = params.layout_chroma;
         this.tip_icons = params.tip_icons;
+        this.tip_builtin = params.tip_builtin;
 
         this.count_primary = params.count_primary || '';
         this.count_secondary = params.count_secondary || '';
@@ -50,7 +56,7 @@ const Settings = {
 
     commitSingle(name, value) {
         // TODO: add check for a valid setting name before arbitrarily setting properties
-        
+
         this[name] = value;
     },
 
@@ -61,6 +67,7 @@ const Settings = {
         this.random_map = Storage.get('random_map');
         this.layout_chroma = Storage.get('layout_chroma');
         this.tip_icons = Storage.get('tip_icons');
+        this.tip_builtin = Storage.get('tip_builtin');
         
         this.count_primary = Storage.get('count_primary') || '';
         this.count_secondary = Storage.get('count_secondary') || '';
@@ -90,6 +97,10 @@ const Settings = {
         if (this.tip_icons == null) {
             this.tip_icons = true;
         }
+
+        if (this.tip_builtin == null) {
+            this.tip_builtin = true;
+        }
     },
 
     store() {
@@ -105,6 +116,7 @@ const Settings = {
         Storage.set('count_map', this.count_map);
 
         Storage.set('tip_icons', this.tip_icons);
+        Storage.set('tip_builtin', this.tip_builtin);
 
         Storage.commit();
     }
