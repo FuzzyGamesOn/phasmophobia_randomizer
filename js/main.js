@@ -5,6 +5,7 @@ $(function () {
     $('#randomize_button').on('click', function () {
         clearItems();
         toggleItemView('all');
+        $('#view_heading').hide();
 
         $('span.eliminate-count').html('');
         $('h4 a').show();

@@ -274,13 +274,20 @@ span.indent {
 
 div.item.no-float {
     float: none;
-    line-height: 16px;
+    line-height: 18px;
     border: none;
     background: none;
     font-weight: bolder;
     padding: 0;
+    font-size: 20px;
+
+    text-shadow: -2px 2px 0 #111,
+				  2px 2px 0 #111,
+				  2px -2px 0 #111,
+                 -2px -2px 0 #111;
 }
 
 #view_heading {
     display: none;
+    font-size: 24px !important;
 }
