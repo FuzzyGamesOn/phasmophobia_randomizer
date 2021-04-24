@@ -7,6 +7,9 @@ $(function () {
         toggleItemView('all');
         $('#view_heading').hide();
 
+        $('#view_toggle .btn').removeClass('enabled');
+        $('#view_toggle .btn.view-all').addClass('enabled');
+
         $('span.eliminate-count').html('');
         $('h4 a').show();
 
