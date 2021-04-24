@@ -364,6 +364,10 @@ function setLightSources() {
     }
 
     activateItems(items);
+
+    if ($('#smudge').hasClass('active') || $('#candle').hasClass('active')) {
+        $('#lighter').removeClass('active').addClass('active'); // lazy
+    }
 }
 
 function setMaps() {
