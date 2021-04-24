@@ -322,6 +322,8 @@ function setSecondaryItems() {
     }
 
     activateItems(items);
+
+    $('#lighter').addClass('active');
 }
 
 function setLightSources() {
