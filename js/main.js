@@ -313,6 +313,10 @@ function setSecondaryItems() {
     let items = _getItemsFromDOM('#secondary_items');
     let quantity = Quantity[Settings.difficulty].secondary;
 
+    items = items.filter(function (a) {
+        return a !== 'lighter';
+    });
+
     if (Settings.random_secondary === true) {
         if (Settings.difficulty == 'custom') {
             quantity = Settings.count_secondary || 0;
@@ -323,7 +327,9 @@ function setSecondaryItems() {
 
     activateItems(items);
 
-    $('#lighter').addClass('active');
+    if ($('#smudge').hasClass('active') || $('#candle').hasClass('active')) {
+        $('#lighter').addClass('active');
+    }
 }
 
 function setLightSources() {
