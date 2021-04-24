@@ -195,7 +195,7 @@ div.actions {
 
 #promotion {
     position: absolute;
-    top: 90px;
+    top: 140px;
     right: 17px;
     padding: 20px 20px 20px 25px;
     border: 4px #4287f5 solid;
@@ -210,11 +210,20 @@ div.actions {
     margin-left: 25px;
 }
 
+#promotion span.highlighted-text {
+    color: #acc2e3;
+    margin-left: 5px;
+}
+
 #feedback_text {
     margin-top: 5px;
 }
 
 #patreon_text {
+    margin-top: 20px;
+}
+
+#discord_text {
     margin-top: 20px;
 }
 
