@@ -311,6 +311,12 @@ function setPrimaryItems() {
     let items = _getItemsFromDOM('#primary_items');
     let quantity = Quantity[Settings.difficulty].primary;
 
+    if (Settings.difficulty == 'insane') {
+        items = items.filter(function (a) {
+            return a !== 'thermo';
+        }); 
+    }
+
     if (Settings.difficulty == 'custom') {
         quantity = Settings.count_primary || 0;
     }
@@ -325,8 +331,14 @@ function setSecondaryItems() {
     let quantity = Quantity[Settings.difficulty].secondary;
 
     items = items.filter(function (a) {
-        return a !== 'lighter';
+        return a !== 'lighter' && a !== 'headcam';
     });
+    
+    if ($('#uv').hasClass('active')) {
+        items = items.filter(function (a) {
+            return a !== 'glowstick';
+        }); 
+    }
 
     if (Settings.random_secondary === true) {
         if (Settings.difficulty == 'custom') {
@@ -336,10 +348,24 @@ function setSecondaryItems() {
         items = _randomSliceArray(items, quantity);
     }
 
+    if (Settings.difficulty == 'easy' || Settings.difficulty == 'insane') {
+        items = items.filter(function (a) {
+            return a !== 'sanity';
+        });
+
+        if (Settings.difficulty == 'insane') {
+            $('#sanity').addClass('active');
+        }
+    }
+
     activateItems(items);
 
     if ($('#smudge').hasClass('active') || $('#candle').hasClass('active')) {
         $('#lighter').addClass('active');
+    }
+
+    if ($('#video').hasClass('active')) {
+        $('#headcam').addClass('active');
     }
 }
 
