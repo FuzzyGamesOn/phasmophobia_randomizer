@@ -84,12 +84,31 @@
     <h4 id="view_heading"></h4>
 
     <div>
+      <div class="dropdown btn">
+        <select name="ghost" id="ghost">
+          <option value="none">None</option>
+          <option value="banshee">Banshee</option>
+          <option value="demon">Demon</option>
+          <option value="jinn">Jinn</option>
+          <option value="mare">Mare</option>
+          <option value="oni">Oni</option>
+          <option value="phantom">Phantom</option>
+          <option value="poltergeist">Poltergeist</option>
+          <option value="revenant">Revenant</option>
+          <option value="shade">Shade</option>
+          <option value="spirit">Spirit</option>
+          <option value="wraith">Wraith</option>
+          <option value="yurei">Yurei</option>
+        </select>
+      </div>
+
       <h4 id="primary_items_heading" class="main">
         Primary Items
         <a class="glyphicon glyphicon-ban-circle eliminate eliminate-primary" aria-hidden="true" title="Eliminate current primary items and re-roll"></a>
         <span class="eliminate-count eliminate-primary-count"></span>
         <a class="glyphicon glyphicon-repeat reroll reroll-primary" aria-hidden="true" title="Re-roll only primary items again"></a>
       </h4>
+
       <div id="primary_items">
         <div class="item-collection row">
           <div id="emf" class="col-md-3 item">EMF Reader<span class="disabled glyphicon glyphicon-ban-circle"></span></div>

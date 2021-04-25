@@ -2,16 +2,39 @@ $(function () {
     $('body').addClass(getDefaultBackgroundClass());
     $('h4 a').hide(); // hide elimination icons until randomize is clicked
 
+    $('#ghost').on('change', function () {
+        let evidences = {
+            'banshee': ['emf', 'uv', 'thermo'],
+            'demon': ['book', 'box', 'thermo'],
+            'jinn': ['emf', 'box', 'video'],
+            'mare': ['box', 'video', 'thermo'],
+            'oni': ['emf', 'book', 'box'],
+            'phantom': ['emf', 'video', 'thermo'],
+            'poltergeist': ['box', 'uv', 'video'],
+            'revenant': ['emf', 'uv', 'book'],
+            'shade': ['emf', 'video', 'book'],
+            'spirit': ['box', 'uv', 'book'],
+            'wraith': ['box', 'uv', 'thermo'],
+            'yurei': ['video', 'book', 'thermo']
+        };
+
+        let toggle_evidences = evidences[$(this).val()] || [];
+
+        resetRandomizer();
+
+        if (toggle_evidences.length > 0) {
+            for (evidence of toggle_evidences) {
+                $('#' + evidence).addClass('active');
+            }
+
+            setSecondaryItems();
+            setLightSources();
+            setMaps();
+        }
+    });
+
     $('#randomize_button').on('click', function () {
-        clearItems();
-        toggleItemView('all');
-        $('#view_heading').hide();
-
-        $('#view_toggle .btn').removeClass('enabled');
-        $('#view_toggle .btn.view-all').addClass('enabled');
-
-        $('span.eliminate-count').html('');
-        $('h4 a').show();
+        resetRandomizer();
 
         setPrimaryItems();
         setSecondaryItems();
@@ -513,6 +536,18 @@ function toggleItemView(toggle_value) {
 
             break;
     }
+}
+
+function resetRandomizer() {
+    clearItems();
+    toggleItemView('all');
+    $('#view_heading').hide();
+
+    $('#view_toggle .btn').removeClass('enabled');
+    $('#view_toggle .btn.view-all').addClass('enabled');
+
+    $('span.eliminate-count').html('');
+    $('h4 a').show();
 }
 
 function _getItemsFromDOM(div_id) {
