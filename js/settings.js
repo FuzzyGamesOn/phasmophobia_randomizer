@@ -6,6 +6,7 @@ const Settings = {
     layout_chroma: null,
     tip_icons: null,
     tip_builtin: null,
+    include_tripod: null,
     count_primary: '',
     count_secondary: '',
     count_light: '',
@@ -40,6 +41,10 @@ const Settings = {
             params.tip_builtin = false;
         }
 
+        if (params.include_tripod !== true && params.include_tripod !== false) {
+            params.include_tripod = false;
+        }
+
         this.difficulty = params.difficulty;
         this.random_light = params.random_light;
         this.random_secondary = params.random_secondary;
@@ -52,6 +57,7 @@ const Settings = {
         this.count_secondary = params.count_secondary || '';
         this.count_light = params.count_light || '';
         this.count_map = params.count_map || '';
+        this.include_tripod = params.include_tripod || '';
     },
 
     commitSingle(name, value) {
@@ -68,6 +74,7 @@ const Settings = {
         this.layout_chroma = Storage.get('layout_chroma');
         this.tip_icons = Storage.get('tip_icons');
         this.tip_builtin = Storage.get('tip_builtin');
+        this.include_tripod = Storage.get('include_tripod');
         
         this.count_primary = Storage.get('count_primary') || '';
         this.count_secondary = Storage.get('count_secondary') || '';
@@ -101,6 +108,10 @@ const Settings = {
         if (this.tip_builtin == null) {
             this.tip_builtin = true;
         }
+
+        if (this.include_tripod == null) {
+            this.include_tripod = false;
+        }
     },
 
     store() {
@@ -117,6 +128,8 @@ const Settings = {
 
         Storage.set('tip_icons', this.tip_icons);
         Storage.set('tip_builtin', this.tip_builtin);
+
+        Storage.set('include_tripod', this.include_tripod);
 
         Storage.commit();
     }

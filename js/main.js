@@ -40,6 +40,8 @@ $(function () {
         setSecondaryItems();
         setLightSources();
         setMaps();
+            
+        $('#ghost').val('none');
     });
 
     $('a.eliminate-primary, a.eliminate-secondary, a.eliminate-light, a.eliminate-map').on('click', function () {
@@ -50,7 +52,12 @@ $(function () {
     });
 
     $('a.reroll-primary, a.reroll-secondary, a.reroll-light, a.reroll-map').on('click', function () {
-        if ($(this).hasClass('reroll-primary')) rerollItems('primary');
+        if ($(this).hasClass('reroll-primary')) {
+            rerollItems('primary');
+
+            $('#ghost').val('none');
+        }
+
         if ($(this).hasClass('reroll-secondary')) rerollItems('secondary');
         if ($(this).hasClass('reroll-light')) rerollItems('light');
         if ($(this).hasClass('reroll-map')) rerollItems('map');
@@ -137,6 +144,14 @@ $(function () {
         else {
             $("input[name='layout_chroma']").removeAttr('checked');
         }
+
+        // set preference for always including tripod from settings
+        if (Settings.include_tripod) {
+            $("input[name='include_tripod']").attr('checked', 'checked');
+        }
+        else {
+            $("input[name='include_tripod']").removeAttr('checked');
+        }
     });
 
     $('button.difficulty').on('click', function () {
@@ -196,6 +211,7 @@ $(function () {
             'random_light': $('input.random-light').prop('checked') ? true : false,
             'random_map': $('input.random-map').prop('checked') ? true : false,
             'layout_chroma': $('input.layout-chroma').prop('checked') ? true : false,
+            'include_tripod': $('input.include-tripod').prop('checked') ? true : false,
             'count_primary': $('input.count-primary').val() || '',
             'count_secondary': $('input.count-secondary').val() || '',
             'count_light': $('input.count-light').val() || '',
@@ -389,6 +405,10 @@ function setSecondaryItems() {
 
     if ($('#video').hasClass('active')) {
         $('#headcam').addClass('active');
+    }
+
+    if (Settings.include_tripod) {
+        $('#tripod').addClass('active');
     }
 }
 
