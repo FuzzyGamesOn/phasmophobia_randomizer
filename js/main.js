@@ -1,3 +1,5 @@
+var PHOTO_RANDO = false;
+
 $(function () {
     $('body').addClass(getDefaultBackgroundClass());
     $('h4 a').hide(); // hide elimination icons until randomize is clicked
@@ -42,6 +44,54 @@ $(function () {
         setMaps();
             
         $('#ghost').val('none');
+    });
+
+    $('#randomize_photo_button').on('click', function () {
+        if (!PHOTO_RANDO) {
+            resetRandomizer();
+
+            $('#photo').addClass('active');
+
+            setLightSources();
+            setMaps();
+
+            PHOTO_RANDO = true;
+        }
+        else {
+            let available_categories = ['primary', 'secondary'];
+            let primary_item_count = $('#primary_items').find('div.item:not(.active)').length;
+            let secondary_item_count = $('#secondary_items').find('div.item:not(.active)').length;
+
+            let shuffled = available_categories.sort(function () {
+                return 0.5 - Math.random();
+            });
+
+            let chosen_category = available_categories[0];
+
+            if (chosen_category == 'primary' && primary_item_count == 0) {
+                chosen_category = 'secondary';
+            }
+
+            if (chosen_category == 'secondary' && secondary_item_count == 0) {
+                chosen_category = 'primary';
+            }
+
+            if (primary_item_count == 0 && secondary_item_count == 0) {
+                return; // if no items available in both spots, do nothing
+            }
+
+            switch (chosen_category) {
+                case 'primary':
+                    setPrimaryItems(/* is_photo */ true);
+
+                    break;
+
+                case 'secondary':
+                    setSecondaryItems(/* is_photo */ true);
+
+                    break;
+            }
+        }
     });
 
     $('a.eliminate-primary, a.eliminate-secondary, a.eliminate-light, a.eliminate-map').on('click', function () {
@@ -257,7 +307,7 @@ function applySettings() {
 function clearItems() {
     $('div.item').removeClass('active').removeClass('disabled');
 
-    $('#tripod').removeClass('col-md-4').addClass('col-md-3').html(
+    $('#tripod').removeClass('col-md-5').addClass('col-md-3').html(
         $('#tripod').html().replace('Emotional Support Tripod', 'Tripod')
     );
 
@@ -266,15 +316,21 @@ function clearItems() {
     });
 }
 
-function activateItems(elems) {
+function activateItems(elems, is_photo = false) {
+    $('div.item').removeClass('new');
+
     const formatted_elems = elems.map(function (id) {
         return '#' + id;
     }).join(',');
 
     $(formatted_elems).addClass('active').removeClass('disabled');
 
+    if (is_photo) {
+        $(formatted_elems).addClass('new');
+    }
+
     if (!$('#video').hasClass('active') && $('#tripod').hasClass('active')) {
-        $('#tripod').removeClass('col-md-3').addClass('col-md-4').html(
+        $('#tripod').removeClass('col-md-3').addClass('col-md-5').html(
             $('#tripod').html().replace(/^Tripod/, 'Emotional Support Tripod')
         );
     }
@@ -346,7 +402,7 @@ function rerollItems(category) {
     }
 }
 
-function setPrimaryItems() {
+function setPrimaryItems(is_photo = false) {
     let items = _getItemsFromDOM('#primary_items');
     let quantity = Quantity[Settings.difficulty].primary;
 
@@ -356,16 +412,20 @@ function setPrimaryItems() {
         }); 
     }
 
-    if (Settings.difficulty == 'custom') {
+    if (!is_photo && Settings.difficulty == 'custom') {
         quantity = Settings.count_primary || 0;
+    }
+
+    if (is_photo) {
+        quantity = 1;
     }
 
     items = _randomSliceArray(items, quantity);
 
-    activateItems(items);
+    activateItems(items, is_photo);
 }
 
-function setSecondaryItems() {
+function setSecondaryItems(is_photo = false) {
     let items = _getItemsFromDOM('#secondary_items');
     let quantity = Quantity[Settings.difficulty].secondary;
 
@@ -378,15 +438,7 @@ function setSecondaryItems() {
             return a !== 'glowstick';
         }); 
     }
-
-    if (Settings.random_secondary === true) {
-        if (Settings.difficulty == 'custom') {
-            quantity = Settings.count_secondary || 0;
-        }
-
-        items = _randomSliceArray(items, quantity);
-    }
-
+    
     if (Settings.difficulty == 'easy' || Settings.difficulty == 'insane') {
         items = items.filter(function (a) {
             return a !== 'sanity';
@@ -397,17 +449,41 @@ function setSecondaryItems() {
         }
     }
 
-    activateItems(items);
+    if (Settings.random_secondary === true) {
+        if (!is_photo && Settings.difficulty == 'custom') {
+            quantity = Settings.count_secondary || 0;
+        }
+
+        if (is_photo) {
+            quantity = 1;
+        }
+
+        items = _randomSliceArray(items, quantity);
+    }
+
+    activateItems(items, is_photo);
 
     if ($('#smudge').hasClass('active') || $('#candle').hasClass('active')) {
+        if (is_photo && !$('#lighter').addClass('active')) {
+            $('#lighter').addClass('new');
+        }
+
         $('#lighter').addClass('active');
     }
 
     if ($('#video').hasClass('active')) {
+        if (is_photo && !$('#headcam').addClass('active')) {
+            $('#headcam').addClass('new');
+        }
+
         $('#headcam').addClass('active');
     }
 
     if (Settings.include_tripod) {
+        if (is_photo && !$('#tripod').addClass('active')) {
+            $('#tripod').addClass('new');
+        }
+
         $('#tripod').addClass('active');
     }
 }
@@ -517,6 +593,8 @@ function toggleItemView(toggle_value) {
 
         $('div.item-collection').removeClass('row');
         $('div.item').addClass('no-float').removeClass('col-md-3');
+
+        $('#ghost').hide();
     }
     else {
         $('h4').show();
@@ -524,6 +602,8 @@ function toggleItemView(toggle_value) {
 
         $('div.item-collection').addClass('row');
         $('div.item').removeClass('no-float').addClass('col-md-3');
+
+        $('#ghost').show();
     }
     
     if ($('div.item.active').length === 0) {
@@ -559,6 +639,8 @@ function toggleItemView(toggle_value) {
 }
 
 function resetRandomizer() {
+    PHOTO_RANDO = false;
+
     clearItems();
     toggleItemView('all');
     $('#view_heading').hide();
@@ -574,7 +656,7 @@ function _getItemsFromDOM(div_id) {
     let items = [];
 
     $(div_id).find('div.item').each(function () {
-        if (!$(this).hasClass('disabled')) {
+        if (!$(this).hasClass('disabled') && !$(this).hasClass('active')) {
             items.push($(this).attr('id'));
         }
     });

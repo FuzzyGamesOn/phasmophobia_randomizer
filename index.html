@@ -40,24 +40,32 @@
 </head>
 
 <body>
+  <div class="pull-right settings">
+    <button type="button" id="settings_button" class="btn btn-info action">Settings <i class="bi bi-gear"></i></button>
+  </div>
+
   <h1>
     <span class="title">Item Randomizer</span>
     <span class="intermediate">for</span>
-    <span class="game_name">Phasmophobia</span>
+    <span class="game_name">Phasmophobia</span>  
   </h1>
   
   <div class="clear"><!-- x --></div>
 
   <div class="actions pull-right">
     <button type="button" id="randomize_button" class="btn btn-success action"><i class="bi bi-arrow-repeat"></i> Randomize</button>
-    <button type="button" id="settings_button" class="btn btn-info action">Settings <i class="bi bi-gear"></i></button>
+    <button type="button" id="randomize_photo_button" class="btn btn-success action"><i class="bi bi-camera"></i> Photo Randomizer</button>
 
-    <div id="view_toggle" class="btn-group" role="group">
-      <button type="button" class="btn btn-info view view-all enabled">All</button>
-      <button type="button" class="btn btn-info view view-usable">Usable</button>
-      <button type="button" class="btn btn-info view view-not-usable">Not Usable</button>
+    <div id="view_toggle_container">
+      <span id="view_toggle_heading">Change View:</span>
+
+      <div id="view_toggle" class="btn-group" role="group">
+        <button type="button" class="btn btn-info view view-all enabled">All</button>
+        <button type="button" class="btn btn-info view view-usable">Usable</button>
+        <button type="button" class="btn btn-info view view-not-usable">Not Usable</button>
+      </div>
     </div>
-
+    
     <div id="promotion">
       <div id="feedback_text">
         Want to report issues<br />
@@ -111,14 +119,14 @@
 
       <div id="primary_items">
         <div class="item-collection row">
-          <div id="emf" class="col-md-3 item">EMF Reader<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
-          <div id="box" class="col-md-3 item">Spirit Box<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
-          <div id="thermo" class="col-md-3 item">Thermometer<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
+          <div id="emf" class="col-md-3 item">EMF Reader<span class="disabled glyphicon glyphicon-ban-circle"></span><span class="new glyphicon glyphicon-ok"></span></div>
+          <div id="box" class="col-md-3 item">Spirit Box<span class="disabled glyphicon glyphicon-ban-circle"></span><span class="new glyphicon glyphicon-ok"></span></div>
+          <div id="thermo" class="col-md-3 item">Thermometer<span class="disabled glyphicon glyphicon-ban-circle"></span><span class="new glyphicon glyphicon-ok"></span></div>
         </div>
         <div class="item-collection row">
-          <div id="uv" class="col-md-3 item">UV Light<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
-          <div id="video" class="col-md-3 item">Video Camera<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
-          <div id="book" class="col-md-3 item">Writing Book<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
+          <div id="uv" class="col-md-3 item">UV Light<span class="disabled glyphicon glyphicon-ban-circle"></span><span class="new glyphicon glyphicon-ok"></span></div>
+          <div id="video" class="col-md-3 item">Video Camera<span class="disabled glyphicon glyphicon-ban-circle"></span><span class="new glyphicon glyphicon-ok"></span></div>
+          <div id="book" class="col-md-3 item">Writing Book<span class="disabled glyphicon glyphicon-ban-circle"></span><span class="new glyphicon glyphicon-ok"></span></div>
         </div>
       </div>
 
@@ -130,25 +138,25 @@
       </h4>
       <div id="secondary_items">
         <div class="item-collection row">
-          <div id="crucifix" class="col-md-3 item">Crucifix<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
-          <div id="glowstick" class="col-md-3 item">Glowstick<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
-          <div id="irlight" class="col-md-3 item">IR Light Sensor<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
+          <div id="crucifix" class="col-md-3 item">Crucifix<span class="disabled glyphicon glyphicon-ban-circle"></span><span class="new glyphicon glyphicon-ok"></span></div>
+          <div id="glowstick" class="col-md-3 item">Glowstick<span class="disabled glyphicon glyphicon-ban-circle"></span><span class="new glyphicon glyphicon-ok"></span></div>
+          <div id="irlight" class="col-md-3 item">IR Light Sensor<span class="disabled glyphicon glyphicon-ban-circle"></span><span class="new glyphicon glyphicon-ok"></span></div>
         </div>
         <div class="item-collection row">  
-          <div id="motion" class="col-md-3 item">Motion Sensor<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
-          <div id="parabolic" class="col-md-3 item">Parabolic Mic<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
-          <div id="photo" class="col-md-3 item">Photo Camera<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
+          <div id="motion" class="col-md-3 item">Motion Sensor<span class="disabled glyphicon glyphicon-ban-circle"></span><span class="new glyphicon glyphicon-ok"></span></div>
+          <div id="parabolic" class="col-md-3 item">Parabolic Mic<span class="disabled glyphicon glyphicon-ban-circle"></span><span class="new glyphicon glyphicon-ok"></span></div>
+          <div id="photo" class="col-md-3 item">Photo Camera<span class="disabled glyphicon glyphicon-ban-circle"></span><span class="new glyphicon glyphicon-ok"></span></div>
         </div>
         <div class="item-collection row">  
-          <div id="salt" class="col-md-3 item">Salt<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
-          <div id="sanity" class="col-md-3 item">Sanity Pills<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
-          <div id="smudge" class="col-md-3 item">Smudge Sticks<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
+          <div id="salt" class="col-md-3 item">Salt<span class="disabled glyphicon glyphicon-ban-circle"></span><span class="new glyphicon glyphicon-ok"></span></div>
+          <div id="sanity" class="col-md-3 item">Sanity Pills<span class="disabled glyphicon glyphicon-ban-circle"></span><span class="new glyphicon glyphicon-ok"></span></div>
+          <div id="smudge" class="col-md-3 item">Smudge Sticks<span class="disabled glyphicon glyphicon-ban-circle"></span><span class="new glyphicon glyphicon-ok"></span></div>
         </div>
         <div class="item-collection row">  
-          <div id="sound" class="col-md-3 item">Sound Sensor<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
-          <div id="lighter" class="col-md-3 item">Lighter *<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
-          <div id="headcam" class="col-md-3 item">Head Camera *<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
-          <div id="tripod" class="col-md-3 item">Tripod<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
+          <div id="sound" class="col-md-3 item">Sound Sensor<span class="disabled glyphicon glyphicon-ban-circle"></span><span class="new glyphicon glyphicon-ok"></span></div>
+          <div id="lighter" class="col-md-3 item">Lighter *<span class="disabled glyphicon glyphicon-ban-circle"></span><span class="new glyphicon glyphicon-ok"></span></div>
+          <div id="headcam" class="col-md-3 item">Head Camera *<span class="disabled glyphicon glyphicon-ban-circle"></span><span class="new glyphicon glyphicon-ok"></span></div>
+          <div id="tripod" class="col-md-3 item">Tripod<span class="disabled glyphicon glyphicon-ban-circle"></span><span class="new glyphicon glyphicon-ok"></span></div>
         </div>
       </div>
 
@@ -160,9 +168,9 @@
       </h4>
       <div id="light_sources">
         <div class="item-collection row">
-          <div id="candle" class="col-md-3 item">Candle<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
-          <div id="flash" class="col-md-3 item">Flashlight<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
-          <div id="strongflash" class="col-md-3 item">Strong Flashlight<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
+          <div id="candle" class="col-md-3 item">Candle<span class="disabled glyphicon glyphicon-ban-circle"></span><span class="new glyphicon glyphicon-ok"></span></div>
+          <div id="flash" class="col-md-3 item">Flashlight<span class="disabled glyphicon glyphicon-ban-circle"></span><span class="new glyphicon glyphicon-ok"></span></div>
+          <div id="strongflash" class="col-md-3 item">Strong Flashlight<span class="disabled glyphicon glyphicon-ban-circle"></span><span class="new glyphicon glyphicon-ok"></span></div>
         </div>
       </div>
 
@@ -174,14 +182,14 @@
       </h4>
       <div id="maps">
         <div class="item-collection row">
-          <div id="tanglewood" class="col-md-3 item">Tanglewood<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
-          <div id="edgefield" class="col-md-3 item">Edgefield<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
-          <div id="ridgeview" class="col-md-3 item">Ridgeview<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
-          <div id="grafton" class="col-md-3 item">Grafton<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
-          <div id="bleasdale" class="col-md-3 item">Bleasdale<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
-          <div id="highschool" class="col-md-3 item">High School<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
-          <div id="asylum" class="col-md-3 item">Asylum<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
-          <div id="prison" class="col-md-3 item">Prison<span class="disabled glyphicon glyphicon-ban-circle"></span></div>
+          <div id="tanglewood" class="col-md-3 item">Tanglewood<span class="disabled glyphicon glyphicon-ban-circle"></span><span class="new glyphicon glyphicon-ok"></span></div>
+          <div id="edgefield" class="col-md-3 item">Edgefield<span class="disabled glyphicon glyphicon-ban-circle"></span><span class="new glyphicon glyphicon-ok"></span></div>
+          <div id="ridgeview" class="col-md-3 item">Ridgeview<span class="disabled glyphicon glyphicon-ban-circle"></span><span class="new glyphicon glyphicon-ok"></span></div>
+          <div id="grafton" class="col-md-3 item">Grafton<span class="disabled glyphicon glyphicon-ban-circle"></span><span class="new glyphicon glyphicon-ok"></span></div>
+          <div id="bleasdale" class="col-md-3 item">Bleasdale<span class="disabled glyphicon glyphicon-ban-circle"></span><span class="new glyphicon glyphicon-ok"></span></div>
+          <div id="highschool" class="col-md-3 item">High School<span class="disabled glyphicon glyphicon-ban-circle"></span><span class="new glyphicon glyphicon-ok"></span></div>
+          <div id="asylum" class="col-md-3 item">Asylum<span class="disabled glyphicon glyphicon-ban-circle"></span><span class="new glyphicon glyphicon-ok"></span></div>
+          <div id="prison" class="col-md-3 item">Prison<span class="disabled glyphicon glyphicon-ban-circle"></span><span class="new glyphicon glyphicon-ok"></span></div>
         </div>
       </div>
     </div>
