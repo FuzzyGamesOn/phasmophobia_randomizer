@@ -41,7 +41,7 @@
 
 <body>
   <div class="pull-right settings">
-    <button type="button" id="settings_button" class="btn btn-info action">Settings <i class="bi bi-gear"></i></button>
+    <button type="button" id="settings_button" class="btn btn-info settings-button">Settings <i class="bi bi-gear"></i></button>
   </div>
 
   <h1>
@@ -55,6 +55,18 @@
   <div class="actions pull-right">
     <button type="button" id="randomize_button" class="btn btn-success action"><i class="bi bi-arrow-repeat"></i> Randomize</button>
     <button type="button" id="randomize_photo_button" class="btn btn-success action"><i class="bi bi-camera"></i> Photo Randomizer</button>
+
+    <div class="clear"><!-- x --></div>
+
+    <div class="actions-secondary pull-right">
+      <div class="actions-secondary-regular"></div>
+
+      <div class="actions-secondary-photo">
+        <button type="button" id="randomize_photo_next" class="btn btn-success action"><i class="bi bi-plus"></i> Next Photo Item</button>
+      </div>
+
+      <div class="actions-secondary-all"></div>
+    </div>
 
     <div id="view_toggle_container">
       <span id="view_toggle_heading">Change View:</span>

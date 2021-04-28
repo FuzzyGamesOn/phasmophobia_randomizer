@@ -197,14 +197,21 @@ span.eliminate-count {
 }
 
 div.actions {
-    position: relative;
-    padding-right: 15px;
-    margin-top: 20px;
+    display: block;
+    position: absolute;
+    top: 90px;
+    right: 15px;
+}
+
+div.actions-secondary {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 20px;
 }
 
 #promotion {
     position: absolute;
-    top: 200px;
+    top: 280px;
     right: 17px;
     padding: 20px 20px 20px 25px;
     border: 4px #4287f5 solid;
@@ -275,6 +282,20 @@ button.btn-success {
 button.btn-info {
     background-color: #444;
     margin-left: 10px;
+}
+
+button.btn-info:hover {
+    background-color: #bbb;
+    color: #222;
+}
+
+button.btn-info.settings-button {
+    border: 1px solid #444;
+    background: transparent;
+}
+
+button.btn-info.settings-button:hover {
+    background: transparent;
 }
 
 span.indent {
@@ -350,7 +371,7 @@ div.settings {
 
 #view_toggle_container {
     position: absolute;
-    top: 80px;
+    top: 140px;
     right: 20px;
     color: #ddd;
 }
@@ -362,4 +383,8 @@ div.settings {
 
 div.custom-total-action {
     margin-right: 320px;
+}
+
+.actions-secondary-photo {
+    display: none;
 }

@@ -47,50 +47,50 @@ $(function () {
     });
 
     $('#randomize_photo_button').on('click', function () {
-        if (!PHOTO_RANDO) {
-            resetRandomizer();
+        resetRandomizer();
 
-            $('#photo').addClass('active');
+        $('#photo').addClass('active');
+        $('.actions-secondary-photo').show();
 
-            setLightSources();
-            setMaps();
+        setLightSources();
+        setMaps();
 
-            PHOTO_RANDO = true;
+        PHOTO_RANDO = true;
+    });
+
+    $('#randomize_photo_next').on('click', function () {
+        let available_categories = ['primary', 'secondary'];
+        let primary_item_count = $('#primary_items').find('div.item:not(.active)').length;
+        let secondary_item_count = $('#secondary_items').find('div.item:not(.active)').length;
+
+        let shuffled = available_categories.sort(function () {
+            return 0.5 - Math.random();
+        });
+
+        let chosen_category = available_categories[0];
+
+        if (chosen_category == 'primary' && primary_item_count == 0) {
+            chosen_category = 'secondary';
         }
-        else {
-            let available_categories = ['primary', 'secondary'];
-            let primary_item_count = $('#primary_items').find('div.item:not(.active)').length;
-            let secondary_item_count = $('#secondary_items').find('div.item:not(.active)').length;
 
-            let shuffled = available_categories.sort(function () {
-                return 0.5 - Math.random();
-            });
+        if (chosen_category == 'secondary' && secondary_item_count == 0) {
+            chosen_category = 'primary';
+        }
 
-            let chosen_category = available_categories[0];
+        if (primary_item_count == 0 && secondary_item_count == 0) {
+            return; // if no items available in both spots, do nothing
+        }
 
-            if (chosen_category == 'primary' && primary_item_count == 0) {
-                chosen_category = 'secondary';
-            }
+        switch (chosen_category) {
+            case 'primary':
+                setPrimaryItems(/* is_photo */ true);
 
-            if (chosen_category == 'secondary' && secondary_item_count == 0) {
-                chosen_category = 'primary';
-            }
+                break;
 
-            if (primary_item_count == 0 && secondary_item_count == 0) {
-                return; // if no items available in both spots, do nothing
-            }
+            case 'secondary':
+                setSecondaryItems(/* is_photo */ true);
 
-            switch (chosen_category) {
-                case 'primary':
-                    setPrimaryItems(/* is_photo */ true);
-
-                    break;
-
-                case 'secondary':
-                    setSecondaryItems(/* is_photo */ true);
-
-                    break;
-            }
+                break;
         }
     });
 
@@ -690,9 +690,13 @@ function toggleItemView(toggle_value) {
         $('#ghost').show();
     }
     
-    if ($('div.item.active').length === 0) {
-        $('h4').show();
-    }
+    /* 
+     * not sure why this was here. will come back to it.    
+        if ($('div.item.active').length === 0) {
+            $('h4').show();
+        }
+     *
+     */
 
     switch (toggle_value) {
         case 'all':
@@ -727,12 +731,12 @@ function resetRandomizer() {
 
     clearItems();
     toggleItemView('all');
-    $('#view_heading').hide();
 
     $('#view_toggle .btn').removeClass('enabled');
     $('#view_toggle .btn.view-all').addClass('enabled');
 
     $('span.eliminate-count').html('');
+    $('.actions-secondary-photo').hide();
     $('h4 a').show();
 }
 
