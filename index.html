@@ -72,7 +72,7 @@
       <span id="view_toggle_heading">Change View:</span>
 
       <div id="view_toggle" class="btn-group" role="group">
-        <button type="button" class="btn btn-info view view-all enabled">All</button>
+        <button type="button" class="btn btn-info view view-all active">All</button>
         <button type="button" class="btn btn-info view view-usable">Usable</button>
         <button type="button" class="btn btn-info view view-not-usable">Not Usable</button>
       </div>
@@ -219,68 +219,74 @@
           <h4 class="modal-title">Configure Settings</h4>
         </div>
         <div class="modal-body">
-          <div>
+          <div class="setting-section first">
             <label>Difficulty:</label>
-            <div class="btn-group" role="group">
-              <button type="button" class="btn btn-default difficulty" name="difficulty_easy">Easy</button>
-              <button type="button" class="btn btn-default difficulty" name="difficulty_normal">Normal</button>
-              <button type="button" class="btn btn-default difficulty" name="difficulty_hard">Hard</button>
-              <button type="button" class="btn btn-default difficulty" name="difficulty_insane">Insane</button>
-              <button type="button" class="btn btn-default difficulty" name="difficulty_custom">Custom</button>
+            <div class="btn-group difficulty-indent" role="group">
+              <button type="button" class="btn btn-info difficulty" name="difficulty_easy">Easy</button>
+              <button type="button" class="btn btn-info difficulty" name="difficulty_normal">Normal</button>
+              <button type="button" class="btn btn-info difficulty" name="difficulty_hard">Hard</button>
+              <button type="button" class="btn btn-info difficulty" name="difficulty_insane">Insane</button>
+              <button type="button" class="btn btn-info difficulty" name="difficulty_custom">Custom</button>
             </div>
           </div>
           
-          <div>
+          <div class="setting-section">
             <label>Randomizer Options:</label>
-            <div>
-              <input type="checkbox" class="random random-secondary" name="random_secondary" /> Randomize secondary (non-evidence) items
-            </div>
-            <div>
-              <input type="checkbox" class="random random-light" name="random_light" /> Randomize light sources
-            </div>
-            <div>
-              <input type="checkbox" class="random random-map" name="random_map" /> Randomize maps
-            </div>
-            <div>
-              <input type="checkbox" class="include include-tripod" name="include_tripod" /> Always include tripod
+
+            <div class="setting-section-contents">
+              <div>
+                <input type="checkbox" class="random random-secondary" name="random_secondary" /> Randomize secondary (non-evidence) items
+              </div>
+              <div>
+                <input type="checkbox" class="random random-light" name="random_light" /> Randomize light sources
+              </div>
+              <div>
+                <input type="checkbox" class="random random-map" name="random_map" /> Randomize maps
+              </div>
+              <div>
+                <input type="checkbox" class="include include-tripod" name="include_tripod" /> Always include tripod
+              </div>
             </div>
           </div>
 
-          <div id="custom_counts">
+          <div id="custom_counts" class="setting-section">
             <label>Custom totals for each category:</label>
-            <div class="row">
-              <input type="text" class="count count-primary" name="count_primary" size="2" /> # of primary items
 
-              <div class="pull-right custom-total-action">
-                <button class="count-all count-all-primary">All</button>
+            <div class="setting-section-contents">
+              <div class="row">
+                <input type="text" class="count count-primary" name="count_primary" size="2" /> # of primary items
+  
+                <div class="pull-right custom-total-action">
+                  <button class="btn btn-primary count-all count-all-primary">All</button>
+                </div>
               </div>
-            </div>
-            <div class="row">
-              <input type="text" class="count count-secondary" name="count_secondary" size="2" /> # of secondary items
-
-              <div class="pull-right custom-total-action">
-                <button class="count-all count-all-secondary">All</button>
+              <div class="row">
+                <input type="text" class="count count-secondary" name="count_secondary" size="2" /> # of secondary items
+  
+                <div class="pull-right custom-total-action">
+                  <button class="btn btn-primary count-all count-all-secondary">All</button>
+                </div>
               </div>
-            </div>
-            <div class="row">
-              <input type="text" class="count count-light" name="count_light" size="2" /> # of light source items
-
-              <div class="pull-right custom-total-action">
-                <button class="count-all count-all-light">All</button>
+              <div class="row">
+                <input type="text" class="count count-light" name="count_light" size="2" /> # of light source items
+  
+                <div class="pull-right custom-total-action">
+                  <button class="btn btn-primary count-all count-all-light">All</button>
+                </div>
               </div>
-            </div>
-            <div class="row">
-              <input type="text" class="count count-map" name="count_map" size="2" /> # of maps
-
-              <div class="pull-right custom-total-action">
-                <button class="count-all count-all-map">All</button>
+              <div class="row">
+                <input type="text" class="count count-map" name="count_map" size="2" /> # of maps
+  
+                <div class="pull-right custom-total-action">
+                  <button class="btn btn-primary count-all count-all-map">All</button>
+                </div>
               </div>
             </div>
           </div>
 
-          <div>
+          <div class="setting-section">
             <label>Layout Options:</label>
-            <div>
+            <div class="setting-section-contents">
               <input type="checkbox" class="layout layout-chroma" name="layout_chroma" /> Use Chroma Key background
               <br />
               <em>Background HTML color code is #630f09</em>
@@ -289,7 +295,7 @@
           
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-close" data-dismiss="modal">Close</button>
           <button type="button" class="btn btn-primary" id="save_settings_button">Save Settings</button>
         </div>
       </div><!-- /.modal-content -->

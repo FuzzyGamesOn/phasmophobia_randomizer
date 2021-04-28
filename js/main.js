@@ -159,8 +159,8 @@ $(function () {
             toggle_value = 'not-usable';
         }
 
-        $('#view_toggle .btn').removeClass('enabled');
-        $(this).addClass('enabled');
+        $('#view_toggle .btn').removeClass('active');
+        $(this).addClass('active');
 
         toggleItemView(toggle_value);
     });
@@ -732,8 +732,8 @@ function resetRandomizer() {
     clearItems();
     toggleItemView('all');
 
-    $('#view_toggle .btn').removeClass('enabled');
-    $('#view_toggle .btn.view-all').addClass('enabled');
+    $('#view_toggle .btn').removeClass('active');
+    $('#view_toggle .btn.view-all').addClass('active');
 
     $('span.eliminate-count').html('');
     $('.actions-secondary-photo').hide();

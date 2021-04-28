@@ -298,12 +298,27 @@ button.btn-info.settings-button:hover {
     background: transparent;
 }
 
-span.indent {
+button.btn-close {
+    background-color: #777;
+    color: #eee;
+    margin-left: 10px;
+}
+
+button.btn-close:hover {
+    background-color: #aaa;
+    color: #222;
+}
+
+.indent {
     margin-left: 45px;
 }
 
-span.tip-indent {
+.tip-indent {
     margin-left: 25px;
+}
+
+.difficulty-indent {
+    margin-left: 15px;
 }
 
 #view_toggle {
@@ -312,11 +327,11 @@ span.tip-indent {
     margin-left: 7px;
 }
 
-#view_toggle .btn {
+div.btn-group .btn {
     border-color: gray;
 }
 
-#view_toggle .btn.enabled {
+div.btn-group .btn.active {
     background-color: gray;
 }
 
@@ -385,6 +400,41 @@ div.custom-total-action {
     margin-right: 320px;
 }
 
+div.custom-total-action button.btn-primary {
+    padding: 2px 12px;
+}
+
 .actions-secondary-photo {
     display: none;
+}
+
+div.modal-content {
+    background-color: #222;
+    color: #ccc;
+}
+
+div.modal-header h4, div.modal-header button.close {
+    color: #ccc !important;
+}
+
+div.modal-body input {
+    background-color: #ddd;
+    color: #222;
+}
+
+div.setting-section {
+    margin-top: 20px;
+}
+
+div.setting-section.first {
+    margin-top: 0;
+}
+
+div.setting-section-contents {
+    padding-left: 15px;
+}
+
+div.setting-section-contents em {
+    display: inline-block;
+    margin-left: 17px;
 }
