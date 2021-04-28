@@ -115,6 +115,7 @@
         <a class="glyphicon glyphicon-ban-circle eliminate eliminate-primary" aria-hidden="true" title="Eliminate current primary items and re-roll"></a>
         <span class="eliminate-count eliminate-primary-count"></span>
         <a class="glyphicon glyphicon-repeat reroll reroll-primary" aria-hidden="true" title="Re-roll only primary items again"></a>
+        <a class="glyphicon glyphicon-minus loss loss-primary" aria-hidden="true" title="Un-roll one of the active primary items"></a>
       </h4>
 
       <div id="primary_items">
@@ -135,6 +136,7 @@
         <a class="glyphicon glyphicon-ban-circle eliminate eliminate-secondary" aria-hidden="true" title="Eliminate current secondary items and re-roll"></a>
         <span class="eliminate-count eliminate-secondary-count"></span>
         <a class="glyphicon glyphicon-repeat reroll reroll-secondary" aria-hidden="true" title="Re-roll only secondary items again"></a>
+        <a class="glyphicon glyphicon-minus loss loss-secondary" aria-hidden="true" title="Un-roll one of the active secondary items"></a>
       </h4>
       <div id="secondary_items">
         <div class="item-collection row">
@@ -165,6 +167,7 @@
         <a class="glyphicon glyphicon-ban-circle eliminate eliminate-light" aria-hidden="true" title="Eliminate current light sources and re-roll"></a>
         <span class="eliminate-count eliminate-light-count"></span>
         <a class="glyphicon glyphicon-repeat reroll reroll-light" aria-hidden="true" title="Re-roll only light sources again"></a>
+        <a class="glyphicon glyphicon-minus loss loss-light" aria-hidden="true" title="Un-roll one of the active light sources"></a>
       </h4>
       <div id="light_sources">
         <div class="item-collection row">
@@ -179,6 +182,7 @@
         <a class="glyphicon glyphicon-ban-circle eliminate eliminate-map" aria-hidden="true" title="Eliminate current maps and re-roll"></a>
         <span class="eliminate-count eliminate-map-count"></span>
         <a class="glyphicon glyphicon-repeat reroll reroll-map" aria-hidden="true" title="Re-roll only maps again"></a>
+        <a class="glyphicon glyphicon-minus loss loss-map" aria-hidden="true" title="Un-roll one of the active maps"></a>
       </h4>
       <div id="maps">
         <div class="item-collection row">
@@ -234,15 +238,31 @@
             <label>Custom totals for each category:</label>
             <div class="row">
               <input type="text" class="count count-primary" name="count_primary" size="2" /> # of primary items
+
+              <div class="pull-right custom-total-action">
+                <button class="count-all count-all-primary">All</button>
+              </div>
             </div>
             <div class="row">
               <input type="text" class="count count-secondary" name="count_secondary" size="2" /> # of secondary items
+
+              <div class="pull-right custom-total-action">
+                <button class="count-all count-all-secondary">All</button>
+              </div>
             </div>
             <div class="row">
               <input type="text" class="count count-light" name="count_light" size="2" /> # of light source items
+
+              <div class="pull-right custom-total-action">
+                <button class="count-all count-all-light">All</button>
+              </div>
             </div>
             <div class="row">
               <input type="text" class="count count-map" name="count_map" size="2" /> # of maps
+
+              <div class="pull-right custom-total-action">
+                <button class="count-all count-all-map">All</button>
+              </div>
             </div>
           </div>
 
@@ -270,8 +290,8 @@
   </p>
 
   <p class="bg-info tip-builtin">
-    <span class="glyphicon glyphicon-info-sign"></span> If the map gives you access to items that the randomizer didn't,
-    <span class="indent"> use them! That's part of the fun.</span>
+    <span class="glyphicon glyphicon-info-sign"></span> If the map gives you access to items that the randomizer didn't,<br />
+    <span class="tip-indent"> use them! That's part of the fun.</span>
     <a class="glyphicon glyphicon-remove hide-tip-builtin"></a>
   </p>
 

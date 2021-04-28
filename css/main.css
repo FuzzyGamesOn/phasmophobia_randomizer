@@ -111,7 +111,7 @@ h4 a {
     top: 3px !important; /* override the style from .glyphicon */
 }
 
-h4 a.eliminate {
+h4 a.eliminate, h4 a.loss {
     color: #e8361a;
 }
 
@@ -237,6 +237,7 @@ div.actions {
 }
 
 p.bg-info {
+    position: relative;
     display: none;
     margin: 0 auto;
     width: 500px;
@@ -245,14 +246,18 @@ p.bg-info {
     background-color: #81c4f7;
     border-radius: 10px;
     color: #074575;
+    margin-bottom: 10px;
 }
 
 p.bg-info span.glyphicon-info-sign {
     margin-right: 8px;
 }
 
-p.bg-info span.glyphicon-remove {
-    margin-top: 2px;
+p.bg-info a.glyphicon-remove {
+    position: absolute;
+    display: block;
+    top: 13px;
+    right: 10px;
 }
 
 div.clear {
@@ -274,6 +279,10 @@ button.btn-info {
 
 span.indent {
     margin-left: 45px;
+}
+
+span.tip-indent {
+    margin-left: 25px;
 }
 
 #view_toggle {
@@ -317,9 +326,16 @@ div.item.no-float {
 
 div.dropdown {
     float: right;
-    margin-top: -10px;
-    margin-right: 105px;
+    margin-top: -15px;
+    margin-right: 103px;
     display: inline;
+}
+
+div.dropdown select {
+    color: #eee;
+    background-color: #444;
+    border: 1px solid gray;
+    padding: 3px;
 }
 
 div.dropdown .btn {
@@ -342,4 +358,8 @@ div.settings {
 #view_toggle_heading {
     font-weight: bolder;
     margin-left: 7px;
+}
+
+div.custom-total-action {
+    margin-right: 320px;
 }

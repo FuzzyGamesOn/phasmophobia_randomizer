@@ -113,6 +113,41 @@ $(function () {
         if ($(this).hasClass('reroll-map')) rerollItems('map');
     });
 
+    $('a.loss-primary, a.loss-secondary, a.loss-light, a.loss-map').on('click', function () {
+        if ($(this).hasClass('loss-primary')) untoggleItem('primary');
+        if ($(this).hasClass('loss-secondary')) untoggleItem('secondary');
+        if ($(this).hasClass('loss-light')) untoggleItem('light');
+        if ($(this).hasClass('loss-map')) untoggleItem('map');
+    });
+
+    $('button.count-all').on('click', function () {
+        if ($(this).hasClass('count-all-primary')) {
+            let category = 'primary';
+            let total_items = $('#' + category + '_items').find('div.item').length;
+
+            $('input.count-' + category).val(total_items);
+        }
+
+        if ($(this).hasClass('count-all-secondary')) {
+            let category = 'secondary';
+            let total_items = $('#' + category + '_items').find('div.item').length;
+
+            $('input.count-' + category).val(total_items);
+        }
+
+        if ($(this).hasClass('count-all-light')) {
+            let total_items = $('#light_sources').find('div.item').length;
+
+            $('input.count-light').val(total_items);
+        }
+
+        if ($(this).hasClass('count-all-map')) {
+            let total_items = $('#maps').find('div.item').length;
+
+            $('input.count-map').val(total_items);
+        }
+    });
+
     $('#view_toggle .btn').click(function () {
         let toggle_value = 'all';
 
@@ -402,6 +437,40 @@ function rerollItems(category) {
     }
 }
 
+function untoggleItem(category) {
+    let list = '';
+
+    switch (category) {
+        case 'primary':
+            list = '#primary_items';
+            
+            break;
+
+        case 'secondary':
+            list = '#secondary_items';
+                        
+            break;
+
+        case 'light':
+            list = '#light_sources';
+                        
+            break;
+
+        case 'map':
+            list = '#maps';
+                        
+            break;
+    }
+
+    let active_items = $(list).find('div.item.active');
+
+    if (active_items.length > 0) {
+        let item_to_disable = Math.ceil(Math.random() * (active_items.length - 1));
+
+        $(list).find('div.item.active:eq(' + item_to_disable + ')').removeClass('active');
+    }
+}
+
 function setPrimaryItems(is_photo = false) {
     let items = _getItemsFromDOM('#primary_items');
     let quantity = Quantity[Settings.difficulty].primary;
@@ -420,7 +489,7 @@ function setPrimaryItems(is_photo = false) {
         quantity = 1;
     }
 
-    items = _randomSliceArray(items, quantity);
+    items = _randomSliceArray(items, quantity, 'primary');
 
     activateItems(items, is_photo);
 }
@@ -458,7 +527,7 @@ function setSecondaryItems(is_photo = false) {
             quantity = 1;
         }
 
-        items = _randomSliceArray(items, quantity);
+        items = _randomSliceArray(items, quantity, 'secondary');
     }
 
     activateItems(items, is_photo);
@@ -477,6 +546,13 @@ function setSecondaryItems(is_photo = false) {
         }
 
         $('#headcam').addClass('active');
+    }
+
+    // earlier, we remove glowstick because we don't want it to take
+    // a secondary item slot if uv is active. but if uv is active, 
+    // then you should be able to use the glowstick as well.
+    if ($('#uv').hasClass('active')) {
+        $('#glowstick').removeClass('active').addClass('active');
     }
 
     if (Settings.include_tripod) {
@@ -506,7 +582,7 @@ function setLightSources() {
             quantity = Settings.count_light || 0;
         }
 
-        items = _randomSliceArray(items, quantity);
+        items = _randomSliceArray(items, quantity, 'light_sources');
 
         // only candle for hard
         if (Settings.difficulty == 'hard') {
@@ -521,9 +597,17 @@ function setLightSources() {
 
     activateItems(items);
 
+    if (
+        ($('#flash').hasClass('active') || $('#strongflash').hasClass('active')) &&
+        !$('#candle').hasClass('active') 
+    ) {
+        $('#candle').addClass('active');
+    }
+
     if ($('#smudge').hasClass('active') || $('#candle').hasClass('active')) {
         $('#lighter').removeClass('active').addClass('active'); // lazy
     }
+
 }
 
 function setMaps() {
@@ -554,7 +638,7 @@ function setMaps() {
             quantity = Settings.count_map || 0;
         }
 
-        items = _randomSliceArray(items, quantity);
+        items = _randomSliceArray(items, quantity, 'maps');
     }
 
     activateItems(items);
@@ -664,7 +748,14 @@ function _getItemsFromDOM(div_id) {
     return items;
 }
 
-function _randomSliceArray(arr, len) {
+let last_choices = {
+    'primary': [],
+    'secondary': [],
+    'light_sources': [],
+    'maps': []
+};
+
+function _randomSliceArray(arr, len, arr_type) {
     if (!len) {
         len = 1;
     }
@@ -694,5 +785,26 @@ function _randomSliceArray(arr, len) {
         return 0.5 - Math.random(); 
     });
 
-    return shuffled.slice(0, len);
+    let choices = shuffled.slice(0, len);
+
+    if (len == 1) {        
+        if (last_choices[arr_type].length > 2) {
+            last_choices[arr_type].shift(); // pop off the oldest item from the front of the list
+        }
+
+        // TODO: better checking for dupes in last used list
+        if (last_choices[arr_type].indexOf(choices[0]) > -1) {
+            choices = shuffled.slice(1, 2);
+
+            if (last_choices[arr_type].indexOf(choices[1]) > -1) {
+                choices = shuffled.slice(2, 3);
+            }
+        }
+
+        console.log(shuffled, choices);
+
+        last_choices[arr_type].push(choices[0]);
+    }
+
+    return choices;
 }
