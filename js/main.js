@@ -384,9 +384,15 @@ function activateItems(elems, is_photo = false) {
         );
     }
 
-    $('#irlight, #motion, #sound').each(function () {
+    $('#motion, #sound').each(function () {
         if ($(this).hasClass('active')) {
             $(this).html($(this).html().replace(/Sensor[\!]*/, 'Sensor!!'));
+        }
+    });
+
+    $('#irlight').each(function () {
+        if ($(this).hasClass('active')) {
+            $(this).html($(this).html().replace(/Sensor[\!]*/, 'Sensor!!!!'));
         }
     });
 }
@@ -528,10 +534,15 @@ function setSecondaryItems(is_photo = false) {
         items = items.filter(function (a) {
             return a !== 'sanity';
         });
+    }
 
-        if (Settings.difficulty == 'insane') {
-            $('#sanity').addClass('active');
-        }
+    if (Settings.difficulty == 'insane') {
+        items = items.filter(function (a) {
+            return ['crucifix', 'photo', 'glowstick'].indexOf(a) === -1;
+        });
+        
+        // could add this back in if too difficult
+        // $('#crucifix').addClass('optional');
     }
 
     if (Settings.random_secondary === true) {
@@ -771,7 +782,9 @@ function checkRecentChanges() {
                     "Added a changelog and notification about active development.",
                     "Removed Grafton from difficult map list because it is no longer a death trap.",
                     "Remove automatic enabling of candle and glowstick, as the QoL change caused some confusion.",
-                    "Lighter and head camera are a different color when required by other items to indicate that they're optional or not included in settings."
+                    "Lighter and head camera are a different color when required by other items to indicate that they're optional or not included in settings.",
+                    "Fixed bug where IR Light Sensor lacked sufficient enthusiasm (exclamation points).",
+                    "Adjusted Insane difficulty to be more difficult by excluding hunt prevention items, excluding alternative evidence items, and reducing secondary item quantities."
                 ]
             }
         ]);

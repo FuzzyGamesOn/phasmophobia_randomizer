@@ -146,8 +146,7 @@ div.item {
     position: relative;
     border: 2px #333 solid;
     margin: 5px;
-    padding-top: 8px;
-    padding-bottom: 5px;
+    padding: 8px 12px 5px 12px;
     background-color: #1f1c1c;
     color: #999;
 }

@@ -16,7 +16,7 @@ const Quantity = {
 
     insane: {
         primary: 1,
-        secondary: 4
+        secondary: 3
     },
 
     custom: {
