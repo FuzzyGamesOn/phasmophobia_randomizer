@@ -1,0 +1,11 @@
+[
+    {
+        "version": "1.1",
+
+        "changes": [
+            "Added a changelog and notification about active development.",
+            "Removed Grafton from difficult map list because it is no longer a death trap.",
+            "Remove automatic enabling of candle and glowstick, as the QoL change caused some confusion."
+        ]
+    }
+]

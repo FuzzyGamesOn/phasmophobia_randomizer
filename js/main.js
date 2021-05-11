@@ -5,6 +5,7 @@ $(function () {
     $('body').addClass(getDefaultBackgroundClass());
     $('h4 a').hide(); // hide elimination icons until randomize is clicked
 
+    checkRecentChanges();
     checkDevStream();
 
     var devStreamTimer = setInterval(checkDevStream, 30000);
@@ -186,6 +187,10 @@ $(function () {
 
     $('#stream_button').on('click', function () {
         window.open('https://twitch.tv/fuzzygames_', '_blank');
+    });
+
+    $('#changelog_button').on('click', function () {
+        $('#changelog_modal').modal('show');
     });
 
     $('#settings_button').on('click', function () {
@@ -511,11 +516,13 @@ function setSecondaryItems(is_photo = false) {
         return a !== 'lighter' && a !== 'headcam';
     });
     
+    /* prevented glowstick from being in pool, but not completely random
     if ($('#uv').hasClass('active')) {
         items = items.filter(function (a) {
             return a !== 'glowstick';
         }); 
     }
+    */
     
     if (Settings.difficulty == 'easy' || Settings.difficulty == 'insane') {
         items = items.filter(function (a) {
@@ -555,13 +562,6 @@ function setSecondaryItems(is_photo = false) {
         }
 
         $('#headcam').addClass('active');
-    }
-
-    // earlier, we remove glowstick because we don't want it to take
-    // a secondary item slot if uv is active. but if uv is active, 
-    // then you should be able to use the glowstick as well.
-    if ($('#uv').hasClass('active')) {
-        $('#glowstick').removeClass('active').addClass('active');
     }
 
     if (Settings.include_tripod) {
@@ -606,13 +606,6 @@ function setLightSources() {
 
     activateItems(items);
 
-    if (
-        ($('#flash').hasClass('active') || $('#strongflash').hasClass('active')) &&
-        !$('#candle').hasClass('active') 
-    ) {
-        $('#candle').addClass('active');
-    }
-
     if ($('#smudge').hasClass('active') || $('#candle').hasClass('active')) {
         $('#lighter').removeClass('active').addClass('active'); // lazy
     }
@@ -640,7 +633,8 @@ function setMaps() {
 
         if (['hard', 'insane'].indexOf(Settings.difficulty) > -1) {
             // only use medium or higher maps, plus the deadliest map in the game
-            items = ['highschool', 'prison', 'asylum', 'grafton'];
+            // rip grafton being the deadliest map in the game
+            items = ['highschool', 'prison', 'asylum'];
         }
 
         if (Settings.difficulty == 'custom') {
@@ -747,6 +741,42 @@ function resetRandomizer() {
     $('span.eliminate-count').html('');
     $('.actions-secondary-photo').hide();
     $('h4 a').show();
+}
+
+function checkRecentChanges() {
+    let callback = function (data) {
+        if (!data) { // being lazy
+            return false;
+        }
+
+        let current_version = data[0];
+        let modal_contents = $('#changelog_modal div.modal-body');
+
+        $('<h4 />').html(current_version.version).appendTo(modal_contents);
+
+        let change_list = $('<ul />').appendTo(modal_contents);
+
+        for (let changed of current_version.changes) {
+            $('<li />').html(changed).appendTo(change_list);
+        }
+    };
+
+    if (LOCAL) {
+        callback([
+            {
+                "version": "1.1",
+        
+                "changes": [
+                    "Added a changelog and notification about active development.",
+                    "Removed Grafton from difficult map list because it is no longer a death trap.",
+                    "Remove automatic enabling of candle and glowstick, as the QoL change caused some confusion."
+                ]
+            }
+        ]);
+    }
+    else {
+        $.get('changelog.json', callback, 'json');
+    }
 }
 
 function checkDevStream() {
