@@ -1,8 +1,13 @@
 var PHOTO_RANDO = false;
+var LOCAL = (window.location.host === ''); // not fuzzygameson.github.io
 
 $(function () {
     $('body').addClass(getDefaultBackgroundClass());
     $('h4 a').hide(); // hide elimination icons until randomize is clicked
+
+    checkDevStream();
+
+    var devStreamTimer = setInterval(checkDevStream, 30000);
 
     $('#ghost').on('change', function () {
         let evidences = {
@@ -742,6 +747,32 @@ function resetRandomizer() {
     $('span.eliminate-count').html('');
     $('.actions-secondary-photo').hide();
     $('h4 a').show();
+}
+
+function checkDevStream() {
+    let callback = function (data) {
+        if (!data) { // being lazy
+            return false;
+        }
+
+        if (data.dev_stream === true) {
+            $('#changelog_button').hide();
+            $('#stream_button').show();
+        }
+        else {
+            $('#stream_button').hide();
+            $('#changelog_button').show();
+        }
+    };
+
+    if (LOCAL) {
+        callback({
+            'dev_stream': false
+        });
+    }
+    else {
+        $.get('settings.json', callback, 'json');
+    }
 }
 
 function _getItemsFromDOM(div_id) {

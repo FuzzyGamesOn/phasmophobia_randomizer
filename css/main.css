@@ -284,14 +284,9 @@ button.btn-info {
     margin-left: 10px;
 }
 
-button.btn-info:hover {
-    background-color: #bbb;
-    color: #222;
-}
-
-button.btn-info.settings-button, button.btn-info.stream-button {
+button.btn-info.settings-button, button.btn-info.stream-button, button.btn-info.changelog-button {
     border: 1px solid #444;
-    background: transparent;
+    background-color: transparent;
 }
 
 button.btn-info.stream-button {
@@ -299,12 +294,12 @@ button.btn-info.stream-button {
     color: #b3301d;
 }
 
-button.btn-info.stream-button:hover {
-    background-color: #2e0802;
+button.btn-info.settings-button:hover, button.btn-info.changelog-button:hover {
+    background-color: #222;
 }
 
-button.btn-info.settings-button:hover {
-    background: transparent;
+button.btn-info.stream-button:hover {
+    background-color: #2e0802;
 }
 
 button.btn-info i.bi, button.btn-info span.glyphicon {
