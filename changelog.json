@@ -5,7 +5,8 @@
         "changes": [
             "Added a changelog and notification about active development.",
             "Removed Grafton from difficult map list because it is no longer a death trap.",
-            "Remove automatic enabling of candle and glowstick, as the QoL change caused some confusion."
+            "Remove automatic enabling of candle and glowstick, as the QoL change caused some confusion.",
+            "Lighter and head camera are a different color when required by other items to indicate that they're optional or not included in settings."
         ]
     }
 ]

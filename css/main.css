@@ -163,6 +163,13 @@ div.item.active {
     border-color: #1d7dde;
 }
 
+div.item.optional {
+    background-color: #525c05;
+    color: #b7cf08;
+    font-weight: bolder;
+    border-color: #b7cf08;
+}
+
 div.item.disabled {
     background-color: #360902;
     color: #b3301d;

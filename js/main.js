@@ -354,7 +354,7 @@ function applySettings() {
 }
 
 function clearItems() {
-    $('div.item').removeClass('active').removeClass('disabled');
+    $('div.item').removeClass('active').removeClass('disabled').removeClass('optional');
 
     $('#tripod').removeClass('col-md-5').addClass('col-md-3').html(
         $('#tripod').html().replace('Emotional Support Tripod', 'Tripod')
@@ -561,7 +561,7 @@ function setSecondaryItems(is_photo = false) {
             $('#headcam').addClass('new');
         }
 
-        $('#headcam').addClass('active');
+        $('#headcam').addClass('optional');
     }
 
     if (Settings.include_tripod) {
@@ -607,9 +607,10 @@ function setLightSources() {
     activateItems(items);
 
     if ($('#smudge').hasClass('active') || $('#candle').hasClass('active')) {
-        $('#lighter').removeClass('active').addClass('active'); // lazy
+        $('#lighter')
+            .removeClass('active').removeClass('optional')
+            .addClass('optional'); // lazy
     }
-
 }
 
 function setMaps() {
@@ -769,7 +770,8 @@ function checkRecentChanges() {
                 "changes": [
                     "Added a changelog and notification about active development.",
                     "Removed Grafton from difficult map list because it is no longer a death trap.",
-                    "Remove automatic enabling of candle and glowstick, as the QoL change caused some confusion."
+                    "Remove automatic enabling of candle and glowstick, as the QoL change caused some confusion.",
+                    "Lighter and head camera are a different color when required by other items to indicate that they're optional or not included in settings."
                 ]
             }
         ]);
