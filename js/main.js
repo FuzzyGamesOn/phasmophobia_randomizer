@@ -185,6 +185,13 @@ $(function () {
         $('p.tip-builtin').hide();
     });
 
+    $('a.hide-tip-elim').on('click', function () {
+        Settings.commitSingle('tip_elim', false);
+        Settings.store();
+
+        $('p.tip-elim').hide();
+    });
+
     $('#stream_button').on('click', function () {
         window.open('https://twitch.tv/fuzzygames_', '_blank');
     });
@@ -350,6 +357,10 @@ function applySettings() {
 
     if (Settings.tip_builtin === true) {
         $('p.tip-builtin').show().find('a.glyphicon-remove').css({ 'float': 'right' });
+    }
+
+    if (Settings.tip_elim === true) {
+        $('p.tip-elim').show().find('a.glyphicon-remove').css({ 'float': 'right' });
     }
 }
 
@@ -784,7 +795,8 @@ function checkRecentChanges() {
                     "Remove automatic enabling of candle and glowstick, as the QoL change caused some confusion.",
                     "Lighter and head camera are a different color when required by other items to indicate that they're optional or not included in settings.",
                     "Fixed bug where IR Light Sensor lacked sufficient enthusiasm (exclamation points).",
-                    "Adjusted Insane difficulty to be more difficult by excluding hunt prevention items, excluding alternative evidence items, and reducing secondary item quantities."
+                    "Adjusted Insane difficulty to be more difficult by excluding hunt prevention items, excluding alternative evidence items, and reducing secondary item quantities.",
+                    "Added a tip about evidence elimination features available in the randomizer."
                 ]
             }
         ]);

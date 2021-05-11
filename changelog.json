@@ -8,7 +8,8 @@
             "Remove automatic enabling of candle and glowstick, as the QoL change caused some confusion.",
             "Lighter and head camera are a different color when required by other items to indicate that they're optional or not included in settings.",
             "Fixed bug where IR Light Sensor lacked sufficient enthusiasm (exclamation points).",
-            "Adjusted Insane difficulty to be more difficult by excluding hunt prevention items, excluding alternative evidence items, and reducing secondary item quantities."
+            "Adjusted Insane difficulty to be more difficult by excluding hunt prevention items, excluding alternative evidence items, and reducing secondary item quantities.",
+            "Added a tip about evidence elimination features available in the randomizer."
         ]
     }
 ]

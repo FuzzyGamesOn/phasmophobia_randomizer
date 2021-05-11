@@ -111,7 +111,7 @@ h4 a {
     top: 3px !important; /* override the style from .glyphicon */
 }
 
-h4 a.eliminate, h4 a.loss {
+h4 a.eliminate, h4 a.loss, a.glyphicon-ban-circle {
     color: #e8361a;
 }
 
