@@ -8,7 +8,9 @@ $(function () {
     checkRecentChanges();
     checkDevStream();
 
-    var devStreamTimer = setInterval(checkDevStream, 30000);
+    // intentionally global
+    devStreamTimer = setInterval(checkDevStream, 30000);
+    devStreamVisibilityTimer = null;
 
     $('#ghost').on('change', function () {
         let evidences = {
@@ -815,10 +817,22 @@ function checkDevStream() {
         if (data.dev_stream === true) {
             $('#changelog_button').hide();
             $('#stream_button').show();
+
+            devStreamVisibilityTimer = setInterval(function () {
+                $('#stream_button').animate({
+                    'opacity': 0.5
+                }, 700).delay(200).animate({
+                    'opacity': 1.0
+                }, 700);
+            }, 2500);
         }
         else {
             $('#stream_button').hide();
             $('#changelog_button').show();
+
+            if (typeof(devStreamVisibilityTimer) !== 'undefined') {
+                clearInterval(devStreamVisibilityTimer);
+            }
         }
     };
 
