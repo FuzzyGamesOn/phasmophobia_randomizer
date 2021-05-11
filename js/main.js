@@ -194,6 +194,13 @@ $(function () {
         $('p.tip-elim').hide();
     });
 
+    $('a.hide-tip-auto').on('click', function () {
+        Settings.commitSingle('tip_auto', false);
+        Settings.store();
+
+        $('p.tip-auto').hide();
+    });
+
     $('#stream_button').on('click', function () {
         window.open('https://twitch.tv/fuzzygames_', '_blank');
     });
@@ -372,6 +379,10 @@ function applySettings() {
 
     if (Settings.tip_elim === true) {
         $('p.tip-elim').show().find('a.glyphicon-remove').css({ 'float': 'right' });
+    }
+
+    if (Settings.tip_auto === true) {
+        $('p.tip-auto').show().find('a.glyphicon-remove').css({ 'float': 'right' });
     }
 }
 

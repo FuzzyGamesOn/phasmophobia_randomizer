@@ -7,6 +7,7 @@ const Settings = {
     tip_icons: null,
     tip_builtin: null,
     tip_elim: null,
+    tip_auto: null,
     include_tripod: null,
     count_primary: '',
     count_secondary: '',
@@ -46,6 +47,10 @@ const Settings = {
             params.tip_elim = false;
         }
 
+        if (params.tip_auto !== true && params.tip_auto !== false) {
+            params.tip_auto = false;
+        }
+
         if (params.include_tripod !== true && params.include_tripod !== false) {
             params.include_tripod = false;
         }
@@ -58,6 +63,7 @@ const Settings = {
         this.tip_icons = params.tip_icons;
         this.tip_builtin = params.tip_builtin;
         this.tip_elim = params.tip_elim;
+        this.tip_auto = params.tip_auto;
 
         this.count_primary = params.count_primary || '';
         this.count_secondary = params.count_secondary || '';
@@ -81,6 +87,7 @@ const Settings = {
         this.tip_icons = Storage.get('tip_icons');
         this.tip_builtin = Storage.get('tip_builtin');
         this.tip_elim = Storage.get('tip_elim');
+        this.tip_auto = Storage.get('tip_auto');
         this.include_tripod = Storage.get('include_tripod');
         
         this.count_primary = Storage.get('count_primary') || '';
@@ -120,6 +127,10 @@ const Settings = {
             this.tip_elim = true;
         }
 
+        if (this.tip_auto == null) {
+            this.tip_auto = true;
+        }
+
         if (this.include_tripod == null) {
             this.include_tripod = false;
         }
@@ -140,6 +151,7 @@ const Settings = {
         Storage.set('tip_icons', this.tip_icons);
         Storage.set('tip_builtin', this.tip_builtin);
         Storage.set('tip_elim', this.tip_elim);
+        Storage.set('tip_auto', this.tip_auto);
 
         Storage.set('include_tripod', this.include_tripod);
 
