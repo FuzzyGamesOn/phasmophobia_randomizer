@@ -274,6 +274,15 @@ $(function () {
         }
     });
 
+    $('div.item').on('click', function () {
+        if ($(this).hasClass('active') || $(this).hasClass('optional')) {
+            $(this).removeClass('active').removeClass('optional');
+        }
+        else {
+            $(this).addClass('active');
+        }
+    });
+
     $('input.random-secondary').on('change', function () {
         if ($(this).prop('checked')) {
             $('#secondary_items_heading, #secondary_items').show();
@@ -798,7 +807,8 @@ function checkRecentChanges() {
                     "Lighter and head camera are a different color when required by other items to indicate that they're optional or not included in settings.",
                     "Fixed bug where IR Light Sensor lacked sufficient enthusiasm (exclamation points).",
                     "Adjusted Insane difficulty to be more difficult by excluding hunt prevention items, excluding alternative evidence items, and reducing secondary item quantities.",
-                    "Added a tip about evidence elimination features available in the randomizer."
+                    "Added a tip about evidence elimination features available in the randomizer.",
+                    "Added click functionality for toggling individual randomizer selections on or off."
                 ]
             }
         ]);

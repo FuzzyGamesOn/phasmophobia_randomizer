@@ -151,6 +151,10 @@ div.item {
     color: #999;
 }
 
+div.item:hover {
+    cursor: pointer;
+}
+
 div.item span.disabled, div.item span.new {
     display: none;
 }
