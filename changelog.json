@@ -10,7 +10,8 @@
             "Fixed bug where IR Light Sensor lacked sufficient enthusiasm (exclamation points).",
             "Adjusted Insane difficulty to be more difficult by excluding hunt prevention items, excluding alternative evidence items, and reducing secondary item quantities.",
             "Added a tip about evidence elimination features available in the randomizer.",
-            "Added click functionality for toggling individual randomizer selections on or off."
+            "Added click functionality for toggling individual randomizer selections on or off.",
+            "Added a tip about optional or included items like the lighter and head camera."
         ]
     }
 ]
