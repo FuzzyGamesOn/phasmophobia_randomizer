@@ -797,7 +797,7 @@ function checkRecentChanges() {
         let current_version = data[0];
         let modal_contents = $('#changelog_modal div.modal-body');
 
-        $('<h4 />').html(current_version.version).appendTo(modal_contents);
+        $('<h4 />').html(current_version.date).appendTo(modal_contents);
 
         let change_list = $('<ul />').appendTo(modal_contents);
 
@@ -810,6 +810,7 @@ function checkRecentChanges() {
         callback([
             {
                 "version": "1.1",
+                "date": "2021-05-11",
         
                 "changes": [
                     "Added a changelog and notification about active development.",
