@@ -289,13 +289,30 @@ button.btn-info:hover {
     color: #222;
 }
 
-button.btn-info.settings-button {
+button.btn-info.settings-button, button.btn-info.stream-button {
     border: 1px solid #444;
     background: transparent;
 }
 
+button.btn-info.stream-button {
+    border: 1px solid #b3301d;
+    color: #b3301d;
+}
+
+button.btn-info.stream-button:hover {
+    background-color: #2e0802;
+}
+
 button.btn-info.settings-button:hover {
     background: transparent;
+}
+
+button.btn-info i.bi, button.btn-info span.glyphicon {
+    margin-left: 2px;
+}
+
+button.btn-info span.glyphicon {
+    vertical-align: baseline;
 }
 
 button.btn-close {
@@ -380,8 +397,9 @@ div.dropdown .btn {
 }
 
 div.settings {
-    padding-top: 5px;
-    padding-right: 15px;
+    position: absolute;
+    top: 25px;
+    right: 15px;
 }
 
 #view_toggle_container {

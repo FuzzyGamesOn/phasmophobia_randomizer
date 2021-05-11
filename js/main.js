@@ -179,6 +179,10 @@ $(function () {
         $('p.tip-builtin').hide();
     });
 
+    $('#stream_button').on('click', function () {
+        window.open('https://twitch.tv/fuzzygames_', '_blank');
+    });
+
     $('#settings_button').on('click', function () {
         $('#settings_modal').modal('show');
 
