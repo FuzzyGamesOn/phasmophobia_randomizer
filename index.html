@@ -69,6 +69,24 @@
     <button type="button" id="randomize_button" class="btn btn-success action"><i class="bi bi-arrow-repeat"></i> Randomize</button>
     <button type="button" id="randomize_photo_button" class="btn btn-success action"><i class="bi bi-camera"></i> Photo Randomizer</button>
 
+    <div id="ghost_dropdown" class="dropdown">
+      <select name="ghost" id="ghost">
+        <option value="none">Ghost Evidence Randomizer</option>
+        <option value="banshee">Banshee (Evidence Items)</option>
+        <option value="demon">Demon (Evidence Items)</option>
+        <option value="jinn">Jinn (Evidence Items)</option>
+        <option value="mare">Mare (Evidence Items)</option>
+        <option value="oni">Oni (Evidence Items)</option>
+        <option value="phantom">Phantom (Evidence Items)</option>
+        <option value="poltergeist">Poltergeist (Evidence Items)</option>
+        <option value="revenant">Revenant (Evidence Items)</option>
+        <option value="shade">Shade (Evidence Items)</option>
+        <option value="spirit">Spirit (Evidence Items)</option>
+        <option value="wraith">Wraith (Evidence Items)</option>
+        <option value="yurei">Yurei (Evidence Items)</option>
+      </select>
+    </div>
+
     <div class="clear"><!-- x --></div>
 
     <div class="actions-secondary pull-right">
@@ -117,24 +135,6 @@
     <h4 id="view_heading"></h4>
 
     <div>
-      <div class="dropdown btn">
-        <select name="ghost" id="ghost">
-          <option value="none">Optional: Select Ghost</option>
-          <option value="banshee">Banshee</option>
-          <option value="demon">Demon</option>
-          <option value="jinn">Jinn</option>
-          <option value="mare">Mare</option>
-          <option value="oni">Oni</option>
-          <option value="phantom">Phantom</option>
-          <option value="poltergeist">Poltergeist</option>
-          <option value="revenant">Revenant</option>
-          <option value="shade">Shade</option>
-          <option value="spirit">Spirit</option>
-          <option value="wraith">Wraith</option>
-          <option value="yurei">Yurei</option>
-        </select>
-      </div>
-
       <h4 id="primary_items_heading" class="main">
         Primary Items
         <a class="glyphicon glyphicon-ban-circle eliminate eliminate-primary" aria-hidden="true" title="Eliminate current primary items and re-roll"></a>

@@ -62,6 +62,8 @@ $(function () {
 
         setLightSources();
         setMaps();
+        
+        $('#ghost').val('none');
 
         PHOTO_RANDO = true;
     });
@@ -860,7 +862,9 @@ function checkRecentChanges() {
                 "date": "2021-05-20",
         
                 "changes": [
-                    "Added image overlay functionality to settings for concise on-stream overlay."
+                    "Added image overlay functionality to settings for concise on-stream overlay.",
+                    "Updated recent changes list to show multiple dates of changes.",
+                    "Moved and re-styled ghost evidence randomizer option to be consistent."
                 ]
             },
         

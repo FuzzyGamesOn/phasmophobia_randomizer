@@ -213,6 +213,21 @@ div.actions {
     right: 15px;
 }
 
+#ghost_dropdown {
+    display: block;
+    text-align: right;
+    padding: 10px 0 10px;
+}
+
+#ghost_dropdown select {
+    color: #eee;
+    background-color: #444;
+    border: 1px solid gray;
+    padding: 6px 10px;
+    border-radius: 4px;
+    background-color: #2153a3;
+}
+
 div.actions-secondary {
     display: block;
     margin-top: 10px;
@@ -382,25 +397,6 @@ div.item.no-float {
                  -2px -2px 0 #111;
 }
 
-div.dropdown {
-    float: right;
-    margin-top: -15px;
-    margin-right: 103px;
-    display: inline;
-}
-
-div.dropdown select {
-    color: #eee;
-    background-color: #444;
-    border: 1px solid gray;
-    padding: 3px;
-}
-
-div.dropdown .btn {
-    padding-top: 2px;
-    padding-bottom: 2px;
-}
-
 div.settings {
     position: absolute;
     top: 25px;
@@ -479,10 +475,14 @@ body.overlay #container {
 }
 
 body.overlay #container h4 {
-    visibility: hidden;
-    height: 10px;
-    padding: 0;
+    display: block;
+    font-size: 12px !important;
+    padding: 5px 0 5px 0;
     margin: 0;
+}
+
+body.overlay #container h4 a.glyphicon {
+    font-size: 14px;
 }
 
 div.item.overlay-square {

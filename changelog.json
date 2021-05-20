@@ -5,7 +5,8 @@
 
         "changes": [
             "Added image overlay functionality to settings for concise on-stream overlay.",
-            "Updated recent changes list to show multiple dates of changes."
+            "Updated recent changes list to show multiple dates of changes.",
+            "Moved and re-styled ghost evidence randomizer option to be consistent."
         ]
     },
 
