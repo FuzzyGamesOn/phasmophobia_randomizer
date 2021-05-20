@@ -260,6 +260,14 @@ $(function () {
             $("input[name='layout_chroma']").removeAttr('checked');
         }
 
+        // set layout overlay from settings
+        if (Settings.layout_overlay) {
+            $("input[name='layout_overlay']").attr('checked', 'checked');
+        }
+        else {
+            $("input[name='layout_overlay']").removeAttr('checked');
+        }
+
         // set preference for always including tripod from settings
         if (Settings.include_tripod) {
             $("input[name='include_tripod']").attr('checked', 'checked');
@@ -328,6 +336,19 @@ $(function () {
         }
     });
 
+    $('input.layout-overlay').on('change', function () {
+        if ($(this).prop('checked')) {
+            $('body').addClass('overlay');
+
+            toggleOverlay('on');
+        }
+        else {
+            $('body').removeClass('overlay');
+
+            toggleOverlay('off');
+        }
+    });
+
     $('#save_settings_button').on('click', function () {
         Settings.commit({
             'difficulty': $('button.difficulty.active').attr('name').replace('difficulty_', ''),
@@ -335,6 +356,7 @@ $(function () {
             'random_light': $('input.random-light').prop('checked') ? true : false,
             'random_map': $('input.random-map').prop('checked') ? true : false,
             'layout_chroma': $('input.layout-chroma').prop('checked') ? true : false,
+            'layout_overlay': $('input.layout-overlay').prop('checked') ? true : false,
             'include_tripod': $('input.include-tripod').prop('checked') ? true : false,
             'count_primary': $('input.count-primary').val() || '',
             'count_secondary': $('input.count-secondary').val() || '',
@@ -355,6 +377,12 @@ $(function () {
 function applySettings() {
     if (Settings.layout_chroma === true) {
         $('body').addClass('chroma');
+    }
+
+    if (Settings.layout_overlay === true) {
+        $('body').addClass('overlay');
+
+        toggleOverlay('on');
     }
 
     if (Settings.random_secondary === false) {
@@ -389,12 +417,19 @@ function applySettings() {
 function clearItems() {
     $('div.item').removeClass('active').removeClass('disabled').removeClass('optional');
 
-    $('#tripod').removeClass('col-md-5').addClass('col-md-3').html(
-        $('#tripod').html().replace('Emotional Support Tripod', 'Tripod')
-    );
+    $('#tripod').removeClass('col-md-5').addClass('col-md-3')
+        .find('span.choice-text')
+        .html(
+            $('#tripod').find('span.choice-text')
+                .html().replace('Emotional Support Tripod', 'Tripod')
+        );
 
     $('#irlight, #motion, #sound').each(function () {
-        $(this).html($(this).html().replace(/Sensor[\!]*/, 'Sensor'));
+        $(this).find('span.choice-text')
+            .html(
+                $(this).find('span.choice-text')
+                    .html().replace(/Sensor[\!]*/, 'Sensor')
+            );
     });
 }
 
@@ -412,20 +447,31 @@ function activateItems(elems, is_photo = false) {
     }
 
     if (!$('#video').hasClass('active') && $('#tripod').hasClass('active')) {
-        $('#tripod').removeClass('col-md-3').addClass('col-md-5').html(
-            $('#tripod').html().replace(/^Tripod/, 'Emotional Support Tripod')
-        );
+        $('#tripod').removeClass('col-md-3').addClass('col-md-5')
+            .find('span.choice-text')
+            .html(
+                $('#tripod').find('span.choice-text')
+                    .html().replace(/^Tripod/, 'Emotional Support Tripod')
+            );
     }
 
     $('#motion, #sound').each(function () {
         if ($(this).hasClass('active')) {
-            $(this).html($(this).html().replace(/Sensor[\!]*/, 'Sensor!!'));
+            $(this).find('span.choice-text')
+                .html(
+                    $(this).find('span.choice-text')
+                        .html().replace(/Sensor[\!]*/, 'Sensor!!')
+                );
         }
     });
 
     $('#irlight').each(function () {
         if ($(this).hasClass('active')) {
-            $(this).html($(this).html().replace(/Sensor[\!]*/, 'Sensor!!!!'));
+            $(this).find('span.choice-text')
+                .html(
+                    $(this).find('span.choice-text')
+                        .html().replace(/Sensor[\!]*/, 'Sensor!!!!')
+                );
         }
     });
 }
@@ -794,20 +840,30 @@ function checkRecentChanges() {
             return false;
         }
 
-        let current_version = data[0];
-        let modal_contents = $('#changelog_modal div.modal-body');
+        for (version of data) {
+            let modal_contents = $('#changelog_modal div.modal-body');
 
-        $('<h4 />').html(current_version.date).appendTo(modal_contents);
+            $('<h4 />').html(version.date).appendTo(modal_contents);
 
-        let change_list = $('<ul />').appendTo(modal_contents);
+            let change_list = $('<ul />').appendTo(modal_contents);
 
-        for (let changed of current_version.changes) {
-            $('<li />').html(changed).appendTo(change_list);
+            for (let changed of version.changes) {
+                $('<li />').html(changed).appendTo(change_list);
+            }
         }
     };
 
     if (LOCAL) {
         callback([
+            {
+                "version": "1.2",
+                "date": "2021-05-20",
+        
+                "changes": [
+                    "Added image overlay functionality to settings for concise on-stream overlay."
+                ]
+            },
+        
             {
                 "version": "1.1",
                 "date": "2021-05-11",
@@ -866,6 +922,35 @@ function checkDevStream() {
     }
     else {
         $.get('settings.json', callback, 'json');
+    }
+}
+
+function toggleOverlay(toggle_status) {
+    let overlay_width_class = 'overlay-square';
+
+    switch (toggle_status) {
+        case 'on':
+            $('div.item.col-md-3')
+                .removeClass('col-md-3')
+                .addClass([overlay_width_class, 'old-md-3']);
+
+            $('div.item.col-md-4')
+                .removeClass('col-md-4')
+                .addClass([overlay_width_class, 'old-md-4']);
+
+            break;
+
+        case 'off':
+        default:
+            $('div.item.old-md-3')
+                .removeClass(['old-md-4', overlay_width_class])
+                .addClass('col-md-3');
+
+            $('div.item.old-md-4')
+                .removeClass(['old-md-4', overlay_width_class])
+                .addClass('col-md-4');
+
+            break;
     }
 }
 

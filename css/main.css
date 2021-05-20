@@ -461,3 +461,66 @@ div.setting-section-contents em {
     display: inline-block;
     margin-left: 17px;
 }
+
+#changelog_modal h4 {
+    margin-top: 20px;
+}
+
+#changelog_modal h4:nth-child(1) {
+    margin-top: 10px;
+}
+
+/**
+ * Overlay box styles
+ */
+
+body.overlay #container {
+    width: 300px;
+}
+
+body.overlay #container h4 {
+    visibility: hidden;
+    height: 10px;
+    padding: 0;
+    margin: 0;
+}
+
+div.item.overlay-square {
+    position: relative;
+    float: left; 
+    width: 64px;
+    height: 64px;
+    border-width: 3px;
+    padding: 0;
+}
+
+img.overlay-image {
+    display: none;
+    width: 58px;
+    height: 58px;
+    opacity: 0.75;
+}
+
+body.overlay img.overlay-image {
+    display: block;
+}
+
+body.overlay span.choice-text {
+    display: block;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    font-size: 10px;
+    z-index: 10;
+}
+
+body.overlay #thermo span.choice-text {
+    font-size: 9px;
+}
+
+body.overlay #thermo.active span.choice-text,
+body.overlay #thermo.optional span.choice-text,
+body.overlay #thermo.disabled span.choice-text,
+body.overlay #thermo.new span.choice-text {
+    font-size: 8px;
+}

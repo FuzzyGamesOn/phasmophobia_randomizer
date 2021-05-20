@@ -4,6 +4,7 @@ const Settings = {
     random_secondary: null,
     random_map: null,
     layout_chroma: null,
+    layout_overlay: null,
     tip_icons: null,
     tip_builtin: null,
     tip_elim: null,
@@ -35,6 +36,10 @@ const Settings = {
             params.layout_chroma = false;
         }
 
+        if (params.layout_overlay !== true && params.layout_overlay !== false) {
+            params.layout_overlay = false;
+        }
+
         if (params.tip_icons !== true && params.tip_icons !== false) {
             params.tip_icons = false;
         }
@@ -60,6 +65,7 @@ const Settings = {
         this.random_secondary = params.random_secondary;
         this.random_map = params.random_map;
         this.layout_chroma = params.layout_chroma;
+        this.layout_overlay = params.layout_overlay;
         this.tip_icons = params.tip_icons;
         this.tip_builtin = params.tip_builtin;
         this.tip_elim = params.tip_elim;
@@ -84,6 +90,7 @@ const Settings = {
         this.random_secondary = Storage.get('random_secondary');
         this.random_map = Storage.get('random_map');
         this.layout_chroma = Storage.get('layout_chroma');
+        this.layout_overlay = Storage.get('layout_overlay');
         this.tip_icons = Storage.get('tip_icons');
         this.tip_builtin = Storage.get('tip_builtin');
         this.tip_elim = Storage.get('tip_elim');
@@ -115,6 +122,10 @@ const Settings = {
             this.layout_chroma = false;
         }
 
+        if (this.layout_overlay == null) {
+            this.layout_overlay = false;
+        }
+
         if (this.tip_icons == null) {
             this.tip_icons = true;
         }
@@ -142,6 +153,7 @@ const Settings = {
         Storage.set('random_secondary', this.random_secondary);
         Storage.set('random_map', this.random_map);
         Storage.set('layout_chroma', this.layout_chroma);
+        Storage.set('layout_overlay', this.layout_overlay);
 
         Storage.set('count_primary', this.count_primary);
         Storage.set('count_secondary', this.count_secondary);
