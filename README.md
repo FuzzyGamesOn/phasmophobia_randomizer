@@ -27,7 +27,9 @@ Use the Issues tab at the top to report the bug! That gives me an organized way 
 
 ### "I love this! Thank you so much!"
 
-Aw, that's awesome! I'm glad you enjoyed it. :D If you want to donate even a small amount to show gratitude, [you should buy me a coffee](https://www.buymeacoffee.com/fuzzygames)!
+Aw, that's awesome! I'm glad you enjoyed it. :D 
+
+If you want to donate even a small amount to show gratitude, [you should buy me a coffee](https://www.buymeacoffee.com/fuzzygames)!
 
 ## Streaming overlay setup
 
