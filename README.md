@@ -42,12 +42,39 @@ If you use a different streaming software and would like to see instructions for
 ## Streaming overlay setup
  
  
+1. On the randomizer page, click the "Settings" button at the top right of the screen.
 ![Streaming overlay instructions, step 1](img/readme/chroma-instructions-1.png)
+
+2. Under "Layout Options", check the "Use Chroma Key background" checkbox. Underneath the option is the color code for the color key that you'll set up; copy the code (the code starts with # and has some letters/numbers) by highlighting it and doing either right-click and Copy or Ctrl + C.
+
 ![Streaming overlay instructions, step 2](img/readme/chroma-instructions-2.png)
+
+3. In Streamlabs OBS, click the plus icon beside the "Sources" section at the bottom. This will add a new source.
+
 ![Streaming overlay instructions, step 3](img/readme/chroma-instructions-3.png)
+
+4. Click the "Window Capture" source type under the "Standard" section of sources on the left, then click the Add Source button.
+
 ![Streaming overlay instructions, step 4](img/readme/chroma-instructions-4.png)
+
+5. Click the dropdown labelled "Window" and choose the option that includes the title "Phasmophobia Item Randomizer" beside the name of the web browser that you're currently using for the randomizer, then click the Done button.
+
 ![Streaming overlay instructions, step 5](img/readme/chroma-instructions-5.png)
+
+6. Now that the source is added to the "Sources" section at the bottom, right-click that newly added source and choose the "Filters" option.
+
 ![Streaming overlay instructions, step 6](img/readme/chroma-instructions-6.png)
+
+7. Click the plus icon on the left (under "Visual Presets") to add a new filter.
+
 ![Streaming overlay instructions, step 7](img/readme/chroma-instructions-7.png)
+
+8. Click the dropdown labelled "Filter type" and choose the "Color Key" option. For "Filter name", you can name it whatever you like. The default text is fine. Click the Done button after.
+
 ![Streaming overlay instructions, step 8](img/readme/chroma-instructions-8.png)
+
+9. Click the dropdown labelled "Key Color Type" and choose "Custom Color" from the dropdown. This will make a new option named "Key Color" appear. Click the "Key Color" dropdown and clear out the text in the "Hex" textbox below the color picker. Paste the color code that you copied in step 2 into this Hex textbox. Click the "Key Color" dropdown again (the area that shows the color code, an eye dropper, and a color box at the top) to close the dropdown. Click the Done button.
+
 ![Streaming overlay instructions, step 9](img/readme/chroma-instructions-9.png)
+
+Congrats, you should have a transparent randomizer interface now! If you'd like to only show the randomized items, etc., you can add a "Crop / Pad" filter using the same steps you used to add the "Color Key" filter in steps 6-8.
