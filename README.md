@@ -31,7 +31,10 @@ Aw, that's awesome! I'm glad you enjoyed it. :D
 
 If you want to donate even a small amount to show gratitude, [you should buy me a coffee](https://www.buymeacoffee.com/fuzzygames)!
 
+
+
 ## Streaming overlay setup
+
 
 ![Streaming overlay instructions, step 1](img/readme/chroma-instructions-1.png)
 ![Streaming overlay instructions, step 2](img/readme/chroma-instructions-2.png)
