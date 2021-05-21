@@ -43,6 +43,7 @@ If you use a different streaming software and would like to see instructions for
  
  
 1. On the randomizer page, click the "Settings" button at the top right of the screen.
+
 ![Streaming overlay instructions, step 1](img/readme/chroma-instructions-1.png)
 
 2. Under "Layout Options", check the "Use Chroma Key background" checkbox. Underneath the option is the color code for the color key that you'll set up; copy the code (the code starts with # and has some letters/numbers) by highlighting it and doing either right-click and Copy or Ctrl + C.
