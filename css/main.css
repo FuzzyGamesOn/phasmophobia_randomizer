@@ -548,6 +548,10 @@ body.overlay #thermo span.choice-text {
     font-size: 8px;
 }
 
+body.overlay #tanglewood span.choice-text {
+    font-size: 9px;
+}
+
 body.overlay #thermo.active span.choice-text,
 body.overlay #thermo.optional span.choice-text,
 body.overlay #thermo.disabled span.choice-text,
@@ -560,6 +564,13 @@ body.overlay #tripod.optional span.choice-text,
 body.overlay #tripod.disabled span.choice-text,
 body.overlay #tripod.new span.choice-text {
     font-size: 9px;
+}
+
+body.overlay #tanglewood.active span.choice-text,
+body.overlay #tanglewood.optional span.choice-text,
+body.overlay #tanglewood.disabled span.choice-text,
+body.overlay #tanglewood.new span.choice-text {
+    font-size: 8px;
 }
 
 body.overlay div.item.disabled span.disabled, 
