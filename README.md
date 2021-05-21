@@ -15,10 +15,28 @@ That's it! Just click the "Randomize" button and enjoy. :D
 
 If you want to customize your experience, use the "Settings" button to set specific options.
 
-## Potential issues
+## Streaming overlay setup
 
-### "My settings aren't being saved!"
+![Streaming overlay instructions, step 1](img/readme/chroma-instructions-1.png)
+![Streaming overlay instructions, step 2](img/readme/chroma-instructions-2.png)
+![Streaming overlay instructions, step 3](img/readme/chroma-instructions-3.png)
+![Streaming overlay instructions, step 4](img/readme/chroma-instructions-4.png)
+![Streaming overlay instructions, step 5](img/readme/chroma-instructions-5.png)
+![Streaming overlay instructions, step 6](img/readme/chroma-instructions-6.png)
+![Streaming overlay instructions, step 7](img/readme/chroma-instructions-7.png)
+![Streaming overlay instructions, step 8](img/readme/chroma-instructions-8.png)
+![Streaming overlay instructions, step 9](img/readme/chroma-instructions-9.png)
 
-If you run into any issues saving settings, you can always download the ZIP of the project by clicking the "Code" button at the top right of the file listing for this repository. Extract that downloaded zip somewhere on your computer, then open the "index.html" file in your browser.
+## Feedback / Questions?
 
-This is a potential issue that I plan to test and account for at some point. The original version of this randomizer was a local download, so the storage might not work as intended for a GitHub hosted solution. Thanks for being patient on the fix.
+### "I wish the tool did this."
+
+Use the Issues tab at the top to leave suggestions like this! The tool is constantly being updated, so your ideas could be added. :)
+
+### "I found a bug."
+
+Use the Issues tab at the top to report the bug! That gives me an organized way to triage and address bugs in a quick fashion.
+
+### "I love this! Thank you so much!"
+
+Aw, that's awesome! I'm glad you enjoyed it. :D If you want to donate even a small amount to show gratitude, [you should buy me a coffee](https://www.buymeacoffee.com/fuzzygames)!
