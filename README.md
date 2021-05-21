@@ -1,6 +1,6 @@
 # Item Randomizer for Phasmophobia
 
-![Screenshot of the Phasmophobia item randomizer tool](img/readme/example-screenshot.png)
+[![Screenshot of the Phasmophobia item randomizer tool](img/readme/example-screenshot.png)](https://fuzzygameson.github.io/phasmophobia_randomizer/index.html)
 
 With the Item Randomizer for Phasmophobia, you can randomize evidence items, non-evidence items, light sources, and even what maps to play! 4 different difficulty settings allow you to tailor the randomizing experience to your skill level, and you can optionally disable certain settings that you don't want to randomize.
 
