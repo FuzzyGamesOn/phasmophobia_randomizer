@@ -469,7 +469,7 @@ div.setting-section-contents em {
  */
 
 body.overlay #container {
-    width: 300px;
+    width: 200px;
 }
 
 body.overlay #container h4 {
@@ -486,16 +486,17 @@ body.overlay #container h4 a.glyphicon {
 div.item.overlay-square {
     position: relative;
     float: left; 
-    width: 64px;
-    height: 64px;
+    width: 56px;
+    height: 56px;
     border-width: 3px;
     padding: 0;
+    margin: 1px;
 }
 
 img.overlay-image {
     display: none;
-    width: 58px;
-    height: 58px;
+    width: 50px;
+    height: 50px;
     opacity: 0.75;
 }
 
@@ -513,14 +514,21 @@ body.overlay span.choice-text {
 }
 
 body.overlay #thermo span.choice-text {
-    font-size: 9px;
+    font-size: 8px;
 }
 
 body.overlay #thermo.active span.choice-text,
 body.overlay #thermo.optional span.choice-text,
 body.overlay #thermo.disabled span.choice-text,
 body.overlay #thermo.new span.choice-text {
-    font-size: 8px;
+    font-size: 7px;
+}
+
+body.overlay #tripod.active span.choice-text,
+body.overlay #tripod.optional span.choice-text,
+body.overlay #tripod.disabled span.choice-text,
+body.overlay #tripod.new span.choice-text {
+    font-size: 9px;
 }
 
 body.overlay div.item.disabled span.disabled, 
