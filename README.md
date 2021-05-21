@@ -31,6 +31,12 @@ Aw, that's awesome! I'm glad you enjoyed it. :D
 
 If you want to donate even a small amount to show gratitude, [you should buy me a coffee](https://www.buymeacoffee.com/fuzzygames)!
 
+### "I stream and I want to use this as an overlay."
+
+Well, that's a built-in feature! Scroll down a bit and you'll get instructions on how to set that up in Streamlabs OBS. Instructions for OBS Studio should be similar. 
+
+If you use a different streaming software and would like to see instructions for it, use the Issues tab at the top to request instructions for your streaming software of choice!
+
  
  
 ## Streaming overlay setup
