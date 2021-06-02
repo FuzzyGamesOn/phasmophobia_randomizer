@@ -1090,66 +1090,55 @@ function _randomSliceArray(arr, len, arr_type) {
     });
 
     let choices = shuffled.slice(0, len);
+    let choices_compare = last_choices[arr_type];
 
-    if (len == 1) {        
-        if (last_choices[arr_type].length > 2) {
-            last_choices[arr_type].shift(); // pop off the oldest item from the front of the list
-        }
+    choices.sort();
 
-        // TODO: better checking for dupes in last used list
-        if (arr_type != 'maps') {
-            if (last_choices[arr_type].indexOf(shuffled[0]) > -1) {
-                choices = shuffled.slice(1, 2);
-            }
-            else if (last_choices[arr_type].indexOf(shuffled[1]) > -1) {
-                choices = shuffled.slice(2, 3);
-            }
-        }
+    if (choices === choices_compare) {
+        // shuffle again for more random
+        // more lazy sort, don't judge me
+        shuffled = arr.sort(function () { 
+            return 0.5 - Math.random();
+        }).sort(function () { 
+            return 0.5 - Math.random();
+        }).sort(function () { 
+            return 0.5 - Math.random();
+        });
 
-        if (arr_type == 'maps') {
-            let next_size = 'small';
-
-            if (last_choices['map_size'] == 'small') {
-                next_size = ['medium', 'large'].sort(function () { 
-                    return 0.5 - Math.random(); 
-                })[0];
-            }
-
-            if (next_size == 'medium' && last_choices['map_size'] == 'medium') {
-                next_size = 'large';
-            }
-
-            if (next_size == 'large' && last_choices['map_size'] == 'large') {
-                next_size = 'small';
-            }
-
-            let attempts = 0, 
-                max_attempts = 10;
-
-            choices = shuffled;
-
-            while (
-                choices.length > 0 && 
-                map_sizes[choices[0]].size != next_size && 
-                attempts < max_attempts
-            ) {
-                choices = choices.slice(1, choices.length);
-
-                attempts++;
-            }
-
-            if (choices.length == 0) {
-                choices = shuffled.slice(0, 1);
-            }
-            else if (choices.length > len) {
-                choices = choices.slice(0, len);
-            }
-
-            last_choices['map_size'] = map_sizes[choices[0]].size;
-        }
-
-        last_choices[arr_type].push(choices[0]);
+        choices = shuffled.slice(0, len);
     }
+
+    if (arr_type == 'maps' && len == 1) {
+        let last_map_size = last_choices['map_size'];
+        let current_map_size = map_sizes[choices[0]].size;
+
+        if (last_map_size == current_map_size) {
+            let available_map_sizes = ['small', 'medium', 'large'].filter((a) => {
+                return a != current_map_size;
+            }).sort(function () { 
+                return 0.5 - Math.random();
+            });
+
+            let available_maps = [];
+
+            for (let map_name of Object.keys(map_sizes)) {
+                if (map_sizes[map_name].size == available_map_sizes[0]) {
+                    available_maps.push(map_name);
+                }
+            }
+
+            choices = available_maps.sort(function () { 
+                return 0.5 - Math.random();
+            }).slice(0, 1);
+
+            last_choices['map_size'] = available_map_sizes[0];
+        }
+        else {
+            last_choices['map_size'] = current_map_size;
+        }    
+    }
+
+    last_choices[arr_type] = choices;
 
     return choices;
 }
