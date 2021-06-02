@@ -8,6 +8,21 @@ $(function () {
         $('body').addClass('local');
     }
 
+    /**
+     * Add tooltips to icons in headings
+     */
+    tippy('h4 a.glyphicon-ban-circle', {
+        content: $('h4 a.glyphicon-ban-circle').first().attr('title')
+    });
+
+    tippy('h4 a.glyphicon-repeat', {
+        content: $('h4 a.glyphicon-repeat').first().attr('title')
+    });
+
+    tippy('h4 a.glyphicon-minus', {
+        content: $('h4 a.glyphicon-minus').first().attr('title')
+    });
+
     $('h4 a').hide(); // hide elimination icons until randomize is clicked
 
     checkRecentChanges();

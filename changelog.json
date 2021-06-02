@@ -6,7 +6,8 @@
         "changes": [
             "Added a tip about chroma / color key functionality for content creators.",
             "Added a setting to always include lighter in the randomized secondary items.",
-            "More adjustments to map randomization to force variety between map sizes."
+            "More adjustments to map randomization to force variety between map sizes.",
+            "Added tooltips to action icons in each heading for readability."
         ]
     },
 
