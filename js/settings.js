@@ -9,6 +9,8 @@ const Settings = {
     tip_builtin: null,
     tip_elim: null,
     tip_auto: null,
+    tip_chroma: null,
+    include_lighter: null,
     include_tripod: null,
     count_primary: '',
     count_secondary: '',
@@ -56,6 +58,14 @@ const Settings = {
             params.tip_auto = false;
         }
 
+        if (params.tip_chroma !== true && params.tip_chroma !== false) {
+            params.tip_chroma = false;
+        }
+
+        if (params.include_lighter !== true && params.include_lighter !== false) {
+            params.include_lighter = false;
+        }
+
         if (params.include_tripod !== true && params.include_tripod !== false) {
             params.include_tripod = false;
         }
@@ -70,11 +80,13 @@ const Settings = {
         this.tip_builtin = params.tip_builtin;
         this.tip_elim = params.tip_elim;
         this.tip_auto = params.tip_auto;
+        this.tip_chroma = params.tip_chroma;
 
         this.count_primary = params.count_primary || '';
         this.count_secondary = params.count_secondary || '';
         this.count_light = params.count_light || '';
         this.count_map = params.count_map || '';
+        this.include_lighter = params.include_lighter || '';
         this.include_tripod = params.include_tripod || '';
     },
 
@@ -95,6 +107,8 @@ const Settings = {
         this.tip_builtin = Storage.get('tip_builtin');
         this.tip_elim = Storage.get('tip_elim');
         this.tip_auto = Storage.get('tip_auto');
+        this.tip_chroma = Storage.get('tip_chroma');
+        this.include_lighter = Storage.get('include_lighter');
         this.include_tripod = Storage.get('include_tripod');
         
         this.count_primary = Storage.get('count_primary') || '';
@@ -142,6 +156,14 @@ const Settings = {
             this.tip_auto = true;
         }
 
+        if (this.tip_chroma == null) {
+            this.tip_chroma = true;
+        }
+
+        if (this.include_lighter == null) {
+            this.include_lighter = false;
+        }
+
         if (this.include_tripod == null) {
             this.include_tripod = false;
         }
@@ -164,7 +186,9 @@ const Settings = {
         Storage.set('tip_builtin', this.tip_builtin);
         Storage.set('tip_elim', this.tip_elim);
         Storage.set('tip_auto', this.tip_auto);
+        Storage.set('tip_chroma', this.tip_chroma);
 
+        Storage.set('include_lighter', this.include_lighter);
         Storage.set('include_tripod', this.include_tripod);
 
         Storage.commit();

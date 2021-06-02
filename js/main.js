@@ -3,6 +3,11 @@ var LOCAL = (window.location.host === ''); // not fuzzygameson.github.io
 
 $(function () {
     $('body').addClass(getDefaultBackgroundClass());
+
+    if (LOCAL) {
+        $('body').addClass('local');
+    }
+
     $('h4 a').hide(); // hide elimination icons until randomize is clicked
 
     checkRecentChanges();
@@ -12,7 +17,7 @@ $(function () {
     devStreamTimer = setInterval(checkDevStream, 30000);
     devStreamVisibilityTimer = null;
 
-    $('#ghost').on('change', function () {
+    $('#ghost_randomizer').on('change', function () {
         let evidences = {
             'banshee': ['emf', 'uv', 'thermo'],
             'demon': ['book', 'box', 'thermo'],
@@ -51,7 +56,7 @@ $(function () {
         setLightSources();
         setMaps();
             
-        $('#ghost').val('none');
+        $('#ghost_randomizer').val('none');
     });
 
     $('#randomize_photo_button').on('click', function () {
@@ -63,7 +68,7 @@ $(function () {
         setLightSources();
         setMaps();
         
-        $('#ghost').val('none');
+        $('#ghost_randomizer').val('none');
 
         PHOTO_RANDO = true;
     });
@@ -115,7 +120,7 @@ $(function () {
         if ($(this).hasClass('reroll-primary')) {
             rerollItems('primary');
 
-            $('#ghost').val('none');
+            $('#ghost_randomizer').val('none');
         }
 
         if ($(this).hasClass('reroll-secondary')) rerollItems('secondary');
@@ -203,6 +208,13 @@ $(function () {
         $('p.tip-auto').hide();
     });
 
+    $('a.hide-tip-chroma').on('click', function () {
+        Settings.commitSingle('tip_chroma', false);
+        Settings.store();
+
+        $('p.tip-chroma').hide();
+    });
+
     $('#stream_button').on('click', function () {
         window.open('https://twitch.tv/fuzzygames_', '_blank');
     });
@@ -276,6 +288,14 @@ $(function () {
         }
         else {
             $("input[name='include_tripod']").removeAttr('checked');
+        }
+
+        // set preference for always including lighter from settings
+        if (Settings.include_lighter) {
+            $("input[name='include_lighter']").attr('checked', 'checked');
+        }
+        else {
+            $("input[name='include_lighter']").removeAttr('checked');
         }
     });
 
@@ -360,6 +380,7 @@ $(function () {
             'layout_chroma': $('input.layout-chroma').prop('checked') ? true : false,
             'layout_overlay': $('input.layout-overlay').prop('checked') ? true : false,
             'include_tripod': $('input.include-tripod').prop('checked') ? true : false,
+            'include_lighter': $('input.include-lighter').prop('checked') ? true : false,
             'count_primary': $('input.count-primary').val() || '',
             'count_secondary': $('input.count-secondary').val() || '',
             'count_light': $('input.count-light').val() || '',
@@ -413,6 +434,10 @@ function applySettings() {
 
     if (Settings.tip_auto === true) {
         $('p.tip-auto').show().find('a.glyphicon-remove').css({ 'float': 'right' });
+    }
+
+    if (Settings.tip_chroma === true) {
+        $('p.tip-chroma').show().find('a.glyphicon-remove').css({ 'float': 'right' });
     }
 }
 
@@ -663,6 +688,14 @@ function setSecondaryItems(is_photo = false) {
 
         $('#tripod').addClass('active');
     }
+
+    if (Settings.include_lighter) {
+        if (is_photo && !$('#lighter').addClass('active')) {
+            $('#lighter').addClass('new');
+        }
+
+        $('#lighter').addClass('active');
+    }
 }
 
 function setLightSources() {
@@ -773,8 +806,6 @@ function toggleItemView(toggle_value) {
 
         $('div.item-collection').removeClass('row');
         $('div.item').addClass('no-float').removeClass('col-md-3');
-
-        $('#ghost').hide();
     }
     else {
         $('h4').show();
@@ -782,8 +813,6 @@ function toggleItemView(toggle_value) {
 
         $('div.item-collection').addClass('row');
         $('div.item').removeClass('no-float').addClass('col-md-3');
-
-        $('#ghost').show();
     }
     
     /* 
@@ -805,18 +834,20 @@ function toggleItemView(toggle_value) {
                 return false;
             }
 
-            $('div.item.active').show();
-            $('div.item:not(.active)').hide();
+            $('div.item.active, div.item.optional').show();
+            $('div.item:not(.active, .optional)').hide();
+            $('#maps div.item').hide();
 
             break;
 
         case 'not-usable':            
-            if ($('div.item.active').length === 0) {
+            if ($('div.item.active, div.item.optional').length === 0) {
                 return false;
             }
 
-            $('div.item.active').hide();
-            $('div.item:not(.active)').show();
+            $('div.item.active, div.item.optional').hide();
+            $('div.item:not(.active, .optional)').show();
+            $('#maps div.item').hide();
 
             break;
     }
@@ -857,6 +888,27 @@ function checkRecentChanges() {
 
     if (LOCAL) {
         callback([
+            {
+                "version": "1.4",
+                "date": "2021-06-02",
+                
+                "changes": [
+                    "Added a tip about chroma / color key functionality for content creators.",
+                    "Added a setting to always include lighter in the randomized secondary items."
+                ]
+            },
+        
+            {
+                "version": "1.3",
+                "date": "2021-05-25",
+        
+                "changes": [
+                    "Fixed a bug where optional items would not show in the Use / Don't Use filtered lists.",
+                    "Removed maps from the Use / Don't Use filtered lists, so that only items are shown.",
+                    "Adjusted map randomization to make it force variety between map sizes more."
+                ]
+            },
+        
             {
                 "version": "1.2",
                 "date": "2021-05-20",
@@ -974,7 +1026,37 @@ let last_choices = {
     'primary': [],
     'secondary': [],
     'light_sources': [],
-    'maps': []
+    'maps': [],
+    'map_size': ''
+};
+
+let map_sizes = {
+    'tanglewood': {
+        'size': 'small'
+    },
+    'edgefield': {
+        'size': 'small'
+    },
+    'ridgeview': {
+        'size': 'small'
+    },
+    'grafton': {
+        'size': 'small'
+    },
+    'bleasdale': {
+        'size': 'small'
+    },
+
+    'highschool': {
+        'size': 'medium'
+    },
+    'prison': {
+        'size': 'medium'
+    },
+
+    'asylum': {
+        'size': 'large'
+    }
 };
 
 function _randomSliceArray(arr, len, arr_type) {
@@ -1015,15 +1097,56 @@ function _randomSliceArray(arr, len, arr_type) {
         }
 
         // TODO: better checking for dupes in last used list
-        if (last_choices[arr_type].indexOf(choices[0]) > -1) {
-            choices = shuffled.slice(1, 2);
-
-            if (last_choices[arr_type].indexOf(choices[1]) > -1) {
+        if (arr_type != 'maps') {
+            if (last_choices[arr_type].indexOf(shuffled[0]) > -1) {
+                choices = shuffled.slice(1, 2);
+            }
+            else if (last_choices[arr_type].indexOf(shuffled[1]) > -1) {
                 choices = shuffled.slice(2, 3);
             }
         }
 
-        console.log(shuffled, choices);
+        if (arr_type == 'maps') {
+            let next_size = 'small';
+
+            if (last_choices['map_size'] == 'small') {
+                next_size = ['medium', 'large'].sort(function () { 
+                    return 0.5 - Math.random(); 
+                })[0];
+            }
+
+            if (next_size == 'medium' && last_choices['map_size'] == 'medium') {
+                next_size = 'large';
+            }
+
+            if (next_size == 'large' && last_choices['map_size'] == 'large') {
+                next_size = 'small';
+            }
+
+            let attempts = 0, 
+                max_attempts = 10;
+
+            choices = shuffled;
+
+            while (
+                choices.length > 0 && 
+                map_sizes[choices[0]].size != next_size && 
+                attempts < max_attempts
+            ) {
+                choices = choices.slice(1, choices.length);
+
+                attempts++;
+            }
+
+            if (choices.length == 0) {
+                choices = shuffled.slice(0, 1);
+            }
+            else if (choices.length > len) {
+                choices = choices.slice(0, len);
+            }
+
+            last_choices['map_size'] = map_sizes[choices[0]].size;
+        }
 
         last_choices[arr_type].push(choices[0]);
     }

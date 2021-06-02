@@ -1,5 +1,26 @@
 [
     {
+        "version": "1.4",
+        "date": "2021-06-02",
+        
+        "changes": [
+            "Added a tip about chroma / color key functionality for content creators.",
+            "Added a setting to always include lighter in the randomized secondary items."
+        ]
+    },
+
+    {
+        "version": "1.3",
+        "date": "2021-05-25",
+
+        "changes": [
+            "Fixed a bug where optional items would not show in the Use / Don't Use filtered lists.",
+            "Removed maps from the Use / Don't Use filtered lists, so that only items are shown.",
+            "Adjusted map randomization to make it force variety between map sizes more."
+        ]
+    },
+
+    {
         "version": "1.2",
         "date": "2021-05-20",
 

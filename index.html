@@ -69,7 +69,7 @@
     <button type="button" id="randomize_button" class="btn btn-success action"><i class="bi bi-arrow-repeat"></i> Randomize</button>
     
     <div id="ghost_dropdown" class="dropdown">
-      <select name="ghost" id="ghost">
+      <select name="ghost" id="ghost_randomizer">
         <option value="none">Ghost Evidence Randomizer</option>
         <option value="banshee">Banshee (Evidence Items)</option>
         <option value="demon">Demon (Evidence Items)</option>
@@ -396,6 +396,9 @@
                 <input type="checkbox" class="random random-map" name="random_map" /> Randomize maps
               </div>
               <div>
+                <input type="checkbox" class="include include-lighter" name="include_lighter" /> Always include lighter
+              </div>
+              <div>
                 <input type="checkbox" class="include include-tripod" name="include_tripod" /> Always include tripod
               </div>
             </div>
@@ -497,6 +500,12 @@
     <span class="glyphicon glyphicon-info-sign"></span> Some items are highlighted in yellow when you might need them.<br />
     <span class="tip-indent"> Also, items that perform similar functions may be added together.</span>
     <a class="glyphicon glyphicon-remove hide-tip-auto"></a>
+  </p>
+
+  <p class="bg-info tip-chroma">
+    <span class="glyphicon glyphicon-info-sign"></span> Are you a content creator? Want to stream randomizer content?<br />
+    <span class="tip-indent"> There's a chroma feature in Settings! Visit Github for more info.</span>
+    <a class="glyphicon glyphicon-remove hide-tip-chroma"></a>
   </p>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 

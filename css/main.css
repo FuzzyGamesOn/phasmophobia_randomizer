@@ -84,6 +84,10 @@ h1 {
     text-align: center;
 }
 
+body.local h1, body.local h1 span.game_name {
+    color: #b7cf08 !important;
+}
+
 span.game_name {
     font-family: 'October Crow', sans-serif;
     font-weight: normal;
