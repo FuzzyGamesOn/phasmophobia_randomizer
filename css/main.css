@@ -48,7 +48,11 @@ body.asylum {
     background: url(../img/map_backgrounds/asylum.png) no-repeat center center fixed;
 }
 
-body.default, body.default2, body.default3, body.tanglewood, body.edgefield, body.ridgeview, body.grafton, body.bleasdale, body.highschool, body.prison, body.asylum {
+body.willow {
+    background: url(../img/map_backgrounds/willow.png) no-repeat center center fixed;
+}
+
+body.default, body.default2, body.default3, body.tanglewood, body.edgefield, body.ridgeview, body.grafton, body.bleasdale, body.highschool, body.prison, body.asylum, body.willow {
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -491,12 +495,27 @@ div.setting-section-contents em {
     margin-left: 17px;
 }
 
+div.setting-subsection {
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+div.setting-subsection p {
+    margin-bottom: 5px;
+}
+
 #changelog_modal h4 {
     margin-top: 20px;
 }
 
 #changelog_modal h4:nth-child(1) {
     margin-top: 10px;
+}
+
+#tip_box {
+    position: absolute;
+    left: 600px;
+    top: 600px;
 }
 
 /**

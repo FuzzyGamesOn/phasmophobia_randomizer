@@ -33,6 +33,7 @@
   <link rel="preload" href="img/map_backgrounds/highschool.png" as="image">
   <link rel="preload" href="img/map_backgrounds/prison.png" as="image">
   <link rel="preload" href="img/map_backgrounds/asylum.png" as="image">
+  <link rel="preload" href="img/map_backgrounds/willow.png" as="image">
 
   <link href="https://fonts.googleapis.com/css?family=Cabin+Condensed" rel="stylesheet">
 
@@ -47,6 +48,11 @@
 
     gtag('config', 'G-RMZ29JX883');
   </script>
+
+  <!-- Google Adsense -->
+  <!--
+    <script data-ad-client="ca-pub-4626738940679716" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  -->
 </head>
 
 <body>
@@ -73,6 +79,7 @@
         <option value="none">Ghost Evidence Randomizer</option>
         <option value="banshee">Banshee (Evidence Items)</option>
         <option value="demon">Demon (Evidence Items)</option>
+        <option value="hantu">Hantu (Evidence Items)</option>
         <option value="jinn">Jinn (Evidence Items)</option>
         <option value="mare">Mare (Evidence Items)</option>
         <option value="oni">Oni (Evidence Items)</option>
@@ -82,6 +89,7 @@
         <option value="shade">Shade (Evidence Items)</option>
         <option value="spirit">Spirit (Evidence Items)</option>
         <option value="wraith">Wraith (Evidence Items)</option>
+        <option value="yokai">Yokai (Evidence Items)</option>
         <option value="yurei">Yurei (Evidence Items)</option>
       </select>
     </div>
@@ -358,6 +366,12 @@
             <span class="disabled glyphicon glyphicon-ban-circle"></span>
             <span class="new glyphicon glyphicon-ok"></span>
           </div>
+          <div id="willow" class="col-md-3 item">
+            <img class="overlay-image" src="img/map_backgrounds/willow.png" />
+            <span class="choice-text">Willow</span>
+            <span class="disabled glyphicon glyphicon-ban-circle"></span>
+            <span class="new glyphicon glyphicon-ok"></span>
+          </div>
         </div>
       </div>
     </div>
@@ -452,6 +466,60 @@
               <em>To chroma for an overlay, check the option above.</em>
             </div>
           </div>
+
+        <!--
+          <div class="setting-section">
+            <label>Advanced Options:</label>
+            <div class="setting-section-contents">
+              <input type="checkbox" class="advanced advanced-exclude" name="advanced_exclude" /> Exclude choices from randomization
+
+              <div class="setting-section-contents setting-subsection">
+                <p><strong>Primary Items:</strong></p>
+
+                <div class="setting-section-contents">
+                  <input type="checkbox" class="advanced advanced-emf" name="advanced_emf" /> EMF Reader
+                </div>
+                
+                <div class="setting-section-contents">
+                  <input type="checkbox" class="advanced advanced-box" name="advanced_box" /> Spirit Box
+                </div>
+                
+                <div class="setting-section-contents">
+                  <input type="checkbox" class="advanced advanced-thermo" name="advanced_thermo" /> Thermometer
+                </div>
+                
+                <div class="setting-section-contents">
+                  <input type="checkbox" class="advanced advanced-uv" name="advanced_uv" /> UV Light
+                </div>
+                
+                <div class="setting-section-contents">
+                  <input type="checkbox" class="advanced advanced-video" name="advanced_video" /> Video Camera
+                </div>
+                
+                <div class="setting-section-contents">
+                  <input type="checkbox" class="advanced advanced-book" name="advanced_book" /> Writing Book
+                </div>
+              </div>
+            </div>
+
+            <!-x
+              div#emf.col-md-3.item, div#box.col-md-3.item, div#thermo.col-md-3.item, 
+              div#uv.col-md-3.item, div#video.col-md-3.item, div#book.col-md-3.item, 
+              div#crucifix.col-md-3.item, div#glowstick.col-md-3.item, 
+              div#irlight.col-md-3.item, div#motion.col-md-3.item, 
+              div#parabolic.col-md-3.item, div#photo.col-md-3.item, 
+              div#salt.col-md-3.item, div#sanity.col-md-3.item, 
+              div#smudge.col-md-3.item, div#sound.col-md-3.item, 
+              div#lighter.col-md-3.item, div#headcam.col-md-3.item, 
+              div#tripod.col-md-3.item, div#candle.col-md-3.item, 
+              div#flash.col-md-3.item, div#strongflash.col-md-3.item, 
+              div#tanglewood.col-md-3.item, div#edgefield.col-md-3.item, 
+              div#ridgeview.col-md-3.item, div#grafton.col-md-3.item, 
+              div#bleasdale.col-md-3.item, div#highschool.col-md-3.item, 
+              div#prison.col-md-3.item, div#asylum.col-md-3.item
+            x->
+          </div>
+        -->
           
         </div>
         <div class="modal-footer">
@@ -479,34 +547,36 @@
     </div><!-- /.modal-dialog -->
   </div><!-- /.modal -->
 
-  <p class="bg-info tip-icons">
-    <span class="glyphicon glyphicon-info-sign"></span> Hovering over icons will provide a description of what they do.
-    <a class="glyphicon glyphicon-remove hide-tip-icons"></a>
-  </p>
-
-  <p class="bg-info tip-builtin">
-    <span class="glyphicon glyphicon-info-sign"></span> If the map gives you access to items that the randomizer didn't,<br />
-    <span class="tip-indent"> use them! That's part of the fun.</span>
-    <a class="glyphicon glyphicon-remove hide-tip-builtin"></a>
-  </p>
-
-  <p class="bg-info tip-elim">
-    <span class="glyphicon glyphicon-info-sign"></span> Did you know that there's an evidence elimination feature?<br />
-    <span class="tip-indent"> Click Randomize, then click the <a class="glyphicon glyphicon-ban-circle" aria-hidden="true" title="Eliminate current primary items and re-roll"></a> icon in any category to eliminate!</span>
-    <a class="glyphicon glyphicon-remove hide-tip-elim"></a>
-  </p>
-
-  <p class="bg-info tip-auto">
-    <span class="glyphicon glyphicon-info-sign"></span> Some items are highlighted in yellow when you might need them.<br />
-    <span class="tip-indent"> Also, items that perform similar functions may be added together.</span>
-    <a class="glyphicon glyphicon-remove hide-tip-auto"></a>
-  </p>
-
-  <p class="bg-info tip-chroma">
-    <span class="glyphicon glyphicon-info-sign"></span> Are you a content creator? Want to stream randomizer content?<br />
-    <span class="tip-indent"> There's a chroma feature in Settings! Visit Github for more info.</span>
-    <a class="glyphicon glyphicon-remove hide-tip-chroma"></a>
-  </p>
+  <div id="tip_box">
+    <p class="bg-info tip-icons">
+      <span class="glyphicon glyphicon-info-sign"></span> Hovering over icons will provide a description of what they do.
+      <a class="glyphicon glyphicon-remove hide-tip-icons"></a>
+    </p>
+  
+    <p class="bg-info tip-builtin">
+      <span class="glyphicon glyphicon-info-sign"></span> If the map gives you access to items that the randomizer didn't,<br />
+      <span class="tip-indent"> use them! That's part of the fun.</span>
+      <a class="glyphicon glyphicon-remove hide-tip-builtin"></a>
+    </p>
+  
+    <p class="bg-info tip-elim">
+      <span class="glyphicon glyphicon-info-sign"></span> Did you know that there's an evidence elimination feature?<br />
+      <span class="tip-indent"> Click Randomize, then click the <a class="glyphicon glyphicon-ban-circle" aria-hidden="true" title="Eliminate current primary items and re-roll"></a> icon in any category to eliminate!</span>
+      <a class="glyphicon glyphicon-remove hide-tip-elim"></a>
+    </p>
+  
+    <p class="bg-info tip-auto">
+      <span class="glyphicon glyphicon-info-sign"></span> Some items are highlighted in yellow when you might need them.<br />
+      <span class="tip-indent"> Also, items that perform similar functions may be added together.</span>
+      <a class="glyphicon glyphicon-remove hide-tip-auto"></a>
+    </p>
+  
+    <p class="bg-info tip-chroma">
+      <span class="glyphicon glyphicon-info-sign"></span> Are you a content creator? Want to stream randomizer content?<br />
+      <span class="tip-indent"> There's a chroma feature in Settings! Visit Github for more info.</span>
+      <a class="glyphicon glyphicon-remove hide-tip-chroma"></a>
+    </p>
+  </div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>

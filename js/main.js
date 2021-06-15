@@ -36,6 +36,7 @@ $(function () {
         let evidences = {
             'banshee': ['emf', 'uv', 'thermo'],
             'demon': ['book', 'box', 'thermo'],
+            'hantu': ['uv', 'video', 'book'],
             'jinn': ['emf', 'box', 'video'],
             'mare': ['box', 'video', 'thermo'],
             'oni': ['emf', 'book', 'box'],
@@ -45,6 +46,7 @@ $(function () {
             'shade': ['emf', 'video', 'book'],
             'spirit': ['box', 'uv', 'book'],
             'wraith': ['box', 'uv', 'thermo'],
+            'yokai': ['box', 'video', 'book'],
             'yurei': ['video', 'book', 'thermo']
         };
 
@@ -365,7 +367,7 @@ $(function () {
     $('input.layout-chroma').on('change', function () {
         if ($(this).prop('checked')) {
             $('body')
-                .removeClass(['default', 'default2', 'default3', 'tanglewood', 'edgefield', 'ridgeview', 'grafton', 'bleasdale', 'highschool', 'asylum', 'prison'])
+                .removeClass(['default', 'default2', 'default3', 'tanglewood', 'edgefield', 'ridgeview', 'grafton', 'bleasdale', 'highschool', 'asylum', 'prison', 'willow'])
                 .addClass('chroma');
         }
         else {
@@ -435,24 +437,32 @@ function applySettings() {
         $('#maps_heading, #maps').hide();
     }
 
-    if (Settings.tip_icons === true) {
+    let current_tips_showing = 0;
+    let max_tips_showing = 2;
+
+    if (Settings.tip_icons === true && current_tips_showing < max_tips_showing) {
         $('p.tip-icons').show().find('a.glyphicon-remove').css({ 'float': 'right' });
+        current_tips_showing++;
     }
 
-    if (Settings.tip_builtin === true) {
+    if (Settings.tip_builtin === true && current_tips_showing < max_tips_showing) {
         $('p.tip-builtin').show().find('a.glyphicon-remove').css({ 'float': 'right' });
+        current_tips_showing++;
     }
 
-    if (Settings.tip_elim === true) {
+    if (Settings.tip_elim === true && current_tips_showing < max_tips_showing) {
         $('p.tip-elim').show().find('a.glyphicon-remove').css({ 'float': 'right' });
+        current_tips_showing++;
     }
 
-    if (Settings.tip_auto === true) {
+    if (Settings.tip_auto === true && current_tips_showing < max_tips_showing) {
         $('p.tip-auto').show().find('a.glyphicon-remove').css({ 'float': 'right' });
+        current_tips_showing++;
     }
 
-    if (Settings.tip_chroma === true) {
+    if (Settings.tip_chroma === true && current_tips_showing < max_tips_showing) {
         $('p.tip-chroma').show().find('a.glyphicon-remove').css({ 'float': 'right' });
+        current_tips_showing++;
     }
 }
 
@@ -792,7 +802,7 @@ function setMaps() {
 
         if (active_map.length > 0) {
             $('body')
-                .removeClass(['default', 'tanglewood', 'edgefield', 'ridgeview', 'grafton', 'bleasdale', 'highschool', 'asylum', 'prison'])
+                .removeClass(['default', 'tanglewood', 'edgefield', 'ridgeview', 'grafton', 'bleasdale', 'highschool', 'asylum', 'prison', 'willow'])
                 .addClass(active_map.attr('id'));
         }
     }
@@ -1059,6 +1069,9 @@ let map_sizes = {
         'size': 'small'
     },
     'bleasdale': {
+        'size': 'small'
+    },
+    'willow': {
         'size': 'small'
     },
 

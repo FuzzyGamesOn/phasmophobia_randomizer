@@ -1,5 +1,16 @@
 [
     {
+        "version": "1.5",
+        "date": "2021-06-15",
+
+        "changes": [
+            "Added new ghosts Hantu and Yokai to the Ghost Evidence Randomizer options.",
+            "Added new map Willow Street House to the Maps randomizer choices.",
+            "Reduced clutter with the display of tips. Now only showing a couple tips at a time."
+        ]
+    },
+
+    {
         "version": "1.4",
         "date": "2021-06-02",
         
