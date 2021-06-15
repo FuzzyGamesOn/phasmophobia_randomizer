@@ -41,7 +41,7 @@ If you want to donate even a small amount to show gratitude, [you should buy me 
 
 ### "I want to create a tool based on this or host this project. Can I fork/reuse this project's code?
 
-Unfortunately, that is not allowed under the default licensing for Github projects. Please see the Copyright Notice and Statement section above for more information.
+Unfortunately, that is not allowed under the default licensing for Github projects. Please see the Licensing and Disclaimers section above for more information.
 
 ### "I stream and I want to use this as an overlay."
 
