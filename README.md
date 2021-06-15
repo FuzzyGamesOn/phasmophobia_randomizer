@@ -15,9 +15,11 @@ That's it! Just click the "Randomize" button and enjoy. :D
 
 If you want to customize your experience, use the "Settings" button to set specific options.
 
-## Copyright Notice and Statement
+## Licensing and Disclaimers
 
-This project is under exclusive copyright by default as part of Github's "no license" default licensing. As such, it is not permissible for anyone to copy, distribute, or modify this project, whether for commercial benefit or otherwise. Neglecting to abide by these limitations can result in legal action.
+This project is covered by Github's "no license" default licensing. As such, it is not permissible for anyone to copy, distribute, or modify this project, whether for commercial benefit or otherwise. Neglecting to abide by these limitations can result in legal action.
+
+This project is not affiliated with or endorsed by Kinetic Games -- the creator of the game Phasmophobia -- in any way.
 
 This project does not reuse any assets, code, or other exclusive resources from the game Phasmophobia. This project is a supplementary free-to-use tool created with text and thumbnail references to the items, ghosts, and locations referenced in the game. For the purposes of classification, this project/tool is a randomizer tracking program for the game and, as such, does not modify anything about the game executable or the game's included files -- much like other randomizer tracking programs created for other games.
 
