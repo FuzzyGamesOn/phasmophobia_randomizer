@@ -6,7 +6,9 @@
         "changes": [
             "Added new ghosts Hantu and Yokai to the Ghost Evidence Randomizer options.",
             "Added new map Willow Street House to the Maps randomizer choices.",
-            "Reduced clutter with the display of tips. Now only showing a couple tips at a time."
+            "Reduced clutter with the display of tips. Now only showing a couple tips at a time.",
+            "Added information about implicit licensing and notice of copyright to README page.",
+            "Adjustments to presentation to ensure that the randomizer is in compliance with content guidelines."
         ]
     },
 

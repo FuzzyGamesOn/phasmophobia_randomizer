@@ -5,15 +5,7 @@
 }
 
 body.default {
-    background: url(../img/background.png) no-repeat center center fixed;
-}
-
-body.default2 {
-    background: url(../img/background2.png) no-repeat center center fixed;
-}
-
-body.default3 {
-    background: url(../img/background3.png) no-repeat center center fixed;
+    background: url(../img/default.png) no-repeat center center fixed;
 }
 
 body.tanglewood {
@@ -489,6 +481,7 @@ div.setting-section-contents {
 div.setting-section-contents em {
     display: inline-block;
     margin-left: 17px;
+    font-size: 13px;
 }
 
 div.setting-subsection {

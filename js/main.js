@@ -809,19 +809,7 @@ function setMaps() {
 }
 
 function getDefaultBackgroundClass() {
-    let background_classes = ['default', 'default2', 'default3'];
-
-    let shuffled = background_classes.sort(function () {
-        return 0.5 - Math.random();
-    });
-
-    let reverse_shuffled = (Math.floor(Math.random() * 100)) % 2 == 0;
-
-    if (reverse_shuffled) {
-        shuffled = shuffled.reverse();
-    }
-
-    return shuffled[0];
+    return 'default';
 }
 
 function toggleItemView(toggle_value) {   
@@ -914,12 +902,27 @@ function checkRecentChanges() {
     if (LOCAL) {
         callback([
             {
+                "version": "1.5",
+                "date": "2021-06-15",
+        
+                "changes": [
+                    "Added new ghosts Hantu and Yokai to the Ghost Evidence Randomizer options.",
+                    "Added new map Willow Street House to the Maps randomizer choices.",
+                    "Reduced clutter with the display of tips. Now only showing a couple tips at a time.",
+                    "Added information about implicit licensing and notice of copyright to README page.",
+                    "Adjustments to presentation to ensure that the randomizer is in compliance with content guidelines."
+                ]
+            },
+        
+            {
                 "version": "1.4",
                 "date": "2021-06-02",
                 
                 "changes": [
                     "Added a tip about chroma / color key functionality for content creators.",
-                    "Added a setting to always include lighter in the randomized secondary items."
+                    "Added a setting to always include lighter in the randomized secondary items.",
+                    "More adjustments to map randomization to force variety between map sizes.",
+                    "Added tooltips to action icons in each heading for readability."
                 ]
             },
         

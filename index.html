@@ -35,6 +35,9 @@
   <link rel="preload" href="img/map_backgrounds/asylum.png" as="image">
   <link rel="preload" href="img/map_backgrounds/willow.png" as="image">
 
+  <link rel="preload" href="changelog.json" as="fetch">
+  <link rel="preload" href="settings.json" as="fetch">
+
   <link href="https://fonts.googleapis.com/css?family=Cabin+Condensed" rel="stylesheet">
 
   <meta name="theme-color" content="#fafafa">
@@ -50,9 +53,7 @@
   </script>
 
   <!-- Google Adsense -->
-  <!--
-    <script data-ad-client="ca-pub-4626738940679716" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-  -->
+  <script data-ad-client="ca-pub-4626738940679716" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 </head>
 
 <body>
@@ -120,7 +121,7 @@
       </div>
     
       <div id="patreon_text" class="promotion-text">
-        Want to experience more exclusive tools like this one?<br />
+        Want to experience upcoming exclusive tools for the game?<br />
         <a href="https://www.patreon.com/fuzzygames"><span class="glyphicon glyphicon-play"></span> Become a <span class="indent">Patreon</span><br /><span class="indent">supporter!</span></span></a>
       </div>
 
@@ -458,8 +459,10 @@
             <div class="setting-section-contents">
               <input type="checkbox" class="layout layout-chroma" name="layout_chroma" /> Use Chroma Key background
               <br />
-              <em>Background HTML color code is #630f09.</em>
+              <em>Background HTML color code is #630f09.<br />Instructions for configuring chroma are on the Github page.</em>
             </div>
+            <br />
+
             <div class="setting-section-contents">
               <input type="checkbox" class="layout layout-overlay" name="layout_overlay" /> Use overlay images instead of text
               <br />
