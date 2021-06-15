@@ -80,6 +80,13 @@ h1 {
     text-align: center;
 }
 
+h2 {
+    font-size: 12px !important;
+    text-align: center;
+    color: #bbb !important;
+    margin-top: 0 !important;
+}
+
 body.local h1, body.local h1 span.game_name {
     color: #b7cf08 !important;
 }
