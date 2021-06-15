@@ -6,7 +6,7 @@ With the Item Randomizer for Phasmophobia, you can randomize evidence items, non
 
 If you use this, please feel free to reach out and let me know what you think! I'm on Twitter at: https://twitter.com/fuzzygameson 
 
-## How to use
+## How to Use
 
 To use, you can visit the Github hosted page of this at: 
 https://fuzzygameson.github.io/phasmophobia_randomizer/index.html
@@ -14,6 +14,10 @@ https://fuzzygameson.github.io/phasmophobia_randomizer/index.html
 That's it! Just click the "Randomize" button and enjoy. :D 
 
 If you want to customize your experience, use the "Settings" button to set specific options.
+
+## Copyright Notice and Statement
+
+This project is under exclusive copyright by default as part of Github's "no license" default licensing. As such, it is not permissible for anyone to copy, distribute, or modify this project, whether for commercial benefit or otherwise. Neglecting to abide by these limitations can result in legal action.
 
 ## Feedback / Questions?
 
@@ -31,6 +35,10 @@ Aw, that's awesome! I'm glad you enjoyed it. :D
 
 If you want to donate even a small amount to show gratitude, [you should buy me a coffee](https://www.buymeacoffee.com/fuzzygames)!
 
+### "I want to create a tool based on this or host this project. Can I fork/reuse this project's code?
+
+Unfortunately, that is not allowed under the default licensing for Github projects. Please see the Copyright Notice and Statement section above for more information.
+
 ### "I stream and I want to use this as an overlay."
 
 Well, that's a built-in feature! Scroll down a bit and you'll get instructions on how to set that up in Streamlabs OBS. Instructions for OBS Studio should be similar. 
@@ -39,7 +47,7 @@ If you use a different streaming software and would like to see instructions for
 
  
  
-## Streaming overlay setup
+## Streaming Overlay Setup
  
  
 1. On the randomizer page, click the "Settings" button at the top right of the screen.

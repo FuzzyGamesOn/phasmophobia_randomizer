@@ -293,15 +293,11 @@ div.promotion-text {
     z-index: 20;
 }
 
-#feedback_text {
+#coffee_text {
     margin-top: 5px;
 }
 
-#coffee_text {
-    margin-top: 20px;
-}
-
-#patreon_text {
+#patreon_text, #feedback_text {
     margin-top: 20px;
 }
 
