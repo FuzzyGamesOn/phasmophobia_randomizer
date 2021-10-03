@@ -12,15 +12,19 @@ $(function () {
      * Add tooltips to icons in headings
      */
     tippy('h4 a.glyphicon-ban-circle', {
-        content: $('h4 a.glyphicon-ban-circle').first().attr('title')
+        content: $('h4 a.glyphicon-ban-circle').first().attr('data-title')
     });
 
     tippy('h4 a.glyphicon-repeat', {
-        content: $('h4 a.glyphicon-repeat').first().attr('title')
+        content: $('h4 a.glyphicon-repeat').first().attr('data-title')
     });
 
     tippy('h4 a.glyphicon-minus', {
-        content: $('h4 a.glyphicon-minus').first().attr('title')
+        content: $('h4 a.glyphicon-minus').first().attr('data-title')
+    });
+
+    tippy('#ghost_dropdown', {
+        content: $('#ghost_dropdown').attr('data-title')
     });
 
     $('h4 a').hide(); // hide elimination icons until randomize is clicked
@@ -476,7 +480,7 @@ function clearItems() {
                 .html().replace('Emotional Support Tripod', 'Tripod')
         );
 
-    $('#irlight, #motion, #sound').each(function () {
+    $('#motion, #sound').each(function () {
         $(this).find('span.choice-text')
             .html(
                 $(this).find('span.choice-text')
@@ -513,16 +517,6 @@ function activateItems(elems, is_photo = false) {
                 .html(
                     $(this).find('span.choice-text')
                         .html().replace(/Sensor[\!]*/, 'Sensor!!')
-                );
-        }
-    });
-
-    $('#irlight').each(function () {
-        if ($(this).hasClass('active')) {
-            $(this).find('span.choice-text')
-                .html(
-                    $(this).find('span.choice-text')
-                        .html().replace(/Sensor[\!]*/, 'Sensor!!!!')
                 );
         }
     });
@@ -882,11 +876,17 @@ function resetRandomizer() {
 
 function checkRecentChanges() {
     let callback = function (data) {
+        let count = 0;
+
         if (!data) { // being lazy
             return false;
         }
 
         for (version of data) {
+            if (count > 3) {  // number of entries to show
+                continue;
+            }
+
             let modal_contents = $('#changelog_modal div.modal-body');
 
             $('<h4 />').html(version.date).appendTo(modal_contents);
@@ -896,24 +896,39 @@ function checkRecentChanges() {
             for (let changed of version.changes) {
                 $('<li />').html(changed).appendTo(change_list);
             }
+
+            count++;
         }
     };
 
     if (LOCAL) {
         callback([
             {
+                "version": "1.6",
+                "date": "2021-10-03",
+
+                "changes": [
+                    "Removed IR Light Sensor. You didn't notice it was gone, did you?",
+                    "Added D.O.T.S. Projector to primary items.",
+                    "Disabled Ghost Evidence randomizer feature until ghost evidence and new types are updated.",
+                    "Fixed a bug with two tooltips showing on hover.",
+                    "Updated changelog modal to hide older changes so that modal height is not excessive."
+                ]
+            },
+
+            {
                 "version": "1.5",
                 "date": "2021-06-15",
-        
+
                 "changes": [
                     "Added new ghosts Hantu and Yokai to the Ghost Evidence Randomizer options.",
                     "Added new map Willow Street House to the Maps randomizer choices.",
                     "Reduced clutter with the display of tips. Now only showing a couple tips at a time.",
-                    "Added information about implicit licensing and notice of copyright to README page.",
+                    "Added information about implicit licensing of the tool to README page.",
                     "Adjustments to presentation to ensure that the randomizer is in compliance with content guidelines."
                 ]
             },
-        
+
             {
                 "version": "1.4",
                 "date": "2021-06-02",
@@ -925,33 +940,33 @@ function checkRecentChanges() {
                     "Added tooltips to action icons in each heading for readability."
                 ]
             },
-        
+
             {
                 "version": "1.3",
                 "date": "2021-05-25",
-        
+
                 "changes": [
                     "Fixed a bug where optional items would not show in the Use / Don't Use filtered lists.",
                     "Removed maps from the Use / Don't Use filtered lists, so that only items are shown.",
                     "Adjusted map randomization to make it force variety between map sizes more."
                 ]
             },
-        
+
             {
                 "version": "1.2",
                 "date": "2021-05-20",
-        
+
                 "changes": [
                     "Added image overlay functionality to settings for concise on-stream overlay.",
                     "Updated recent changes list to show multiple dates of changes.",
                     "Moved and re-styled ghost evidence randomizer option to be consistent."
                 ]
             },
-        
+
             {
                 "version": "1.1",
                 "date": "2021-05-11",
-        
+
                 "changes": [
                     "Added a changelog and notification about active development.",
                     "Removed Grafton from difficult map list because it is no longer a death trap.",

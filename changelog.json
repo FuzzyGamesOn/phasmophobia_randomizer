@@ -1,5 +1,18 @@
 [
     {
+        "version": "1.6",
+        "date": "2021-10-03",
+
+        "changes": [
+            "Removed IR Light Sensor. You didn't notice it was gone, did you?",
+            "Added D.O.T.S. Projector to primary items.",
+            "Disabled Ghost Evidence randomizer feature until ghost evidence and new types are updated.",
+            "Fixed a bug with two tooltips showing on hover.",
+            "Updated changelog modal to hide older changes so that modal height is not excessive."
+        ]
+    },
+
+    {
         "version": "1.5",
         "date": "2021-06-15",
 

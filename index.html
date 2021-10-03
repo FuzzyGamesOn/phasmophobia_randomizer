@@ -74,8 +74,8 @@
   <div class="actions pull-right">
     <button type="button" id="randomize_button" class="btn btn-success action"><i class="bi bi-arrow-repeat"></i> Randomize</button>
     
-    <div id="ghost_dropdown" class="dropdown">
-      <select name="ghost" id="ghost_randomizer">
+    <div id="ghost_dropdown" class="dropdown" data-title="Disabled until evidences are updated for each ghost.">
+      <select name="ghost" id="ghost_randomizer" disabled>
         <option value="none">Ghost Evidence Randomizer</option>
         <option value="banshee">Banshee (Evidence Items)</option>
         <option value="demon">Demon (Evidence Items)</option>
@@ -138,10 +138,10 @@
     <div>
       <h4 id="primary_items_heading" class="main">
         Primary Items
-        <a class="glyphicon glyphicon-ban-circle eliminate eliminate-primary" aria-hidden="true" title="Eliminate current primary items and re-roll"></a>
+        <a class="glyphicon glyphicon-ban-circle eliminate eliminate-primary" aria-hidden="true" data-title="Eliminate current primary items and re-roll"></a>
         <span class="eliminate-count eliminate-primary-count"></span>
-        <a class="glyphicon glyphicon-repeat reroll reroll-primary" aria-hidden="true" title="Re-roll only primary items again"></a>
-        <a class="glyphicon glyphicon-minus loss loss-primary" aria-hidden="true" title="Un-roll one of the active primary items"></a>
+        <a class="glyphicon glyphicon-repeat reroll reroll-primary" aria-hidden="true" data-title="Re-roll only primary items again"></a>
+        <a class="glyphicon glyphicon-minus loss loss-primary" aria-hidden="true" data-title="Un-roll one of the active primary items"></a>
       </h4>
 
       <div id="primary_items">
@@ -183,15 +183,21 @@
             <span class="disabled glyphicon glyphicon-ban-circle"></span>
             <span class="new glyphicon glyphicon-ok"></span>
           </div>
+          <div id="dots" class="col-md-3 item">
+            <img class="overlay-image" src="img/overlay/dots-projector.png" />
+            <span class="choice-text">D.O.T.S. Projector</span>
+            <span class="disabled glyphicon glyphicon-ban-circle"></span>
+            <span class="new glyphicon glyphicon-ok"></span>
+          </div>
         </div>
       </div>
 
       <h4 id="secondary_items_heading" class="main">
         Secondary Items
-        <a class="glyphicon glyphicon-ban-circle eliminate eliminate-secondary" aria-hidden="true" title="Eliminate current secondary items and re-roll"></a>
+        <a class="glyphicon glyphicon-ban-circle eliminate eliminate-secondary" aria-hidden="true" data-title="Eliminate current secondary items and re-roll"></a>
         <span class="eliminate-count eliminate-secondary-count"></span>
-        <a class="glyphicon glyphicon-repeat reroll reroll-secondary" aria-hidden="true" title="Re-roll only secondary items again"></a>
-        <a class="glyphicon glyphicon-minus loss loss-secondary" aria-hidden="true" title="Un-roll one of the active secondary items"></a>
+        <a class="glyphicon glyphicon-repeat reroll reroll-secondary" aria-hidden="true" data-title="Re-roll only secondary items again"></a>
+        <a class="glyphicon glyphicon-minus loss loss-secondary" aria-hidden="true" data-title="Un-roll one of the active secondary items"></a>
       </h4>
       <div id="secondary_items">
         <div class="item-collection row">
@@ -207,19 +213,13 @@
             <span class="disabled glyphicon glyphicon-ban-circle"></span>
             <span class="new glyphicon glyphicon-ok"></span>
           </div>
-          <div id="irlight" class="col-md-3 item">
-            <img class="overlay-image" src="img/overlay/ir-light-sensor.png" />
-            <span class="choice-text">IR Light Sensor</span>
-            <span class="disabled glyphicon glyphicon-ban-circle"></span>
-            <span class="new glyphicon glyphicon-ok"></span>
-          </div>
-        
           <div id="motion" class="col-md-3 item">
             <img class="overlay-image" src="img/overlay/motion-sensor.png" />
             <span class="choice-text">Motion Sensor</span>
             <span class="disabled glyphicon glyphicon-ban-circle"></span>
             <span class="new glyphicon glyphicon-ok"></span>
           </div>
+
           <div id="parabolic" class="col-md-3 item">
             <img class="overlay-image" src="img/overlay/parabolic-mic.png" />
             <span class="choice-text">Parabolic Mic</span>
@@ -232,13 +232,13 @@
             <span class="disabled glyphicon glyphicon-ban-circle"></span>
             <span class="new glyphicon glyphicon-ok"></span>
           </div>
-                
           <div id="salt" class="col-md-3 item">
             <img class="overlay-image" src="img/overlay/salt.png" />
             <span class="choice-text">Salt</span>
             <span class="disabled glyphicon glyphicon-ban-circle"></span>
             <span class="new glyphicon glyphicon-ok"></span>
           </div>
+
           <div id="sanity" class="col-md-3 item">
             <img class="overlay-image" src="img/overlay/sanity-pills.png" />
             <span class="choice-text">Sanity Pills</span>
@@ -251,13 +251,13 @@
             <span class="disabled glyphicon glyphicon-ban-circle"></span>
             <span class="new glyphicon glyphicon-ok"></span>
           </div>
-        
           <div id="sound" class="col-md-3 item">
             <img class="overlay-image" src="img/overlay/sound-sensor.png" />
             <span class="choice-text">Sound Sensor</span>
             <span class="disabled glyphicon glyphicon-ban-circle"></span>
             <span class="new glyphicon glyphicon-ok"></span>
           </div>
+          
           <div id="lighter" class="col-md-3 item">
             <img class="overlay-image" src="img/overlay/lighter.png" />
             <span class="choice-text">Lighter *</span>
@@ -281,10 +281,10 @@
 
       <h4 id="light_sources_heading" class="main">
         Light Sources
-        <a class="glyphicon glyphicon-ban-circle eliminate eliminate-light" aria-hidden="true" title="Eliminate current light sources and re-roll"></a>
+        <a class="glyphicon glyphicon-ban-circle eliminate eliminate-light" aria-hidden="true" data-title="Eliminate current light sources and re-roll"></a>
         <span class="eliminate-count eliminate-light-count"></span>
-        <a class="glyphicon glyphicon-repeat reroll reroll-light" aria-hidden="true" title="Re-roll only light sources again"></a>
-        <a class="glyphicon glyphicon-minus loss loss-light" aria-hidden="true" title="Un-roll one of the active light sources"></a>
+        <a class="glyphicon glyphicon-repeat reroll reroll-light" aria-hidden="true" data-title="Re-roll only light sources again"></a>
+        <a class="glyphicon glyphicon-minus loss loss-light" aria-hidden="true" data-title="Un-roll one of the active light sources"></a>
       </h4>
       <div id="light_sources">
         <div class="item-collection row">
@@ -311,10 +311,10 @@
 
       <h4 id="maps_heading" class="main">
         Maps
-        <a class="glyphicon glyphicon-ban-circle eliminate eliminate-map" aria-hidden="true" title="Eliminate current maps and re-roll"></a>
+        <a class="glyphicon glyphicon-ban-circle eliminate eliminate-map" aria-hidden="true" data-title="Eliminate current maps and re-roll"></a>
         <span class="eliminate-count eliminate-map-count"></span>
-        <a class="glyphicon glyphicon-repeat reroll reroll-map" aria-hidden="true" title="Re-roll only maps again"></a>
-        <a class="glyphicon glyphicon-minus loss loss-map" aria-hidden="true" title="Un-roll one of the active maps"></a>
+        <a class="glyphicon glyphicon-repeat reroll reroll-map" aria-hidden="true" data-title="Re-roll only maps again"></a>
+        <a class="glyphicon glyphicon-minus loss loss-map" aria-hidden="true" data-title="Un-roll one of the active maps"></a>
       </h4>
       <div id="maps">
         <div class="item-collection row">
@@ -563,7 +563,7 @@
   
     <p class="bg-info tip-elim">
       <span class="glyphicon glyphicon-info-sign"></span> Did you know that there's an evidence elimination feature?<br />
-      <span class="tip-indent"> Click Randomize, then click the <a class="glyphicon glyphicon-ban-circle" aria-hidden="true" title="Eliminate current primary items and re-roll"></a> icon in any category to eliminate!</span>
+      <span class="tip-indent"> Click Randomize, then click the <a class="glyphicon glyphicon-ban-circle" aria-hidden="true" data-title="Eliminate current primary items and re-roll"></a> icon in any category to eliminate!</span>
       <a class="glyphicon glyphicon-remove hide-tip-elim"></a>
     </p>
   
