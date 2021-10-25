@@ -1,5 +1,16 @@
 [
     {
+        "version": "1.7",
+        "date": "2021-10-25",
+
+        "changes": [
+            "Added new map Maple Lodge Campsite to the map list.",
+            "Added new ghosts Goryo, Myling, Onryo, The Twins, Raiju, and Obake.",
+            "Re-enabled Ghost Evidence randomizer feature since the ghost list is up-to-date."
+        ]
+    },
+
+    {
         "version": "1.6",
         "date": "2021-10-03",
 

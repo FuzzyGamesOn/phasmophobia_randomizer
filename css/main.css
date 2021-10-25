@@ -44,7 +44,11 @@ body.willow {
     background: url(../img/map_backgrounds/willow.png) no-repeat center center fixed;
 }
 
-body.default, body.default2, body.default3, body.tanglewood, body.edgefield, body.ridgeview, body.grafton, body.bleasdale, body.highschool, body.prison, body.asylum, body.willow {
+body.campsite {
+    background: url(../img/map_backgrounds/campsite.png) no-repeat center center fixed;
+}
+
+body.default, body.default2, body.default3, body.tanglewood, body.edgefield, body.ridgeview, body.grafton, body.bleasdale, body.highschool, body.prison, body.asylum, body.willow, body.campsite {
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -226,7 +230,6 @@ div.actions {
 
 #ghost_dropdown {
     display: inline-block;
-    opacity: 0.4;
     text-align: right;
     padding: 10px 0 10px;
 }

@@ -74,20 +74,26 @@
   <div class="actions pull-right">
     <button type="button" id="randomize_button" class="btn btn-success action"><i class="bi bi-arrow-repeat"></i> Randomize</button>
     
-    <div id="ghost_dropdown" class="dropdown" data-title="Disabled until evidences are updated for each ghost.">
-      <select name="ghost" id="ghost_randomizer" disabled>
+    <div id="ghost_dropdown" class="dropdown">
+      <select name="ghost" id="ghost_randomizer" placeholder="Ghost Evidence Randomizer">
         <option value="none">Ghost Evidence Randomizer</option>
         <option value="banshee">Banshee (Evidence Items)</option>
         <option value="demon">Demon (Evidence Items)</option>
+        <option value="goryo">Goryo (Evidence Items)</option>
         <option value="hantu">Hantu (Evidence Items)</option>
         <option value="jinn">Jinn (Evidence Items)</option>
         <option value="mare">Mare (Evidence Items)</option>
+        <option value="myling">Myling (Evidence Items)</option>
+        <option value="obake">Obake (Evidence Items)</option>
         <option value="oni">Oni (Evidence Items)</option>
+        <option value="onryo">Onryo (Evidence Items)</option>
         <option value="phantom">Phantom (Evidence Items)</option>
         <option value="poltergeist">Poltergeist (Evidence Items)</option>
+        <option value="raiju">Raiju (Evidence Items)</option>
         <option value="revenant">Revenant (Evidence Items)</option>
         <option value="shade">Shade (Evidence Items)</option>
         <option value="spirit">Spirit (Evidence Items)</option>
+        <option value="twins">The Twins (Evidence Items)</option>
         <option value="wraith">Wraith (Evidence Items)</option>
         <option value="yokai">Yokai (Evidence Items)</option>
         <option value="yurei">Yurei (Evidence Items)</option>
@@ -369,6 +375,12 @@
           <div id="willow" class="col-md-3 item">
             <img class="overlay-image" src="img/map_backgrounds/willow.png" />
             <span class="choice-text">Willow</span>
+            <span class="disabled glyphicon glyphicon-ban-circle"></span>
+            <span class="new glyphicon glyphicon-ok"></span>
+          </div>
+          <div id="campsite" class="col-md-3 item">
+            <img class="overlay-image" src="img/map_backgrounds/campsite.png" />
+            <span class="choice-text">Maple Lodge</span>
             <span class="disabled glyphicon glyphicon-ban-circle"></span>
             <span class="new glyphicon glyphicon-ok"></span>
           </div>

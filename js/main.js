@@ -38,20 +38,26 @@ $(function () {
 
     $('#ghost_randomizer').on('change', function () {
         let evidences = {
-            'banshee': ['emf', 'uv', 'thermo'],
-            'demon': ['book', 'box', 'thermo'],
-            'hantu': ['uv', 'video', 'book'],
-            'jinn': ['emf', 'box', 'video'],
-            'mare': ['box', 'video', 'thermo'],
-            'oni': ['emf', 'book', 'box'],
-            'phantom': ['emf', 'video', 'thermo'],
-            'poltergeist': ['box', 'uv', 'video'],
-            'revenant': ['emf', 'uv', 'book'],
-            'shade': ['emf', 'video', 'book'],
-            'spirit': ['box', 'uv', 'book'],
-            'wraith': ['box', 'uv', 'thermo'],
-            'yokai': ['box', 'video', 'book'],
-            'yurei': ['video', 'book', 'thermo']
+            'banshee': ['uv', 'video', 'dots'],
+            'demon': ['uv', 'book', 'thermo'],
+            'goryo': ['emf', 'uv', 'dots'],
+            'hantu': ['uv', 'video', 'thermo'],
+            'jinn': ['emf', 'uv', 'thermo'],
+            'mare': ['box', 'video', 'book'],
+            'myling': ['emf', 'uv', 'book'],
+            'obake': ['emf', 'uv', 'video'],
+            'oni': ['emf', 'thermo', 'dots'],
+            'onryo': ['box', 'video', 'thermo'],
+            'phantom': ['box', 'uv', 'dots'],
+            'poltergeist': ['box', 'uv', 'book'],
+            'raiju': ['emf', 'video', 'dots'],
+            'revenant': ['video', 'book', 'thermo'],
+            'shade': ['emf', 'book', 'thermo'],
+            'spirit': ['emf', 'box', 'book'],
+            'twins': ['emf', 'box', 'thermo'],
+            'wraith': ['emf', 'box', 'dots'],
+            'yokai': ['box', 'video', 'dots'],
+            'yurei': ['video', 'thermo', 'dots']
         };
 
         let toggle_evidences = evidences[$(this).val()] || [];
@@ -371,7 +377,7 @@ $(function () {
     $('input.layout-chroma').on('change', function () {
         if ($(this).prop('checked')) {
             $('body')
-                .removeClass(['default', 'default2', 'default3', 'tanglewood', 'edgefield', 'ridgeview', 'grafton', 'bleasdale', 'highschool', 'asylum', 'prison', 'willow'])
+                .removeClass(['default', 'default2', 'default3', 'tanglewood', 'edgefield', 'ridgeview', 'grafton', 'bleasdale', 'highschool', 'asylum', 'prison', 'willow', 'campsite'])
                 .addClass('chroma');
         }
         else {
@@ -480,6 +486,13 @@ function clearItems() {
                 .html().replace('Emotional Support Tripod', 'Tripod')
         );
 
+    $('#campsite').removeClass('col-md-5').addClass('col-md-3')
+        .find('span.choice-text')
+        .html(
+            $('#campsite').find('span.choice-text')
+                .html().replace(/^Maple Lodge Gampsite.*/, 'Maple Lodge')
+        );
+
     $('#motion, #sound').each(function () {
         $(this).find('span.choice-text')
             .html(
@@ -508,6 +521,15 @@ function activateItems(elems, is_photo = false) {
             .html(
                 $('#tripod').find('span.choice-text')
                     .html().replace(/^Tripod/, 'Emotional Support Tripod')
+            );
+    }
+
+    if ($('#campsite').hasClass('active')) {
+        $('#campsite').removeClass('col-md-3').addClass('col-md-5')
+            .find('span.choice-text')
+            .html(
+                $('#campsite').find('span.choice-text')
+                    .html().replace(/^Maple Lodge.*/, 'Maple Lodge Gampsite')
             );
     }
 
@@ -796,7 +818,7 @@ function setMaps() {
 
         if (active_map.length > 0) {
             $('body')
-                .removeClass(['default', 'tanglewood', 'edgefield', 'ridgeview', 'grafton', 'bleasdale', 'highschool', 'asylum', 'prison', 'willow'])
+                .removeClass(['default', 'tanglewood', 'edgefield', 'ridgeview', 'grafton', 'bleasdale', 'highschool', 'asylum', 'prison', 'willow', 'campsite'])
                 .addClass(active_map.attr('id'));
         }
     }
@@ -904,9 +926,20 @@ function checkRecentChanges() {
     if (LOCAL) {
         callback([
             {
+                "version": "1.7",
+                "date": "2021-10-25",
+        
+                "changes": [
+                    "Added new map Maple Lodge Campsite to the map list.",
+                    "Added new ghosts Goryo, Myling, Onryo, The Twins, Raiju, and Obake.",
+                    "Re-enabled Ghost Evidence randomizer feature since the ghost list is up-to-date."
+                ]
+            },
+        
+            {
                 "version": "1.6",
                 "date": "2021-10-03",
-
+        
                 "changes": [
                     "Removed IR Light Sensor. You didn't notice it was gone, did you?",
                     "Added D.O.T.S. Projector to primary items.",
@@ -915,11 +948,11 @@ function checkRecentChanges() {
                     "Updated changelog modal to hide older changes so that modal height is not excessive."
                 ]
             },
-
+        
             {
                 "version": "1.5",
                 "date": "2021-06-15",
-
+        
                 "changes": [
                     "Added new ghosts Hantu and Yokai to the Ghost Evidence Randomizer options.",
                     "Added new map Willow Street House to the Maps randomizer choices.",
@@ -928,7 +961,7 @@ function checkRecentChanges() {
                     "Adjustments to presentation to ensure that the randomizer is in compliance with content guidelines."
                 ]
             },
-
+        
             {
                 "version": "1.4",
                 "date": "2021-06-02",
@@ -940,33 +973,33 @@ function checkRecentChanges() {
                     "Added tooltips to action icons in each heading for readability."
                 ]
             },
-
+        
             {
                 "version": "1.3",
                 "date": "2021-05-25",
-
+        
                 "changes": [
                     "Fixed a bug where optional items would not show in the Use / Don't Use filtered lists.",
                     "Removed maps from the Use / Don't Use filtered lists, so that only items are shown.",
                     "Adjusted map randomization to make it force variety between map sizes more."
                 ]
             },
-
+        
             {
                 "version": "1.2",
                 "date": "2021-05-20",
-
+        
                 "changes": [
                     "Added image overlay functionality to settings for concise on-stream overlay.",
                     "Updated recent changes list to show multiple dates of changes.",
                     "Moved and re-styled ghost evidence randomizer option to be consistent."
                 ]
             },
-
+        
             {
                 "version": "1.1",
                 "date": "2021-05-11",
-
+        
                 "changes": [
                     "Added a changelog and notification about active development.",
                     "Removed Grafton from difficult map list because it is no longer a death trap.",
@@ -1097,6 +1130,9 @@ let map_sizes = {
         'size': 'medium'
     },
     'prison': {
+        'size': 'medium'
+    },
+    'campsite': {
         'size': 'medium'
     },
 
